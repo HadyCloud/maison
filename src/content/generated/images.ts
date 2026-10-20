@@ -338,14 +338,14 @@ export const images: Record<string, GeneratedImage> = {
     }
   },
   "salle": {
-    "w": 1600,
-    "h": 800,
+    "w": 1500,
+    "h": 750,
     "widths": [
       480,
       960,
-      1600
+      1500
     ],
-    "lqip": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADwAQCdASoQAAgAA4BaJZACdAC9jyr+lQAA/u+TFJDcCVIY08zkTaV2+T+6/g9K7PfLImnro1CnExlMm6Jh7oVsp1lZAAAA",
+    "lqip": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAADQAQCdASoQAAgAA4BaJYgCdADpr0+6tADOCKdRzXKRoKVyz3t0XTW2BDmsoanyekyat0R9PYKb4TLS8AA=",
     "focal": {
       "x": 0.5,
       "y": 0.55
@@ -359,7 +359,7 @@ export const images: Record<string, GeneratedImage> = {
       960,
       1500
     ],
-    "lqip": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAACQAQCdASoQAAgAA4BaJQBOgBBSs1QA8B2dUM1filXVhCLHL+9xVDNbPJFqJJXzWv3Mzonq5g+ivlRIAAA=",
+    "lqip": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAADQAQCdASoQAAgAA4BaJagCdAD2O384sAD+8YTwu/ufFqWSQhhGr/u20qrtZvj0LmCcJM3pU8/PNuAA",
     "focal": {
       "x": 0.55,
       "y": 0.45

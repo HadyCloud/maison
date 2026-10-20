@@ -8,7 +8,7 @@
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { extname, join, relative } from "node:path";
-import sharp from "sharp";
+import sharp, { type Sharp } from "sharp";
 import { type PhotoEntry, photoMap } from "../src/content/photo-map.ts";
 
 const ROOT = new URL("..", import.meta.url).pathname;
@@ -18,7 +18,18 @@ const GENERATED = join(ROOT, "src/content/generated/images.ts");
 const WIDTHS = [480, 960, 1600, 2400];
 const THUMB = 160;
 const IMAGE_EXT = new Set([".jpg", ".jpeg", ".png", ".webp", ".heic", ".heif", ".avif", ".tif", ".tiff"]);
-const SKIP_DIRS = new Set(["node_modules", ".git", "public", ".next", ".cache", "test-results", "playwright-report"]);
+const SKIP_DIRS = new Set([
+  "node_modules",
+  ".git",
+  "public",
+  ".next",
+  ".cache",
+  ".claude",
+  "reports",
+  "scripts",
+  "test-results",
+  "playwright-report",
+]);
 
 function inventory(dir: string, acc: string[] = []): string[] {
   for (const name of readdirSync(dir)) {
@@ -36,15 +47,14 @@ function readable(file: string): string {
   if (![".heic", ".heif"].includes(extname(file).toLowerCase())) return abs;
   mkdirSync(CACHE, { recursive: true });
   const out = join(CACHE, `${file.replaceAll("/", "_")}.jpg`);
-  if (!existsSync(out)) execFileSync("sips", ["-s", "format", "jpeg", abs, "--out", out], { stdio: "ignore" });
+  if (!existsSync(out))
+    execFileSync("sips", ["-s", "format", "jpeg", abs, "--out", out], { stdio: "ignore" });
   return out;
 }
 
 /** The house grade: slightly desaturated, slightly cooler, deeper blacks. Food stays in colour. */
-function grade(img: sharp.Sharp): sharp.Sharp {
-  return img
-    .modulate({ saturation: 0.9, brightness: 0.98 })
-    .linear([1.02, 1.03, 1.06], [-7, -6, -4]);
+function grade(img: Sharp): Sharp {
+  return img.modulate({ saturation: 0.9, brightness: 0.98 }).linear([1.02, 1.03, 1.06], [-7, -6, -4]);
 }
 
 function focalCrop(w: number, h: number, size: number, focal: PhotoEntry["focalPoint"]) {
@@ -71,14 +81,26 @@ async function processPhoto(entry: PhotoEntry): Promise<Generated> {
 
   for (const w of unique) {
     const resized = sharp(graded).resize({ width: w, withoutEnlargement: true });
-    await resized.clone().avif({ quality: 52, effort: 5 }).toFile(join(OUT, `${entry.id}-${w}.avif`));
-    await resized.clone().webp({ quality: 76, effort: 5 }).toFile(join(OUT, `${entry.id}-${w}.webp`));
+    await resized
+      .clone()
+      .avif({ quality: 52, effort: 5 })
+      .toFile(join(OUT, `${entry.id}-${w}.avif`));
+    await resized
+      .clone()
+      .webp({ quality: 76, effort: 5 })
+      .toFile(join(OUT, `${entry.id}-${w}.webp`));
   }
 
   const crop = focalCrop(srcW, srcH, THUMB, entry.focalPoint);
   const square = sharp(graded).extract(crop).resize(THUMB, THUMB);
-  await square.clone().avif({ quality: 55 }).toFile(join(OUT, `${entry.id}-sq.avif`));
-  await square.clone().webp({ quality: 78 }).toFile(join(OUT, `${entry.id}-sq.webp`));
+  await square
+    .clone()
+    .avif({ quality: 55 })
+    .toFile(join(OUT, `${entry.id}-sq.avif`));
+  await square
+    .clone()
+    .webp({ quality: 78 })
+    .toFile(join(OUT, `${entry.id}-sq.webp`));
 
   const lqipBuf = await sharp(graded).resize(16).blur(0.6).webp({ quality: 40 }).toBuffer();
   return {

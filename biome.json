@@ -3,14 +3,15 @@
   "vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
   "files": {
     "ignoreUnknown": true,
-    "includes": ["**", "!src/content/generated/**", "!**/*.css"]
+    "includes": ["**", "!src/content/generated", "!**/*.css"]
   },
   "formatter": { "enabled": true, "indentStyle": "space", "indentWidth": 2, "lineWidth": 110 },
   "linter": {
     "enabled": true,
     "rules": {
       "preset": "recommended",
-      "suspicious": { "noArrayIndexKey": "off" }
+      "suspicious": { "noArrayIndexKey": "off" },
+      "performance": { "noImgElement": "off" }
     }
   },
   "javascript": { "formatter": { "quoteStyle": "double" } },

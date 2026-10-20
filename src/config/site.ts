@@ -45,7 +45,7 @@ export const site = {
       value: "59000",
       confirmed: true,
       source: "Imprint eatbu, Le Bonbon, PagesJaunes",
-      note: "Privateaser affiche 59260 (code d'Hellemmes) — erreur probable de leur côté.",
+      note: "Privateaser affiche 59260 (code d'Hellemmes), erreur probable de leur côté.",
     } satisfies Checked<string>,
     city: "Lille",
     neighbourhood: "Wazemmes · Gambetta",
@@ -64,7 +64,7 @@ export const site = {
       value: { score: 4.8, count: 826 },
       confirmed: false,
       lastChecked: "2026-10-20",
-      source: "Instantané agrégateur fourni dans le brief — fiche Google non lisible automatiquement",
+      source: "Instantané agrégateur fourni dans le brief. Fiche Google non lisible automatiquement",
     },
   },
 
@@ -135,7 +135,7 @@ export const site = {
     source: "Privateaser (lieu 54563), maison-l.eatbu.com",
   },
 
-  /** Online booking. Falls back to tel: when the env var is unset. */
+  /** Online booking (env RESERVATION_URL, see next.config.ts). Falls back to tel: when unset. */
   reservationUrl: process.env.NEXT_PUBLIC_RESERVATION_URL || null,
 
   social: {

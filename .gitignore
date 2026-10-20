@@ -22,7 +22,6 @@ next-env.d.ts
 coverage/
 playwright-report/
 test-results/
-reports/lighthouse-*.json
 
 # OS / editor
 .DS_Store
@@ -30,3 +29,4 @@ reports/lighthouse-*.json
 
 # Asset pipeline cache
 .cache/
+reports/
