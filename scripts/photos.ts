@@ -1,0 +1,117 @@
+/**
+ * Photo pipeline — `pnpm assets:photos`
+ * 1. Inventory every image in the project (photos/, photos-online/, root…), never touching originals.
+ * 2. For each photo-map entry with `process: true`: grade, resize (480/960/1600/2400, no upscale),
+ *    encode AVIF + WebP, square focal thumbnail, LQIP, metadata stripped (sharp drops EXIF/GPS by default).
+ * 3. Write src/content/generated/images.ts for the components.
+ */
+import { execFileSync } from "node:child_process";
+import { existsSync, mkdirSync, readdirSync, statSync, writeFileSync } from "node:fs";
+import { extname, join, relative } from "node:path";
+import sharp from "sharp";
+import { type PhotoEntry, photoMap } from "../src/content/photo-map.ts";
+
+const ROOT = new URL("..", import.meta.url).pathname;
+const OUT = join(ROOT, "public/images");
+const CACHE = join(ROOT, ".cache/heic");
+const GENERATED = join(ROOT, "src/content/generated/images.ts");
+const WIDTHS = [480, 960, 1600, 2400];
+const THUMB = 160;
+const IMAGE_EXT = new Set([".jpg", ".jpeg", ".png", ".webp", ".heic", ".heif", ".avif", ".tif", ".tiff"]);
+const SKIP_DIRS = new Set(["node_modules", ".git", "public", ".next", ".cache", "test-results", "playwright-report"]);
+
+function inventory(dir: string, acc: string[] = []): string[] {
+  for (const name of readdirSync(dir)) {
+    if (SKIP_DIRS.has(name)) continue;
+    const full = join(dir, name);
+    if (statSync(full).isDirectory()) inventory(full, acc);
+    else if (IMAGE_EXT.has(extname(name).toLowerCase())) acc.push(relative(ROOT, full));
+  }
+  return acc;
+}
+
+/** HEIC is decoded by macOS `sips` into a cache copy (sharp's prebuilt libvips has no HEVC decoder). */
+function readable(file: string): string {
+  const abs = join(ROOT, file);
+  if (![".heic", ".heif"].includes(extname(file).toLowerCase())) return abs;
+  mkdirSync(CACHE, { recursive: true });
+  const out = join(CACHE, `${file.replaceAll("/", "_")}.jpg`);
+  if (!existsSync(out)) execFileSync("sips", ["-s", "format", "jpeg", abs, "--out", out], { stdio: "ignore" });
+  return out;
+}
+
+/** The house grade: slightly desaturated, slightly cooler, deeper blacks. Food stays in colour. */
+function grade(img: sharp.Sharp): sharp.Sharp {
+  return img
+    .modulate({ saturation: 0.9, brightness: 0.98 })
+    .linear([1.02, 1.03, 1.06], [-7, -6, -4]);
+}
+
+function focalCrop(w: number, h: number, size: number, focal: PhotoEntry["focalPoint"]) {
+  const side = Math.min(w, h);
+  const left = Math.round(Math.min(Math.max(focal.x * w - side / 2, 0), w - side));
+  const top = Math.round(Math.min(Math.max(focal.y * h - side / 2, 0), h - side));
+  return { left, top, width: side, height: side, size };
+}
+
+type Generated = { w: number; h: number; widths: number[]; lqip: string; focal: { x: number; y: number } };
+
+async function processPhoto(entry: PhotoEntry): Promise<Generated> {
+  const input = readable(entry.file);
+  const base = sharp(input).rotate();
+  const meta = await base.metadata();
+  const srcW = meta.autoOrient?.width ?? meta.width;
+  const srcH = meta.autoOrient?.height ?? meta.height;
+  const widths = WIDTHS.filter((w) => w < srcW);
+  widths.push(Math.min(srcW, WIDTHS.at(-1) ?? srcW));
+  const unique = [...new Set(widths)].sort((a, b) => a - b);
+
+  // Grade once at full size into a buffer, then derive every output from it.
+  const graded = await grade(sharp(input).rotate()).toBuffer();
+
+  for (const w of unique) {
+    const resized = sharp(graded).resize({ width: w, withoutEnlargement: true });
+    await resized.clone().avif({ quality: 52, effort: 5 }).toFile(join(OUT, `${entry.id}-${w}.avif`));
+    await resized.clone().webp({ quality: 76, effort: 5 }).toFile(join(OUT, `${entry.id}-${w}.webp`));
+  }
+
+  const crop = focalCrop(srcW, srcH, THUMB, entry.focalPoint);
+  const square = sharp(graded).extract(crop).resize(THUMB, THUMB);
+  await square.clone().avif({ quality: 55 }).toFile(join(OUT, `${entry.id}-sq.avif`));
+  await square.clone().webp({ quality: 78 }).toFile(join(OUT, `${entry.id}-sq.webp`));
+
+  const lqipBuf = await sharp(graded).resize(16).blur(0.6).webp({ quality: 40 }).toBuffer();
+  return {
+    w: srcW,
+    h: srcH,
+    widths: unique,
+    lqip: `data:image/webp;base64,${lqipBuf.toString("base64")}`,
+    focal: entry.focalPoint,
+  };
+}
+
+async function main() {
+  mkdirSync(OUT, { recursive: true });
+  const found = inventory(ROOT);
+  const mapped = new Set(photoMap.map((p) => p.file));
+  console.log(`Inventory: ${found.length} image(s) found.`);
+  for (const f of found.filter((f) => !mapped.has(f))) console.warn(`  ! not in photo-map.ts: ${f}`);
+  for (const p of photoMap.filter((p) => !existsSync(join(ROOT, p.file)))) {
+    throw new Error(`photo-map entry "${p.id}" points to a missing file: ${p.file}`);
+  }
+
+  const out: Record<string, Generated> = {};
+  for (const entry of photoMap.filter((p) => p.process)) {
+    out[entry.id] = await processPhoto(entry);
+    console.log(`  ✓ ${entry.id} (${out[entry.id]?.widths.join("/")})`);
+  }
+
+  const body = `// Generated by scripts/photos.ts — do not edit by hand. Re-run \`pnpm assets:photos\`.
+export type GeneratedImage = { w: number; h: number; widths: number[]; lqip: string; focal: { x: number; y: number } };
+export const images: Record<string, GeneratedImage> = ${JSON.stringify(out, null, 2)};
+`;
+  writeFileSync(GENERATED, body);
+  console.log(`Wrote ${relative(ROOT, GENERATED)} (${Object.keys(out).length} images).`);
+}
+
+await main();

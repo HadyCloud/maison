@@ -1,0 +1,32 @@
+# Raw sources stay local — processed assets live in public/
+photos/
+photos-online/
+video/
+
+# PROMPT.md contains a third-party API key: never commit it
+PROMPT.md
+
+# Secrets
+.env*
+!.env.example
+
+# Dependencies & builds
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+.vercel
+
+# Tests & reports
+coverage/
+playwright-report/
+test-results/
+reports/lighthouse-*.json
+
+# OS / editor
+.DS_Store
+.claude/settings.local.json
+
+# Asset pipeline cache
+.cache/
