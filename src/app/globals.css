@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 /* Maison L design tokens (Tailwind v4, CSS-first).
-   The brand green from the logo, white, and a short scale of greens and creams.
+   Three families: the brand green (from the logo), beige paper, and wood.
+   Pages are mostly beige; green and wood come in as bands (hero, Infos, menu header, ticker, footer).
    Square corners, no shadows. */
 @theme {
   /* Wipe Tailwind's defaults so nothing outside the house palette can be used by accident. */
@@ -23,6 +24,16 @@
   --color-cream: #dce0d0;
   --color-cream-light: #eef0e7;
   --color-white: #ffffff;
+
+  /* Beige and wood */
+  --color-paper: #f4eee1;
+  --color-paper-deep: #eae0cb;
+  --color-moss: #56663f; /* muted text on paper (5.4:1) */
+  --color-wood: #8a5a33;
+  --color-wood-ink: #6e4524; /* wood-coloured text on paper (7.2:1) */
+  --color-wood-dark: #3a2a1c; /* ticker, footer, board panels */
+  --color-wood-light: #d2ae7c; /* accents on green and wood (5.2:1 / 6.6:1) */
+  --color-wood-mute: #cdbba2; /* muted text on wood (7.4:1) */
 
   --font-display: var(--font-instrument-serif), "Times New Roman", serif;
   --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
@@ -51,16 +62,27 @@
   --tracking-display: -0.02em;
 }
 
+/* Semantic colours, resolved per band (see .theme-* below): components say text-fg, bg-surface, border-rule… */
+@theme inline {
+  --color-surface: var(--surface);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-rule: var(--rule);
+  --color-accent: var(--accent);
+}
+
 @layer base {
   :root {
-    color-scheme: dark;
-    --header-h: 4.5rem;
+    color-scheme: light;
+    --ticker-h: 2.25rem;
+    --nav-h: 4.5rem;
+    --header-h: calc(var(--ticker-h) + var(--nav-h));
     --gutter: clamp(1.25rem, 3.2vw, 3rem);
   }
 
   html {
-    background: var(--color-forest);
-    color: var(--color-cream);
+    background: var(--color-paper);
+    color: var(--color-forest);
     -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -81,17 +103,13 @@
   }
 
   ::selection {
-    background: var(--color-white);
-    color: var(--color-forest);
+    background: var(--color-forest);
+    color: var(--color-paper);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-white);
+    outline: 2px solid var(--accent, var(--color-wood));
     outline-offset: 3px;
-  }
-
-  .on-light :focus-visible {
-    outline-color: var(--color-forest);
   }
 
   /* System Arabic face first; the Naskh webfont is swapped in after `load` (html.fonts-ready). */
@@ -150,13 +168,72 @@
   .index-outline {
     font-family: var(--font-display);
     color: transparent;
-    -webkit-text-stroke: 1px var(--color-sage);
+    -webkit-text-stroke: 1px var(--accent);
     line-height: 0.8;
   }
 
   .tabular {
     font-variant-numeric: tabular-nums;
   }
+}
+
+/* Band themes: each section picks one and its children follow. */
+.theme-paper {
+  --surface: var(--color-paper);
+  --fg: var(--color-forest);
+  --muted: var(--color-moss);
+  --rule: #d9cdb3;
+  --accent: var(--color-wood-ink);
+}
+.theme-sand {
+  --surface: var(--color-paper-deep);
+  --fg: var(--color-forest);
+  --muted: #4f5e39;
+  --rule: #d2c4a6;
+  --accent: var(--color-wood-ink);
+}
+.theme-forest {
+  --surface: var(--color-forest);
+  --fg: var(--color-paper);
+  --muted: #cfc8b0;
+  --rule: #55693f;
+  --accent: var(--color-wood-light);
+}
+.theme-wood {
+  --surface: var(--color-wood-dark);
+  --fg: var(--color-paper);
+  --muted: var(--color-wood-mute);
+  --rule: #5a4330;
+  --accent: var(--color-wood-light);
+}
+
+/* Row of pointed arches: the section colour rises into the band above (set the colour with text-*). */
+.arcade {
+  height: 1.5rem;
+  background: currentColor;
+  -webkit-mask: url(/brand/arcade.svg) repeat-x center bottom / 3rem 1.5rem;
+  mask: url(/brand/arcade.svg) repeat-x center bottom / 3rem 1.5rem;
+}
+
+/* Wood grain: streaks drawn by an SVG turbulence filter over the band's own colour. */
+.wood-grain {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='700' height='240'><filter id='w' x='0' y='0' width='100%' height='100%'><feTurbulence type='fractalNoise' baseFrequency='0.0035 0.22' numOctaves='3' seed='7' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.62  0 0 0 0 0.42  0 0 0 0 0.24  0 0 0 1.3 -0.5'/></filter><rect width='100%' height='100%' filter='url(%23w)' opacity='0.24'/></svg>");
+  background-size: 700px 240px;
+}
+
+/* Top ticker */
+@keyframes ticker {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 60s linear infinite;
+}
+.ticker:hover .ticker-track {
+  animation-play-state: paused;
 }
 
 /* Film grain — ~4% opacity, never intercepts the pointer. */
@@ -241,7 +318,8 @@ html.lenis body {
   .rise {
     animation: fade 0.4s ease both;
   }
-  .scroll-line {
+  .scroll-line,
+  .ticker-track {
     animation: none;
   }
 }

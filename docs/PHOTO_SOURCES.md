@@ -40,5 +40,5 @@ Downloaded on **20 Oct 2026**, only from listings where the restaurant publishes
 
 ## 4. Other third-party data
 
-- **Street plan** (`public/images/plan-gambetta.svg`): OpenStreetMap data (© OpenStreetMap contributors, ODbL), fetched once by `scripts/map.ts` and credited on the page and in the mentions légales.
+- **Street plan** (`public/images/plan-gambetta.svg`): OpenStreetMap data (© OpenStreetMap contributors, ODbL), fetched once by `scripts/map.ts` and credited on the page and in the footer legal text.
 - **OG fonts** (`scripts/fonts/`): Instrument Serif and Geist Mono, SIL Open Font License, used only to render `public/og.jpg`.

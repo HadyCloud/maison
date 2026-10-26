@@ -13,9 +13,9 @@ Checked online on 20 Oct 2026.
 | 4 | **Email** | Hidden (`email: null`) | The eatbu imprint lists a **personal Gmail address**, so it isn't published. Send a professional address to show. |
 | 5 | **Google rating** | **4,8/5 · 826 avis**, "relevé le 20.10.2026" | The brief's aggregator snapshot. The live Google figure couldn't be read automatically, and Restaurants-de-France shows 4.8 / 545 (older). Update `site.google.rating` and `lastChecked`. |
 | 6 | **Postcode** | 59000 | Set to `confirmed: true`, because eatbu imprint, Le Bonbon and PagesJaunes all say 59000. Privateaser's 59260 (Hellemmes) looks wrong. |
-| 7 | **Legal representative** | **Kamal Ghantous** (mentions légales) | Taken from the eatbu imprint fields "Prénom: KAMAL / Nom: GHANTOUS". Please confirm, since Jalal is presented as chef & owner. |
+| 7 | **Legal representative** | **Kamal Ghantous** ("Directeur de la publication" in the footer small print) | Taken from the eatbu imprint fields "Prénom: KAMAL / Nom: GHANTOUS". Please confirm, since Jalal is presented as chef & owner. |
 | 8 | **Company identity** | SAS Maison L, capital 2 000 €, RCS Lille Métropole 922 730 023, VAT FR07922730023 | Matches the eatbu imprint. PagesJaunes lists another trade name, **"ST.JOHN"**, at the same address and SIREN. Worth confirming which names should appear. |
-| 9 | **Host** | Vercel Inc. (mentions légales) | Assumes deployment on Vercel. Change `site.legal.host` if hosted elsewhere. |
+| 9 | **Host** | Vercel Inc. (footer small print) | Assumes deployment on Vercel. Change `site.legal.host` if hosted elsewhere. |
 | 10 | **TikTok** | Not linked (`social.tiktok: null`) | No account found for "Maison L Lille". |
 | 11 | **Za'atar** (sister bakery) | Footer line without a link (`sister.url: null`) | Nothing found online. Send the URL or address. |
 | 12 | **Site URL** | `https://maison-l.fr` (placeholder) | Set `NEXT_PUBLIC_SITE_URL` to the real domain (canonical, sitemap, OG). |
@@ -88,7 +88,7 @@ Checked online on 20 Oct 2026.
 
 "Maison L" is transliterated as **ميزون إل**. Jalal may prefer another spelling, or to keep it in Latin letters.
 
-## 3. Copy & quotes
+## 3. Copy & quotes (these sections are no longer on the site; kept for reference)
 
 - **Chef quote (proposal, NOT published):** « Au Liban, on ne sert pas une assiette. On sert une table. »
   - It sits in `src/content/quotes.ts` with `approved: false`, so the site shows an *unattributed* line instead ("Ici, on ne sert pas une assiette. On sert une table.").
@@ -114,7 +114,7 @@ Checked online on 20 Oct 2026.
 
 ## 5. Design decisions to be aware of
 
-- **Palette:** the page green `#2E431A` is sampled from the logo file you sent (pure `rgb(46,67,26)`). Text colours are checked for WCAG AA on it: cream 8.1:1, white 10.9:1, `sage-light` (small meta text) 5.5:1. `sage` (3.5:1) is decorative or large text only.
+- **Palette:** three families. Brand green `#2E431A` (sampled from your logo file), beige paper `#F4EEE1` / sand `#EAE0CB`, and wood (`#3A2A1C` dark, `#8A5A33` mid, `#D2AE7C` light). Pages are mostly beige; green and wood appear as bands (hero overlay is a warm dark, Infos band, menu title band, ticker, footer, takeaway panel). Every text pair is checked for WCAG AA: green on beige 9.4:1, muted green 5.4:1, wood-ink on beige 7.2:1, light oak on green 5.2:1.
 - The custom cursor is the only rounded shape (the brief asks for a circle).
 - **Lighthouse (mobile, simulated slow 4G):**
   - Home 90, menu 92. Accessibility, best practices and SEO are 100.

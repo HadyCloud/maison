@@ -101,7 +101,7 @@ export function weekRows(week: Week, dict: Dictionary): { day: string; value: st
     return {
       weekday,
       day: dict.days[weekday] ?? "",
-      value: windows.length ? windows.map((w) => formatWindow(w, lang)).join(", ") : dict.reserve.closed,
+      value: windows.length ? windows.map((w) => formatWindow(w, lang)).join(", ") : dict.info.closed,
     };
   });
 }

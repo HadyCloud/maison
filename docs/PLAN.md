@@ -2,16 +2,14 @@
 
 1. **Stack.** Next.js 16 App Router, React 19 and TypeScript strict (`noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`). Tailwind v4 is CSS-first, with `@theme` tokens and Tailwind's default palette, radii and shadows wiped. Also Motion, Lenis, Zod, Biome and pnpm.
 2. **Routes.** There are two root layouts:
-   - `app/(fr)` serves `/`, `/menu` and `/mentions-legales` with `<html lang="fr">`.
-   - `app/(en)/en` serves `/en`, `/en/menu` and `/en/legal-notice`.
+   - `app/(fr)` serves `/` and `/menu` with `<html lang="fr">`.
+   - `app/(en)/en` serves `/en` and `/en/menu`.
    - Language pairs live in `src/i18n` and drive the toggle, hreflang and the sitemap.
 3. **Rendering.** Everything is statically prerendered. Server Components are the default. Client components are reserved for interactive leaves: hero video, live "ce soir" line, Lenis, curtain, cursor, header, mobile overlay, scroll-spy, hover preview, photo sheet and the signatures scroll.
 4. **Content as data.**
    - `src/config/site.ts` holds the facts, each with a `confirmed` flag.
    - `src/content/menu.ts` is the menu, Zod-validated.
    - `src/content/photo-map.ts` is the photo classification.
-   - `src/content/reviews.ts` ships empty.
-   - `src/content/quotes.ts` holds the chef quote with `approved: false`.
    - `src/i18n/{fr,en}.ts` are the dictionaries.
 5. **Assets.** `pnpm assets` runs these pipelines, each re-runnable:
    - **photos:** sharp, grade, AVIF/WebP, focal thumbnail, LQIP.
@@ -22,7 +20,6 @@
 6. **Design.**
    - Palette sampled from the logo: brand green `#2E431A` (page), a deeper and a lighter green, a muted green hairline, sage for meta text, creams and white for type. Square corners, no shadows, 1 px hairlines, film grain at about 4 %.
    - Instrument Serif for display, Geist for body, Geist Mono for labels, Noto Naskh Arabic for Arabic names.
-   - The chef section is the single inverted (light) block.
 7. **Motion.**
    - Masked line reveals: 0.9 s, `cubic-bezier(.22,1,.36,1)`.
    - Images: clip-path wipe with a scale settle from 1.08 to 1, plus parallax up to 8 %.
@@ -33,5 +30,24 @@
    - Mezzé Maison L and Aych el saray have no photo, so they cannot be signatures.
 9. **QA.**
    - Vitest: menu, hours, language, video fallback, photo map.
-   - Playwright with axe: home and hero, `/menu` and scroll-spy, language switch, reservation, plus mobile overlay and sheet.
+   - Playwright with axe: home and hero, `/menu` and its tabs, language switch, reservation, plus the mobile overlay.
    - Screenshots at 390, 768, 1280 and 1920, Lighthouse on mobile, then a critique pass.
+
+## Revision (Oct 2026): two pages
+
+The first design was cut down on request. What stays is the hero and the signatures layout. The story, chef, full-bleed photo and reviews sections were removed, along with the legal page, the menu hover preview and photo sheet, and the custom cursor.
+
+- **Home:** hero, signatures, Infos (map, address, phone, hours, private hire).
+- **La Carte:** a single narrow column like a printed menu, sticky category tabs, a small photo on the right of dishes that have one.
+- **Top bar:** La Carte and Infos. Infos scrolls to the last home section (`#infos`).
+- **Footer:** logo, social links, allergens link, and the legal mentions as small print.
+
+## Revision (Oct 2026): beige, green and wood
+
+The all-green look was replaced. Pages are beige by default, and each section picks a **band theme** (`theme-paper`, `theme-sand`, `theme-forest`, `theme-wood`) that sets the semantic colours its children use (`text-fg`, `bg-surface`, `text-muted`, `border-rule`, `text-accent`). The same button, ornament and link components therefore work on any band.
+
+Ideas borrowed (not copied) from La Magie de Paris and Za'atar: a top ticker, alternating full-width bands, thin framed borders, a small diamond ornament under headings, and a shaped edge between bands. Ours: a row of pointed arches (`public/brand/arcade.svg`, applied as a CSS mask in the colour of the section below) and a procedural wood grain (an SVG turbulence filter, tileable) on the ticker, footer and the takeaway panel.
+
+- Header: wood ticker, then the nav row, transparent with light text over the hero and beige with green text after scrolling.
+- Home: hero (photo/video, warm dark overlay), signatures on beige, Infos on green with a beige map in a thin frame, wood footer.
+- La Carte: green title band, beige body with sticky tabs, wood panel for takeaway.

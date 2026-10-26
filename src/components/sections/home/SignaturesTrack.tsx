@@ -45,13 +45,19 @@ export function SignaturesTrack({ children }: { children: ReactNode }) {
       className="relative"
       style={pinned ? { height: `calc(100vh + ${distance}px)` } : undefined}
     >
-      <div className={pinned ? "sticky top-0 flex h-screen flex-col justify-center overflow-hidden" : ""}>
+      <div
+        className={
+          pinned
+            ? "sticky top-0 flex h-screen flex-col justify-center overflow-hidden pt-[var(--header-h)]"
+            : ""
+        }
+      >
         <m.div
           ref={trackRef}
           style={pinned ? { x } : {}}
           className={
             pinned
-              ? "container-x flex w-max flex-row items-start gap-[6vw] pt-16 [&>article]:w-[min(30vw,46vh)] [&>article]:shrink-0"
+              ? "container-x flex w-max flex-row items-start gap-[6vw] pt-24 [&>article]:w-[min(30vw,46vh)] [&>article]:shrink-0"
               : "container-x flex flex-col gap-24 pt-14 md:grid md:grid-cols-2 md:gap-x-[5vw] lg:grid-cols-3"
           }
         >
@@ -59,8 +65,8 @@ export function SignaturesTrack({ children }: { children: ReactNode }) {
         </m.div>
         {pinned && (
           <div aria-hidden="true" className="container-x absolute inset-x-0 bottom-8">
-            <div className="h-px w-full bg-line">
-              <m.div className="h-px bg-white" style={{ width: progress }} />
+            <div className="h-px w-full bg-rule">
+              <m.div className="h-px bg-accent" style={{ width: progress }} />
             </div>
           </div>
         )}

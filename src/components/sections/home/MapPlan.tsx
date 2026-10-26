@@ -18,24 +18,24 @@ export function MapPlan({ dict }: { dict: Dictionary }) {
         href={site.google.directionsUrl}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={`${dict.reserve.directions}, ${dict.reserve.mapAlt}`}
+        aria-label={`${dict.info.directions}, ${dict.info.mapAlt}`}
         className="block"
       >
         {hasPlan ? (
           <img
             src={PLAN}
-            alt={dict.reserve.mapAlt}
+            alt={dict.info.mapAlt}
             width={1240}
             height={920}
             loading="lazy"
             decoding="async"
-            className="block aspect-[4/3] h-auto w-full bg-forest object-cover"
+            className="block aspect-[4/3] h-auto w-full bg-paper object-cover"
           />
         ) : (
           <PhotoPlaceholder label="Plan · Gambetta" className="aspect-[4/3] w-full" />
         )}
       </a>
-      <figcaption className="label mt-3 flex items-center justify-between gap-4 text-sage-light">
+      <figcaption className="label mt-3 flex items-center justify-between gap-4 text-muted">
         <span>
           {site.address.street} · {site.address.metro}
         </span>

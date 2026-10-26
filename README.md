@@ -2,7 +2,7 @@
 
 Site for **Maison L**, a Lebanese restaurant at 324 rue Léon Gambetta, Lille. Built with Next.js 16 (App Router, React 19), TypeScript strict, Tailwind v4, Motion, Lenis and Zod, using pnpm and Biome.
 
-French at `/`, `/menu` and `/mentions-legales`; English at `/en`, `/en/menu` and `/en/legal-notice`. Every page is statically prerendered. There are no trackers and no cookies, so there is no cookie banner. If analytics are added later, use a cookieless tool (e.g. Vercel Web Analytics or Plausible) and update the mentions légales.
+Two pages, in French and English: Home (hero, signatures, Infos with map and contact) at `/` and `/en`, and La Carte at `/menu` and `/en/menu`. The "Infos" link in the top bar scrolls to the last section of the home page. The legal mentions are small print in the footer. Every page is statically prerendered. There are no trackers and no cookies, so there is no cookie banner. If analytics are added later, use a cookieless tool (e.g. Vercel Web Analytics or Plausible) and update the footer legal text.
 
 ## Run it
 
@@ -32,7 +32,7 @@ pnpm typecheck && pnpm lint && pnpm test
 pnpm build && pnpm e2e
 ```
 
-- **Playwright + axe** run against the production build on port 3300. The flows are home/hero, `/menu` with scroll-spy, the language switch, reservation links, and the mobile overlay and photo sheet. First run needs `pnpm exec playwright install chromium`.
+- **Playwright + axe** run against the production build on port 3300. The flows are home/hero, `/menu` with its category tabs, the language switch, reservation links, and the mobile overlay and photo sheet. First run needs `pnpm exec playwright install chromium`.
 - `pnpm screens` takes full-page screenshots at 390, 768, 1280 and 1920 (plus reduced motion) into `reports/screens/`. It needs `pnpm start --port 3200` running.
 - `node scripts/lighthouse.ts http://localhost:3200 3` runs Lighthouse mobile and takes the median of 3 runs. Reports go to `reports/`.
 
@@ -45,8 +45,6 @@ Everything editable is plain TypeScript data; components never hard-code facts.
 | Address, phones, hours, socials, rating, legal | `src/config/site.ts` | Uncertain fields carry `confirmed: false`. The hours drive the live "CE SOIR · 19H – 23H" line (Europe/Paris). |
 | Menu | `src/content/menu.ts` | Validated with Zod at build time. Set `priceConfirmed: true` once checked; `price: null` shows "Prix sur place". |
 | Signatures | `SIGNATURES` / `signatureIds` in `menu.ts` | A signature must have a mapped photo, or the build fails. |
-| Google reviews | `src/content/reviews.ts` | Verbatim only, first name + initial. The block stays hidden while the array is empty. |
-| Chef quote | `src/content/quotes.ts` | Rendered under Jalal's name **only** when `approved: true`. |
 | Copy, FR / EN | `src/i18n/fr.ts`, `src/i18n/en.ts` | `*word*` renders the italic serif word. The EN dictionary is type-checked against the FR one. |
 | Photo ↔ dish mapping | `src/content/photo-map.ts` | See below. |
 

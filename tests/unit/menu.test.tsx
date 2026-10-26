@@ -47,7 +47,6 @@ describe("menu list rendering", () => {
     expect(ar).toHaveAttribute("lang", "ar");
     expect(ar).toHaveAttribute("dir", "rtl");
     expect(within(row).getByText("9,00 €")).toBeInTheDocument();
-    expect(row).toHaveAttribute("data-preview", "mouhammara");
   });
 
   it("shows 'Prix sur place' when a price is still unknown", () => {
@@ -71,7 +70,7 @@ describe("menu list rendering", () => {
     expect(screen.getByText(/3 pieces/)).toBeInTheDocument();
   });
 
-  it("offers an accessible photo button only for items with a photo", () => {
+  it("shows a small photo only for items that have one", () => {
     const withPhoto = menuItemById("kebbe-citrouille");
     const without = menuItemById("taboule");
     if (!withPhoto || !without) throw new Error("missing item");
@@ -81,10 +80,10 @@ describe("menu list rendering", () => {
         <MenuItemRow item={without} dict={fr} />
       </>,
     );
-    expect(
-      screen.getAllByRole("button", { name: /Voir la photo : Kebbé citrouille/ }).length,
-    ).toBeGreaterThan(0);
-    expect(screen.queryByRole("button", { name: /Taboulé/ })).not.toBeInTheDocument();
+    const [first, second] = screen.getAllByTestId("menu-item");
+    expect(first?.querySelector("img")).toHaveAttribute("src", "/images/kebbe-citrouille-sq.webp");
+    expect(second?.querySelector("img")).toBeNull();
+    expect(screen.queryByRole("button")).not.toBeInTheDocument();
   });
 
   it("renders a whole category with its heading and count", () => {

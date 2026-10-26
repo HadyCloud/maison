@@ -24,9 +24,9 @@ describe("language routing", () => {
   it("maps every FR route to its EN twin and back", () => {
     expect(alternatePath("/", "en")).toBe("/en");
     expect(alternatePath("/menu", "en")).toBe("/en/menu");
-    expect(alternatePath("/mentions-legales", "en")).toBe("/en/legal-notice");
     expect(alternatePath("/en/menu", "fr")).toBe("/menu");
     expect(alternatePath("/en/", "fr")).toBe("/");
+    expect(alternatePath("/mentions-legales", "en")).toBe("/en");
     expect(alternatePath("/unknown", "en")).toBe("/en");
   });
 

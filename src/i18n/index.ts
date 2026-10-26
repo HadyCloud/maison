@@ -14,7 +14,6 @@ export function getDictionary(lang: Lang): Dictionary {
 export const routes = {
   home: { fr: "/", en: "/en" },
   menu: { fr: "/menu", en: "/en/menu" },
-  legal: { fr: "/mentions-legales", en: "/en/legal-notice" },
 } as const;
 
 export type RouteKey = keyof typeof routes;

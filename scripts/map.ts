@@ -140,22 +140,22 @@ async function main() {
   const W = HALF_W * 2;
   const H = HALF_H * 2;
   const metroMark = metro
-    ? `<g transform="translate(${metro.x} ${metro.y})"><rect x="-13" y="-13" width="26" height="26" fill="#2e431a" stroke="#b3bda0" stroke-width="2"/><path d="M-6 6V-6L0 1 6-6V6" fill="none" stroke="#ffffff" stroke-width="2"/></g>`
+    ? `<g transform="translate(${metro.x} ${metro.y})"><rect x="-13" y="-13" width="26" height="26" fill="#F4EEE1" stroke="#2E431A" stroke-width="2"/><path d="M-6 6V-6L0 1 6-6V6" fill="none" stroke="#2E431A" stroke-width="2"/></g>`
     : "";
   // Static, lazy-loaded SVG (keeps ~40 KB of path data out of the HTML and the RSC payload).
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}">
 <title>Plan — Maison L, 324 rue Léon Gambetta, Lille (© OpenStreetMap contributors, ODbL)</title>
-<rect width="${W}" height="${H}" fill="#2e431a"/>
-<path d="${layers.park.join("")}" fill="#3a5326"/>
+<rect width="${W}" height="${H}" fill="#F4EEE1"/>
+<path d="${layers.park.join("")}" fill="#E3DAC4"/>
 <g fill="none" stroke-linecap="square" stroke-linejoin="miter">
-<path d="${layers.path.join("")}" stroke="#3a5326" stroke-width="3"/>
-<path d="${layers.minor.join("")}" stroke="#546b40" stroke-width="7"/>
-<path d="${layers.major.join("")}" stroke="#8a9874" stroke-opacity=".45" stroke-width="13"/>
-<path d="${layers.gambetta.join("")}" stroke="#8a9874" stroke-opacity=".7" stroke-width="13"/>
-<path d="${layers.gambetta.join("")}" stroke="#eef0e7" stroke-width="2"/>
+<path d="${layers.path.join("")}" stroke="#E3DAC4" stroke-width="3"/>
+<path d="${layers.minor.join("")}" stroke="#DACDB0" stroke-width="7"/>
+<path d="${layers.major.join("")}" stroke="#A8946F" stroke-opacity=".45" stroke-width="13"/>
+<path d="${layers.gambetta.join("")}" stroke="#A8946F" stroke-opacity=".7" stroke-width="13"/>
+<path d="${layers.gambetta.join("")}" stroke="#6E4524" stroke-width="2"/>
 </g>
 ${metroMark}
-<g transform="translate(${HALF_W} ${HALF_H})"><path d="M-60 0H60M0-60V60" stroke="#ffffff" stroke-width="2"/><rect x="-11" y="-11" width="22" height="22" fill="#ffffff"/></g>
+<g transform="translate(${HALF_W} ${HALF_H})"><path d="M-60 0H60M0-60V60" stroke="#2E431A" stroke-width="2"/><rect x="-11" y="-11" width="22" height="22" fill="#2E431A"/></g>
 </svg>
 `;
   writeFileSync(OUT, svg);

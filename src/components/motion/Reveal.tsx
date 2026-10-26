@@ -37,27 +37,3 @@ export function LineReveal({ lines, className, lineClassName, delay = 0, as = "d
     </Tag>
   );
 }
-
-/** Simple fade-and-rise for paragraphs and blocks. */
-export function FadeIn({
-  children,
-  className,
-  delay = 0,
-}: {
-  children: ReactNode;
-  className?: string;
-  delay?: number;
-}) {
-  const reduce = useReducedMotion();
-  return (
-    <m.div
-      className={className}
-      initial={reduce ? { opacity: 0 } : { opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={VIEWPORT}
-      transition={{ duration: reduce ? 0.4 : 0.9, ease: EASE_HOUSE, delay }}
-    >
-      {children}
-    </m.div>
-  );
-}

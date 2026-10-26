@@ -3,85 +3,58 @@ import type { Dictionary, Lang } from "@/i18n";
 import { formatPrice } from "@/lib/format";
 import { thumbSrc } from "@/lib/media";
 
-/**
- * Typographic row — no card. Server-rendered; the hover preview and photo sheet attach by delegation
- * through `data-preview` / `data-sheet`, so the list ships no per-row JavaScript.
- */
+/** One dish: name and price on the first line, Arabic name, description, tags. A small photo on the right when mapped. */
 export function MenuItemRow({ item, dict }: { item: MenuItem; dict: Dictionary }) {
   const lang = dict.lang as Lang;
   const photoId = item.photoIds[0];
-  const tags = item.tags.map((t) => dict.menuPage.tagShort[t]);
   return (
     <li
       id={item.id}
-      data-preview={photoId}
       data-testid="menu-item"
-      className="group grid grid-cols-[1fr_auto] gap-x-6 border-line border-b py-6 lg:gap-x-10"
+      className="grid grid-cols-[1fr_4rem] gap-x-5 border-rule border-b py-5 sm:grid-cols-[1fr_5rem] sm:gap-x-6"
     >
       <div className="min-w-0">
-        <h3 className="display text-dish text-white">
-          {item.name[lang]}
-          {item.pieces && (
-            <span className="label ml-3 align-middle text-sage-light">
-              {item.pieces} {dict.menuPage.pieces}
-            </span>
-          )}
-        </h3>
-        <p lang="ar" dir="rtl" className="mt-1 text-left text-base text-cream">
+        <div className="flex items-baseline justify-between gap-4">
+          <h3 className="display text-dish text-fg">
+            {item.name[lang]}
+            {item.pieces && (
+              <span className="label ml-3 align-middle text-muted">
+                {item.pieces} {dict.menuPage.pieces}
+              </span>
+            )}
+          </h3>
+          <p className="label tabular whitespace-nowrap text-accent">
+            {item.price !== null ? formatPrice(item.price, lang) : dict.menuPage.priceTbd}
+            {item.priceNote && <span className="ml-2 text-muted">{item.priceNote[lang]}</span>}
+          </p>
+        </div>
+        <p lang="ar" dir="rtl" className="mt-0.5 text-left text-base text-muted">
           {item.name.ar}
         </p>
-        {item.description[lang] && <p className="mt-2 max-w-[52ch] text-cream">{item.description[lang]}</p>}
-        {(tags.length > 0 || photoId) && (
-          <p className="label mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.625rem] text-sage-light">
+        {item.description[lang] && <p className="mt-2 max-w-[56ch] text-fg/85">{item.description[lang]}</p>}
+        {item.tags.length > 0 && (
+          <p className="label mt-2 flex flex-wrap gap-x-3 text-[0.625rem] text-muted">
             {item.tags.map((t) => (
               <abbr key={t} title={dict.menuPage.tags[t]} className="no-underline">
                 {dict.menuPage.tagShort[t]}
               </abbr>
             ))}
-            {photoId && (
-              <button
-                type="button"
-                data-sheet={photoId}
-                data-sheet-title={item.name[lang]}
-                className="hidden min-h-6 items-center gap-1.5 text-cream-light uppercase tracking-[inherit] transition-colors hover:text-white lg:inline-flex"
-                aria-label={`${dict.a11y.photoOf} ${item.name[lang]}`}
-              >
-                <span aria-hidden="true">◉</span> {dict.menuPage.photo}
-              </button>
-            )}
           </p>
         )}
       </div>
-
-      <div className="flex flex-col items-end gap-3">
-        <p className="label tabular whitespace-nowrap pt-2 text-right text-[0.75rem] text-cream-light">
-          {item.price !== null ? formatPrice(item.price, lang) : dict.menuPage.priceTbd}
-          {item.priceNote && (
-            <span className="block text-[0.625rem] text-sage-light">{item.priceNote[lang]}</span>
-          )}
-        </p>
-        {photoId && (
-          <button
-            type="button"
-            data-sheet={photoId}
-            data-sheet-title={item.name[lang]}
-            aria-label={`${dict.a11y.photoOf} ${item.name[lang]}`}
-            className="block size-14 overflow-hidden bg-forest-light lg:hidden"
-          >
-            <picture>
-              <source type="image/avif" srcSet={thumbSrc(photoId, "avif")} />
-              <img
-                src={thumbSrc(photoId, "webp")}
-                alt=""
-                width={56}
-                height={56}
-                loading="lazy"
-                className="size-14 object-cover"
-              />
-            </picture>
-          </button>
-        )}
-      </div>
+      {photoId && (
+        <picture className="block size-16 self-start overflow-hidden bg-paper-deep sm:size-20">
+          <source type="image/avif" srcSet={thumbSrc(photoId, "avif")} />
+          <img
+            src={thumbSrc(photoId, "webp")}
+            alt=""
+            width={160}
+            height={160}
+            loading="lazy"
+            className="size-full object-cover"
+          />
+        </picture>
+      )}
     </li>
   );
 }

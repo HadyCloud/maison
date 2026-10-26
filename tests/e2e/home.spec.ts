@@ -16,8 +16,9 @@ test("home: hero with poster, video and live service status", async ({ page }) =
   // The poster stays the LCP element; the video only fades in once it actually plays.
   await expect(video).toHaveAttribute("data-playing", "true", { timeout: 15_000 });
 
-  // No invented reviews: the quote block is hidden while reviews.ts is empty.
-  await expect(page.getByTestId("review-quotes")).toHaveCount(0);
+  // Home is only: hero, signatures, infos.
+  await expect(page.locator("main > section")).toHaveCount(3);
+  await expect(page.getByTestId("signature-card")).toHaveCount(5);
   await expectNoA11yViolations(page);
 });
 

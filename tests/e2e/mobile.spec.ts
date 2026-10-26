@@ -26,18 +26,16 @@ test("mobile overlay menu traps focus and closes on Escape", async ({ page }) =>
   await expect(toggle).toBeFocused();
 });
 
-test("mobile menu: sticky chips and full-screen photo sheet", async ({ page }) => {
-  await page.goto("/menu", { waitUntil: "networkidle" }); // the photo sheet is lazy-loaded: wait until it is ready
-  await expect(page.getByTestId("menu-chips")).toBeVisible();
-  await page.locator("#kebbe-citrouille").scrollIntoViewIfNeeded();
-  await page
-    .locator("#kebbe-citrouille")
-    .getByRole("button", { name: /Voir la photo/ })
-    .last()
-    .click();
-  const sheet = page.getByTestId("photo-sheet");
-  await expect(sheet).toBeVisible();
-  await expect(sheet.locator("img")).toBeVisible();
-  await page.keyboard.press("Escape");
-  await expect(sheet).toBeHidden();
+test("mobile menu page: sticky tabs stay under the header while scrolling", async ({ page }) => {
+  await page.goto("/menu", { waitUntil: "networkidle" });
+  const tabs = page.getByTestId("menu-tabs");
+  await expect(tabs).toBeVisible();
+  await page.locator("#grillades").scrollIntoViewIfNeeded();
+  await expect(tabs).toBeInViewport();
+  await expect(tabs.getByRole("link", { name: /Grillades/ })).toHaveAttribute("aria-current", "true", {
+    timeout: 5000,
+  });
+  expect(
+    await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth),
+  ).toBe(true);
 });

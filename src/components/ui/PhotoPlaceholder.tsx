@@ -16,15 +16,15 @@ export function PhotoPlaceholder({
       aria-label={label}
       className={cn(
         "relative flex items-end overflow-hidden p-5",
-        tone === "dark" ? "bg-forest-light" : "bg-cream-light",
+        tone === "dark" ? "bg-wood-dark" : "bg-paper-deep",
         className,
       )}
     >
       <span
         aria-hidden="true"
-        className={cn("absolute inset-5 border", tone === "dark" ? "border-line" : "border-sage/40")}
+        className={cn("absolute inset-5 border", tone === "dark" ? "border-wood" : "border-wood/40")}
       />
-      <span className={cn("label relative", tone === "dark" ? "text-cream" : "text-line")}>
+      <span className={cn("label relative", tone === "dark" ? "text-wood-mute" : "text-wood-ink")}>
         Photo · {label}
       </span>
     </div>

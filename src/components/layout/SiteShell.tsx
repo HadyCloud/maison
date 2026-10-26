@@ -12,10 +12,10 @@ export function SiteShell({ lang, children }: { lang: Lang; children: ReactNode 
   const dict = getDictionary(lang);
   return (
     <html lang={lang} className={fontVariables}>
-      <body className="bg-forest text-cream">
+      <body className="theme-paper bg-surface text-fg">
         <a
           href="#contenu"
-          className="label sr-only z-[110] bg-white px-4 py-3 text-forest focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+          className="label sr-only z-[110] bg-fg px-4 py-3 text-surface focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
         >
           {dict.a11y.skip}
         </a>

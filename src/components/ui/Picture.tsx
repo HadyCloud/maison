@@ -20,7 +20,7 @@ export function Picture({ id, alt, sizes, className, imgClassName, priority, pla
   const img = id ? getImage(id) : null;
   if (!img) return <PhotoPlaceholder label={placeholder ?? alt} className={className} />;
   return (
-    <picture className={cn("block overflow-hidden bg-forest-light", className)} style={style}>
+    <picture className={cn("block overflow-hidden bg-paper-deep", className)} style={style}>
       <source type="image/avif" srcSet={srcSet(img.id, img.widths, "avif")} sizes={sizes} />
       <source type="image/webp" srcSet={srcSet(img.id, img.widths, "webp")} sizes={sizes} />
       <img

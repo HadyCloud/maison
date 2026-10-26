@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import { TransitionLink } from "@/components/motion/TransitionLink";
 import { site, telHref } from "@/config/site";
 import type { Dictionary } from "@/i18n";
+import { cn } from "@/lib/format";
 import { LangToggle } from "./LangToggle";
 import { navItems } from "./nav";
 import { useFocusTrap } from "./useFocusTrap";
@@ -38,7 +39,10 @@ export function MobileMenu({ dict }: { dict: Dictionary }) {
         aria-expanded={open}
         aria-controls="mobile-menu"
         aria-label={open ? dict.a11y.closeMenu : dict.a11y.openMenu}
-        className="label relative z-[76] inline-flex min-h-11 min-w-11 items-center justify-end text-white"
+        className={cn(
+          "label relative z-[76] inline-flex min-h-11 min-w-11 items-center justify-end",
+          open ? "text-white" : "text-fg",
+        )}
         data-testid="menu-toggle"
       >
         {open ? (dict.lang === "fr" ? "Fermer" : "Close") : "Menu"}
@@ -49,7 +53,7 @@ export function MobileMenu({ dict }: { dict: Dictionary }) {
           <m.nav
             id="mobile-menu"
             aria-label={dict.a11y.primaryNav}
-            className="fixed inset-0 z-[70] flex flex-col overflow-y-auto bg-forest-deep container-x pt-[calc(var(--header-h)+2rem)] pb-8"
+            className="theme-forest fixed inset-0 z-[70] flex flex-col overflow-y-auto bg-forest-deep container-x pt-[calc(var(--header-h)+2rem)] pb-8"
             initial={reduce ? { opacity: 0 } : { clipPath: "inset(100% 0 0 0)" }}
             animate={reduce ? { opacity: 1 } : { clipPath: "inset(0% 0 0 0)" }}
             exit={reduce ? { opacity: 0 } : { clipPath: "inset(0 0 100% 0)" }}

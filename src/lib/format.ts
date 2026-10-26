@@ -12,10 +12,6 @@ export function formatDate(iso: string): string {
   return `${d}.${m}.${y}`;
 }
 
-export function formatRating(score: number, lang: Lang): string {
-  return lang === "fr" ? score.toFixed(1).replace(".", ",") : score.toFixed(1);
-}
-
 export function cn(...classes: (string | false | null | undefined)[]): string {
   return classes.filter(Boolean).join(" ");
 }

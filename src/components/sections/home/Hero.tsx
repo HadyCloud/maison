@@ -41,7 +41,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
   return (
     <section
       aria-labelledby="hero-title"
-      className="relative h-[100svh] min-h-[600px] overflow-hidden bg-forest"
+      className="theme-forest relative h-[100svh] min-h-[600px] overflow-hidden bg-wood-dark"
     >
       <div className="absolute inset-0">
         {video ? (
@@ -54,11 +54,11 @@ export function Hero({ dict }: { dict: Dictionary }) {
         )}
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(36,54,21,0.35)_0%,rgba(36,54,21,0.45)_45%,rgba(36,54,21,0.88)_100%)]"
+          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(26,18,10,0.42)_0%,rgba(26,18,10,0.4)_45%,rgba(26,18,10,0.82)_100%)]"
         />
       </div>
 
-      <div className="container-x absolute inset-x-0 bottom-0 pb-5 md:pb-7">
+      <div className="container-x absolute inset-x-0 bottom-0 pb-12 md:pb-14">
         <div className="grid-12 items-end gap-y-8">
           <div className="col-span-12 lg:col-span-8">
             <h1 id="hero-title" className="text-white">
