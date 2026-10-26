@@ -1,10 +1,8 @@
 import { Arcade } from "@/components/ui/Arcade";
 import { Emphasis } from "@/components/ui/Emphasis";
 import { JsonLd } from "@/components/ui/JsonLd";
-import { Ornament } from "@/components/ui/Ornament";
 import { dineInCategories, menu, takeawayCategories } from "@/content/menu";
 import type { Dictionary, Lang } from "@/i18n";
-import { formatDate } from "@/lib/format";
 import { menuJsonLd } from "@/lib/menu-jsonld";
 import { MenuSection } from "./MenuSection";
 import { MenuTabs } from "./MenuTabs";
@@ -13,11 +11,10 @@ import { Takeaway } from "./Takeaway";
 export function MenuPage({ dict }: { dict: Dictionary }) {
   const lang = dict.lang as Lang;
   const tabs = [...dineInCategories, ...takeawayCategories].map((c) => ({ id: c.id, title: c.title[lang] }));
-  const unconfirmed = menu.categories.some((c) => c.items.some((i) => !i.priceConfirmed));
 
   return (
     <>
-      <header className="theme-forest bg-surface pt-[calc(var(--header-h)+clamp(3rem,8vh,6rem))] pb-24">
+      <header className="theme-forest bg-surface pt-[calc(var(--header-h)+clamp(1.5rem,4vh,2.5rem))] pb-12 md:pb-14">
         <div className="container-x mx-auto max-w-3xl">
           <h1 className="display text-display text-fg">
             <span className="block overflow-hidden pb-[0.08em]">
@@ -26,11 +23,6 @@ export function MenuPage({ dict }: { dict: Dictionary }) {
               </span>
             </span>
           </h1>
-          <Ornament className="mt-6" />
-          <p className="label mt-6 text-fg">
-            {dict.menuPage.meta} {formatDate(menu.updatedAt)}
-          </p>
-          {unconfirmed && <p className="label mt-2 text-accent">{dict.menuPage.priceDisclaimer}</p>}
         </div>
       </header>
 

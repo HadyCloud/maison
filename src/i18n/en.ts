@@ -94,13 +94,11 @@ export const en = {
   },
   menuPage: {
     title: "The *Menu*",
-    meta: "Net prices · Service included · Updated",
     priceTbd: "Price on site",
     pieces: "pieces",
     takeawayIntro: "Sandwiches and set menus, to take away or delivered.",
     deliveroo: "Order on Deliveroo",
     allergens: "Allergen information available on request.",
-    priceDisclaimer: "Prices shown as a guide, being confirmed.",
     tags: {
       V: "Vegetarian",
       VG: "Vegan",

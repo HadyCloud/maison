@@ -49,4 +49,4 @@ The two components taken from Magic code (the hover image list and, earlier, the
 
 ## Revision (Oct 2026): palette
 
-New shared pieces: `Ticker` (layout), `Arcade` and `Ornament` (ui), band themes in `globals.css`. `ButtonLink`, `LangToggle`, `HoursTable` and the menu components use semantic colours so they follow the band they sit on.
+New shared pieces: `Ticker` (layout), `Arcade` (ui), band themes in `globals.css`. `ButtonLink`, `LangToggle`, `HoursTable` and the menu components use semantic colours so they follow the band they sit on.

@@ -2,7 +2,6 @@ import { HoursTable } from "@/components/layout/HoursTable";
 import { Arcade } from "@/components/ui/Arcade";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Emphasis } from "@/components/ui/Emphasis";
-import { Ornament } from "@/components/ui/Ornament";
 import { SocialLinks } from "@/components/ui/SocialLinks";
 import { site, telHref } from "@/config/site";
 import type { Dictionary } from "@/i18n";
@@ -24,7 +23,6 @@ export function Info({ dict }: { dict: Dictionary }) {
             <h2 id="info-title" className="display text-headline text-fg">
               <Emphasis text={i.title} />
             </h2>
-            <Ornament className="mt-3" />
           </div>
           <ul className="label hidden flex-wrap justify-end gap-x-5 gap-y-1 text-muted md:flex">
             {i.amenities.map((a) => (

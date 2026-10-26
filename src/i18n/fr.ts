@@ -93,13 +93,11 @@ export const fr = {
   },
   menuPage: {
     title: "La *Carte*",
-    meta: "Prix nets · Service compris · Mise à jour",
     priceTbd: "Prix sur place",
     pieces: "pièces",
     takeawayIntro: "Sandwichs et menus, à emporter ou livrés.",
     deliveroo: "Commander sur Deliveroo",
     allergens: "Liste des allergènes disponible sur demande.",
-    priceDisclaimer: "Prix indicatifs en cours de validation.",
     tags: {
       V: "Végétarien",
       VG: "Végétalien",

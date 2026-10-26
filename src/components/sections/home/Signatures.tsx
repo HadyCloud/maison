@@ -2,7 +2,6 @@ import { LineReveal } from "@/components/motion/Reveal";
 import { Arcade } from "@/components/ui/Arcade";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Emphasis } from "@/components/ui/Emphasis";
-import { Ornament } from "@/components/ui/Ornament";
 import { menuItemById, signatureIds } from "@/content/menu";
 import { type Dictionary, type Lang, routes } from "@/i18n";
 import { SignatureCard } from "./SignatureCard";
@@ -31,7 +30,6 @@ export function Signatures({ dict }: { dict: Dictionary }) {
               <span id="signatures-title" className="sr-only">
                 {dict.signatures.label}
               </span>
-              <Ornament className="mt-4" />
             </div>
             <ButtonLink href={routes.menu} variant="underline" className="self-start">
               {dict.signatures.all} →
@@ -51,7 +49,6 @@ export function Signatures({ dict }: { dict: Dictionary }) {
               className="display text-headline text-fg"
               lines={[<Emphasis key="t" text={dict.signatures.title} />]}
             />
-            <Ornament className="mt-4" />
           </div>
           <ButtonLink href={routes.menu} variant="underline">
             {dict.signatures.all} →
