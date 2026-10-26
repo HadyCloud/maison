@@ -43,18 +43,20 @@ export function Signatures({ dict }: { dict: Dictionary }) {
           <SignatureCard key={item.id} item={item} index={i} lang={lang} priceTbd={dict.menuPage.priceTbd} />
         ))}
       </SignaturesTrack>
-      <div className="container-x hidden lg:flex lg:pt-24 lg:items-end lg:justify-between">
-        <div>
-          <LineReveal
-            as="h2"
-            className="display text-headline text-fg"
-            lines={[<Emphasis key="t" text={dict.signatures.title} />]}
-          />
-          <Ornament className="mt-4" />
+      <div className="container-x hidden lg:block lg:pt-24">
+        <div className="mx-auto flex max-w-[70rem] items-end justify-between">
+          <div>
+            <LineReveal
+              as="h2"
+              className="display text-headline text-fg"
+              lines={[<Emphasis key="t" text={dict.signatures.title} />]}
+            />
+            <Ornament className="mt-4" />
+          </div>
+          <ButtonLink href={routes.menu} variant="underline">
+            {dict.signatures.all} →
+          </ButtonLink>
         </div>
-        <ButtonLink href={routes.menu} variant="underline">
-          {dict.signatures.all} →
-        </ButtonLink>
       </div>
       <SignaturesAccordion
         items={items}

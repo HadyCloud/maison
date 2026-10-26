@@ -39,7 +39,7 @@ export function ReviewsVideo({ children }: { children?: ReactNode }) {
   }, [tier, inView]);
 
   return (
-    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.5rem] bg-paper-deep md:aspect-[21/9] md:rounded-[2rem]">
+    <div className="relative mx-auto aspect-[4/3] w-full overflow-hidden rounded-[1.5rem] bg-paper-deep md:aspect-[21/9] md:rounded-[2rem] lg:max-w-[66rem]">
       <picture>
         <source type="image/webp" srcSet="/video/reviews-poster.webp" />
         <img
