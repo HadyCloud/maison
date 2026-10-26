@@ -29,7 +29,7 @@ export function Footer({ dict }: { dict: Dictionary }) {
       <div className="container-x py-12 md:py-16">
         <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
           <TransitionLink href={routes.home[lang]} aria-label={dict.a11y.home} className="text-fg">
-            <Logo variant="mark" className="w-[160px]" />
+            <Logo className="w-[260px]" />
           </TransitionLink>
           <ul className="label flex flex-wrap gap-x-8 gap-y-3">
             <li>

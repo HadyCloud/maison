@@ -38,7 +38,7 @@ export function Header({ dict }: { dict: Dictionary }) {
             aria-label={dict.a11y.home}
             className="col-span-6 flex items-center text-fg sm:col-span-5 lg:col-span-3"
           >
-            <Logo variant="mark" className="w-[132px] sm:w-[160px]" />
+            <Logo className="w-[176px] sm:w-[260px] lg:w-[236px] xl:w-[300px]" />
           </TransitionLink>
 
           <nav aria-label={dict.a11y.primaryNav} className="col-span-6 hidden lg:block">

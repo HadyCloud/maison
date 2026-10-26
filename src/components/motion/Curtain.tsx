@@ -55,7 +55,7 @@ export function CurtainProvider({ children }: { children: ReactNode }) {
             animate={{ clipPath: phase === "cover" ? "inset(0% 0 0 0)" : "inset(0 0 100% 0)" }}
             transition={{ duration: HALF, ease: EASE }}
           >
-            <Logo variant="mark" className="w-[min(64vw,22rem)] text-white" />
+            <Logo className="w-[min(70vw,26rem)] text-white" />
           </m.div>
         )}
       </AnimatePresence>
