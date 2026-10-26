@@ -12,8 +12,8 @@ export function MenuSection({ category, dict }: { category: MenuCategory; dict: 
       aria-labelledby={`${category.id}-title`}
       className="scroll-mt-40 pt-12 first:pt-8 md:pt-16 md:first:pt-12"
     >
-      <header className="relative bg-[#d6b88e] text-wood-dark md:bg-[#dde3c9] md:text-forest">
-        <Arcade className="text-[#d6b88e] md:text-[#dde3c9]" />
+      <header className="relative bg-[#3a4a21] text-[#f1e4c4] md:bg-[#dde3c9] md:text-forest">
+        <Arcade className="text-[#3a4a21] md:text-[#dde3c9]" />
         <div className="container-x mx-auto max-w-6xl py-4 md:py-5 md:text-center">
           <h2 id={`${category.id}-title`} className="display text-title">
             {category.title[lang]}
@@ -22,7 +22,7 @@ export function MenuSection({ category, dict }: { category: MenuCategory; dict: 
       </header>
       <div className="container-x mx-auto max-w-6xl">
         {category.note && <p className="label mt-4 text-muted md:text-center">{category.note[lang]}</p>}
-        <ul>
+        <ul className="lg:grid lg:grid-cols-2 lg:gap-5 lg:py-8">
           {category.items.map((item) => (
             <MenuItemRow key={item.id} item={item} dict={dict} />
           ))}
