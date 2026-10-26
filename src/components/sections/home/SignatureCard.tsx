@@ -42,7 +42,7 @@ export function SignatureCard({
           />
         </ImageReveal>
       </TransitionLink>
-      <div className="mt-6 grid grid-cols-[1fr_auto] items-baseline gap-x-6 gap-y-1 border-rule border-t pt-4">
+      <div className="mt-4 grid grid-cols-[1fr_auto] items-baseline gap-x-6 gap-y-1 border-rule border-t pt-3">
         <h3 className="display text-title text-fg">{item.name[lang]}</h3>
         <p className="label tabular text-accent">
           {item.price !== null ? formatPrice(item.price, lang) : priceTbd}

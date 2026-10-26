@@ -25,8 +25,8 @@ export function Footer({ dict }: { dict: Dictionary }) {
   return (
     <footer className="theme-wood wood-grain relative bg-surface text-fg">
       <Arcade className="text-wood-dark" />
-      <div className="container-x py-12 md:py-16">
-        <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+      <div className="container-x py-8 md:py-12">
+        <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
           <TransitionLink href={routes.home} aria-label={dict.a11y.home} className="text-fg">
             <Logo className="w-[260px]" />
           </TransitionLink>
@@ -56,9 +56,9 @@ export function Footer({ dict }: { dict: Dictionary }) {
           </ul>
         </div>
 
-        <p className="mt-8 text-muted text-sm">{f.sister}</p>
+        <p className="mt-5 text-muted text-sm">{f.sister}</p>
 
-        <div className="mt-8 flex flex-col gap-1.5 border-rule border-t pt-6 text-muted text-xs leading-relaxed">
+        <div className="mt-5 flex flex-col gap-1.5 border-rule border-t pt-4 text-muted text-xs leading-relaxed">
           <p>
             © {new Date().getFullYear()} {l.company}, {n.capital} {l.capital}. {l.rcs}. TVA {l.vat}.{" "}
             {n.office} {l.registeredOffice}.

@@ -10,10 +10,10 @@ export function HoursTable({ dict, className }: { dict: Dictionary; className?: 
       <tbody>
         {weekRows(site.hours.week, dict).map((row) => (
           <tr key={row.weekday} className="border-rule border-b last:border-b-0">
-            <th scope="row" className="py-2.5 pr-4 font-normal text-muted">
+            <th scope="row" className="py-1.5 md:py-2.5 pr-4 font-normal text-muted">
               {row.day}
             </th>
-            <td className="tabular whitespace-nowrap py-2.5 text-right text-fg">{row.value}</td>
+            <td className="tabular whitespace-nowrap py-1.5 md:py-2.5 text-right text-fg">{row.value}</td>
           </tr>
         ))}
       </tbody>

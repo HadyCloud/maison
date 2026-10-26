@@ -15,12 +15,12 @@ export function Signatures({ dict }: { dict: Dictionary }) {
     <section
       id="signatures"
       aria-labelledby="signatures-title"
-      className="theme-paper relative bg-surface pb-24 lg:pb-0"
+      className="theme-paper relative bg-surface pb-10 md:pb-14 lg:pb-0"
     >
       <Arcade className="text-paper" />
       <SignaturesTrack
         intro={
-          <div className="flex flex-col justify-between gap-10 lg:w-[26vw] lg:shrink-0 lg:self-stretch">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between lg:w-[26vw] lg:shrink-0 lg:flex-col lg:items-start lg:justify-between lg:gap-10 lg:self-stretch">
             <div>
               <LineReveal
                 as="h2"
@@ -30,7 +30,7 @@ export function Signatures({ dict }: { dict: Dictionary }) {
               <span id="signatures-title" className="sr-only">
                 {dict.signatures.label}
               </span>
-              <Ornament className="mt-6" />
+              <Ornament className="mt-4" />
             </div>
             <ButtonLink href={routes.menu} variant="underline" className="self-start">
               {dict.signatures.all} →

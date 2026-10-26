@@ -59,7 +59,7 @@ export function SignaturesTrack({ intro, children }: { intro: ReactNode; childre
           className={
             pinned
               ? "container-x flex w-max flex-row items-start gap-[6vw] [&>article]:w-[min(30vw,calc((100svh-var(--header-h)-var(--band-gap)-var(--num)*0.82-11rem)*0.8))] [&>article]:shrink-0"
-              : "flex snap-x snap-mandatory flex-row items-start gap-5 overflow-x-auto scroll-px-[var(--gutter)] px-[var(--gutter)] pt-8 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] md:gap-8 [&::-webkit-scrollbar]:hidden [&>article]:w-[72vw] [&>article]:max-w-[21rem] [&>article]:shrink-0 [&>article]:snap-start"
+              : "flex snap-x snap-mandatory flex-row items-start gap-5 overflow-x-auto scroll-px-[var(--gutter)] px-[var(--gutter)] pt-4 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] md:gap-8 [&::-webkit-scrollbar]:hidden [&>article]:w-[72vw] [&>article]:max-w-[21rem] [&>article]:shrink-0 [&>article]:snap-start"
           }
         >
           {pinned && intro}

@@ -79,9 +79,9 @@
     --gutter: clamp(1.25rem, 3.2vw, 3rem);
     /* Space under the colour change (edge of the beige) before "Les signatures". The hero keeps 80 % of it
        between "Réserver une table" and that same edge. */
-    --band-gap: clamp(3.5rem, 9vh, 6rem);
+    --band-gap: clamp(3.25rem, 7vh, 4.5rem);
     /* Outlined 01–05 above each signature photo. */
-    --num: clamp(4rem, 6.2vw, 6.5rem);
+    --num: clamp(3rem, 6.2vw, 6.5rem);
   }
 
   @media (min-width: 1024px) {

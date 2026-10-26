@@ -14,23 +14,21 @@ export function Info({ dict }: { dict: Dictionary }) {
     <section
       id="infos"
       aria-labelledby="info-title"
-      className="theme-forest relative bg-surface py-[clamp(5rem,10vw,9rem)]"
+      className="theme-forest relative bg-surface py-[clamp(3rem,7vw,6rem)]"
     >
       <Arcade className="text-forest" />
       <div className="container-x">
         <h2 id="info-title" className="display text-headline text-fg">
           <Emphasis text={i.title} />
         </h2>
-        <Ornament className="mt-6" />
+        <Ornament className="mt-4" />
 
-        <div className="grid-12 mt-12 gap-y-12 md:mt-16">
+        <div className="grid-12 mt-8 gap-y-8 md:mt-12">
           <div className="col-span-12 lg:col-span-7">
-            <div className="border border-accent/50 p-2 md:p-3">
-              <MapPlan dict={dict} />
-            </div>
+            <MapPlan dict={dict} />
           </div>
 
-          <div className="col-span-12 flex flex-col gap-10 lg:col-span-5">
+          <div className="col-span-12 flex flex-col gap-7 lg:col-span-5">
             <div>
               <p className="label mb-3 text-accent">{i.address}</p>
               <address className="text-lead text-fg not-italic leading-relaxed">
@@ -71,7 +69,7 @@ export function Info({ dict }: { dict: Dictionary }) {
           </div>
         </div>
 
-        <div className="grid-12 mt-16 items-center gap-y-6 border-rule border-y py-8 md:mt-20">
+        <div className="grid-12 mt-10 items-center gap-y-4 border-rule border-y py-6 md:mt-14">
           <p className="label col-span-12 text-accent md:col-span-2">{i.privatisation.label}</p>
           <p className="display col-span-12 text-title text-fg md:col-span-7">
             <Emphasis text={i.privatisation.line} />
@@ -83,10 +81,10 @@ export function Info({ dict }: { dict: Dictionary }) {
           </div>
         </div>
 
-        <ul className="label mt-8 flex flex-wrap gap-y-3 text-fg">
-          {i.amenities.map((a, n) => (
-            <li key={a} className="flex items-center">
-              {n > 0 && <span aria-hidden="true" className="mx-5 h-3 w-px bg-rule" />}
+        <ul className="label mt-6 flex flex-wrap gap-x-6 gap-y-2 text-fg">
+          {i.amenities.map((a) => (
+            <li key={a} className="flex items-center gap-2">
+              <span aria-hidden="true" className="block size-1 rotate-45 bg-accent" />
               {a}
             </li>
           ))}
