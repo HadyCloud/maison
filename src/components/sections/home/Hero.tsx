@@ -41,7 +41,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
   return (
     <section
       aria-labelledby="hero-title"
-      className="relative h-[100svh] min-h-[600px] overflow-hidden bg-ink"
+      className="relative h-[100svh] min-h-[600px] overflow-hidden bg-forest"
     >
       <div className="absolute inset-0">
         {video ? (
@@ -54,19 +54,19 @@ export function Hero({ dict }: { dict: Dictionary }) {
         )}
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,11,12,0.35)_0%,rgba(11,11,12,0.42)_45%,rgba(11,11,12,0.85)_100%)]"
+          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(36,54,21,0.35)_0%,rgba(36,54,21,0.45)_45%,rgba(36,54,21,0.88)_100%)]"
         />
       </div>
 
       <div className="container-x absolute inset-x-0 bottom-0 pb-5 md:pb-7">
         <div className="grid-12 items-end gap-y-8">
           <div className="col-span-12 lg:col-span-8">
-            <h1 id="hero-title" className="text-silver-100">
+            <h1 id="hero-title" className="text-white">
               <span className="sr-only">Maison L, cuisine authentique libanaise</span>
               {/* The logo is the LCP element: painted immediately, no entrance delay. */}
               <Logo className="w-full max-w-[min(100%,60rem)]" />
             </h1>
-            <p className="display mt-6 overflow-hidden text-[clamp(1.5rem,3vw,2.5rem)] text-silver-200 leading-tight md:mt-8">
+            <p className="display mt-6 overflow-hidden text-[clamp(1.5rem,3vw,2.5rem)] text-cream-light leading-tight md:mt-8">
               <span className="rise [animation-delay:380ms]">
                 <Emphasis text={dict.hero.tagline} />
               </span>
@@ -82,12 +82,12 @@ export function Hero({ dict }: { dict: Dictionary }) {
           </div>
         </div>
 
-        <div className="fade-in mt-8 flex items-center justify-between border-silver-100/15 border-t pt-4 [animation-delay:800ms]">
+        <div className="fade-in mt-8 flex items-center justify-between border-white/15 border-t pt-4 [animation-delay:800ms]">
           <ServiceStatus dict={dict} />
-          <div className="label flex items-center gap-3 text-graphite-400" aria-hidden="true">
+          <div className="label flex items-center gap-3 text-sage-light" aria-hidden="true">
             <span className="hidden sm:inline">{dict.hero.scroll}</span>
-            <span className="relative block h-8 w-px overflow-hidden bg-silver-100/15">
-              <span className="scroll-line absolute inset-0 bg-silver-100" />
+            <span className="relative block h-8 w-px overflow-hidden bg-white/15">
+              <span className="scroll-line absolute inset-0 bg-white" />
             </span>
           </div>
         </div>

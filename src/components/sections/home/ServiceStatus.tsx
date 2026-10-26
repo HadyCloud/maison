@@ -20,7 +20,7 @@ export function ServiceStatus({ dict, className }: { dict: Dictionary; className
 
   return (
     <p
-      className={cn("label flex items-center gap-3 text-silver-200", className)}
+      className={cn("label flex items-center gap-3 text-cream-light", className)}
       data-testid="service-status"
     >
       <span className="tabular min-h-[1.4em]">{text ?? " "}</span>

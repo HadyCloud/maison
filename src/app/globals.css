@@ -1,9 +1,8 @@
 @import "tailwindcss";
 
-/* ————————————————————————————————————————————————
-   Maison L — design tokens (Tailwind v4, CSS-first)
-   Greys only. Square corners. No shadows. The food brings the colour.
-   ———————————————————————————————————————————————— */
+/* Maison L design tokens (Tailwind v4, CSS-first).
+   The brand green from the logo, white, and a short scale of greens and creams.
+   Square corners, no shadows. */
 @theme {
   /* Wipe Tailwind's defaults so nothing outside the house palette can be used by accident. */
   --color-*: initial;
@@ -12,16 +11,18 @@
   --inset-shadow-*: initial;
   --drop-shadow-*: initial;
 
-  --color-ink: #0b0b0c;
-  --color-graphite-900: #131314;
-  --color-graphite-800: #1b1b1d;
-  --color-graphite-700: #27272a;
-  --color-graphite-500: #6f6f75;
-  /* Added for WCAG AA: small meta text on dark (5.6:1 on ink). graphite-500 is kept for large/decorative use. */
-  --color-graphite-400: #8b8b91;
-  --color-silver-300: #b4b4b9;
-  --color-silver-200: #d3d3d6;
-  --color-silver-100: #ededef;
+  /* Greens: page, alternate sections, panels, hairlines */
+  --color-forest: #2e431a; /* brand green, sampled from the logo */
+  --color-forest-deep: #243615;
+  --color-forest-light: #3a5326;
+  --color-line: #546b40;
+  /* Sage: decorative / large text only (3.5:1). sage-light: small meta text (5.5:1 on forest). */
+  --color-sage: #8a9874;
+  --color-sage-light: #b3bda0;
+  /* Creams and white: body 8:1, strong secondary 9.4:1, headings and CTA 10.9:1 on forest */
+  --color-cream: #dce0d0;
+  --color-cream-light: #eef0e7;
+  --color-white: #ffffff;
 
   --font-display: var(--font-instrument-serif), "Times New Roman", serif;
   --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
@@ -58,8 +59,8 @@
   }
 
   html {
-    background: var(--color-ink);
-    color: var(--color-silver-300);
+    background: var(--color-forest);
+    color: var(--color-cream);
     -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -80,17 +81,17 @@
   }
 
   ::selection {
-    background: var(--color-silver-100);
-    color: var(--color-ink);
+    background: var(--color-white);
+    color: var(--color-forest);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-silver-100);
+    outline: 2px solid var(--color-white);
     outline-offset: 3px;
   }
 
   .on-light :focus-visible {
-    outline-color: var(--color-ink);
+    outline-color: var(--color-forest);
   }
 
   /* System Arabic face first; the Naskh webfont is swapped in after `load` (html.fonts-ready). */
@@ -132,7 +133,7 @@
   }
 
   .hairline {
-    border-color: var(--color-graphite-700);
+    border-color: var(--color-line);
   }
 
   .container-x {
@@ -149,7 +150,7 @@
   .index-outline {
     font-family: var(--font-display);
     color: transparent;
-    -webkit-text-stroke: 1px var(--color-graphite-500);
+    -webkit-text-stroke: 1px var(--color-sage);
     line-height: 0.8;
   }
 

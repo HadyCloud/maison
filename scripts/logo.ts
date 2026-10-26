@@ -3,7 +3,7 @@
  * Vectorises brand/maison-l-logo-source.webp (white lockup on green) into clean single-colour SVGs:
  *   public/brand/logo.svg       full lockup (frame + MAISON L + CUISINE AUTHENTIQUE LIBANAISE)
  *   public/brand/logo-mark.svg  frame + MAISON L only (for small sizes: header, curtain)
- * Paths are filled with #EDEDEF; components tint them through CSS masks, so any house grey works.
+ * Paths are filled with #FFFFFF; components tint them through CSS masks, so any house colour works.
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -20,7 +20,7 @@ const trace = (buf: Buffer): Promise<string> =>
   new Promise((resolve, reject) =>
     potrace.trace(
       buf,
-      { threshold: 128, turdSize: 4, optTolerance: 0.4, color: "#EDEDEF", background: "transparent" },
+      { threshold: 128, turdSize: 4, optTolerance: 0.4, color: "#FFFFFF", background: "transparent" },
       (err: Error | null, svg: string) => (err ? reject(err) : resolve(svg)),
     ),
   );
@@ -40,7 +40,7 @@ async function bitmap(region: { left: number; top: number; width: number; height
 /** Tight viewBox around the traced paths, expressed in source pixels. */
 function finalize(svg: string, w: number, h: number, title: string): string {
   const paths = [...svg.matchAll(/<path[^>]*d="([^"]+)"[^>]*\/>/g)].map((m) => m[1]).join(" ");
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w * SCALE} ${h * SCALE}" width="${w}" height="${h}" role="img"><title>${title}</title><path fill="#EDEDEF" fill-rule="evenodd" d="${paths}"/></svg>\n`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w * SCALE} ${h * SCALE}" width="${w}" height="${h}" role="img"><title>${title}</title><path fill="#FFFFFF" fill-rule="evenodd" d="${paths}"/></svg>\n`;
 }
 
 async function main() {

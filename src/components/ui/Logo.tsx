@@ -18,7 +18,7 @@ type Props = {
 
 /**
  * The Maison L logo as a CSS mask: one cached SVG request, tinted with `currentColor`,
- * so it takes any house grey (`text-silver-100`, `text-graphite-800`, `text-ink`…).
+ * so it takes any house grey (`text-white`, `text-forest-light`, `text-forest`…).
  */
 export function Logo({ variant = "full", label, className, style }: Props) {
   const v = VARIANTS[variant];

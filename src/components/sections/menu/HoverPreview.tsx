@@ -72,7 +72,7 @@ export function HoverPreview({ images }: { images: Record<string, PreviewImage> 
         {img && active && (
           <m.picture
             key={active}
-            className="absolute inset-0 block overflow-hidden bg-graphite-800"
+            className="absolute inset-0 block overflow-hidden bg-forest-light"
             initial={reduce ? { opacity: 0 } : { clipPath: "inset(100% 0 0 0)" }}
             animate={reduce ? { opacity: 1 } : { clipPath: "inset(0% 0 0 0)" }}
             exit={reduce ? { opacity: 0 } : { clipPath: "inset(0 0 100% 0)" }}

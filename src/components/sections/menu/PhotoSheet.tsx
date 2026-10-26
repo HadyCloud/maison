@@ -45,17 +45,17 @@ export function PhotoSheet({
       onClose={() => setOpen(null)}
       onClick={(e) => e.target === ref.current && setOpen(null)}
       aria-label={open?.title}
-      className="m-0 h-[100dvh] max-h-none w-screen max-w-none bg-ink/97 p-0 text-silver-100 backdrop:bg-ink/80"
+      className="m-0 h-[100dvh] max-h-none w-screen max-w-none bg-forest/97 p-0 text-white backdrop:bg-forest/80"
       data-testid="photo-sheet"
     >
       {img && open && (
         <div className="flex h-full flex-col">
-          <div className="container-x flex h-[var(--header-h)] shrink-0 items-center justify-between border-graphite-700 border-b">
-            <p className="label text-silver-200">{open.title}</p>
+          <div className="container-x flex h-[var(--header-h)] shrink-0 items-center justify-between border-line border-b">
+            <p className="label text-cream-light">{open.title}</p>
             <button
               type="button"
               onClick={() => setOpen(null)}
-              className="label inline-flex min-h-11 items-center text-silver-100"
+              className="label inline-flex min-h-11 items-center text-white"
             >
               {closeLabel}
             </button>

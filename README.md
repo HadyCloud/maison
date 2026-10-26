@@ -71,11 +71,11 @@ Raw sources stay local and are gitignored (`photos/`, `photos-online/`, `video/`
      - Encodes H.264 (CRF stepped down until under 6 MB / 2.5 MB) and two-pass VP9, at 1080 and 720.
      - Writes the poster `hero-poster[-960].{avif,webp,jpg}`, each under 150 KB.
      - To choose another poster frame, look at `.cache/video/poster-candidates.jpg` and run `node scripts/video.ts --poster=<seconds>`.
-   - **map.** Static greyscale street plan from OpenStreetMap, written to `public/images/plan-gambetta.svg`. It keeps the previous file if OSM is unreachable.
+   - **map.** Static street plan in the brand greens from OpenStreetMap, written to `public/images/plan-gambetta.svg`. It keeps the previous file if OSM is unreachable.
    - **og.** `public/og.jpg`, rendered with the real fonts.
    - **docs.** Regenerates `docs/PHOTO_MAP.md` with thumbnails.
 
-Missing shots and their ideal framing: [`docs/PHOTO_REQUEST.md`](docs/PHOTO_REQUEST.md). Until they exist, intentional placeholders render (graphite block, "PHOTO · …" caption).
+Missing shots and their ideal framing: [`docs/PHOTO_REQUEST.md`](docs/PHOTO_REQUEST.md). Until they exist, intentional placeholders render (tonal green block, "PHOTO · …" caption).
 
 ## Deploy on Vercel
 

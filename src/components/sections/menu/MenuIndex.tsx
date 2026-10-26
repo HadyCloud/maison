@@ -75,7 +75,7 @@ export function MenuChips({ entries, label }: { entries: IndexEntry[]; label: st
     <nav
       aria-label={label}
       data-testid="menu-chips"
-      className="sticky top-[var(--header-h)] z-30 col-span-12 -mx-[var(--gutter)] self-start border-graphite-700 border-b bg-ink/95 backdrop-blur-md lg:hidden"
+      className="sticky top-[var(--header-h)] z-30 col-span-12 -mx-[var(--gutter)] self-start border-line border-b bg-forest/95 backdrop-blur-md lg:hidden"
     >
       <div ref={ref} className="flex gap-5 overflow-x-auto px-[var(--gutter)] py-1 [scrollbar-width:none]">
         {entries.map((e) => (
@@ -87,7 +87,7 @@ export function MenuChips({ entries, label }: { entries: IndexEntry[]; label: st
             aria-current={active === e.id ? "true" : undefined}
             className={cn(
               "label inline-flex min-h-10 shrink-0 items-center border-b px-0.5 transition-colors duration-500",
-              active === e.id ? "border-silver-100 text-silver-100" : "border-transparent text-graphite-400",
+              active === e.id ? "border-white text-white" : "border-transparent text-sage-light",
             )}
           >
             {e.title}
@@ -104,11 +104,11 @@ export function MenuIndex({ entries, label }: { entries: IndexEntry[]; label: st
   return (
     <nav aria-label={label} className="sticky top-[calc(var(--header-h)+3rem)]" data-testid="menu-index">
       <div className="relative pl-6">
-        <span aria-hidden="true" className="absolute inset-y-0 left-0 w-px bg-graphite-700" />
+        <span aria-hidden="true" className="absolute inset-y-0 left-0 w-px bg-line" />
         <span
           aria-hidden="true"
           data-testid="menu-progress"
-          className="absolute inset-y-0 left-0 w-px origin-top bg-silver-100"
+          className="absolute inset-y-0 left-0 w-px origin-top bg-white"
           style={{ transform: `scaleY(${progress})` }}
         />
         <ol className="flex flex-col gap-1">
@@ -120,14 +120,14 @@ export function MenuIndex({ entries, label }: { entries: IndexEntry[]; label: st
                 aria-current={active === e.id ? "true" : undefined}
                 className={cn(
                   "label flex min-h-8 items-center gap-4 transition-colors duration-500",
-                  active === e.id ? "text-silver-100" : "text-graphite-400 hover:text-silver-200",
+                  active === e.id ? "text-white" : "text-sage-light hover:text-cream-light",
                 )}
               >
                 <span>{e.title}</span>
                 <span
                   aria-hidden="true"
                   className={cn(
-                    "h-px flex-1 origin-left bg-silver-100 transition-transform duration-700 ease-house",
+                    "h-px flex-1 origin-left bg-white transition-transform duration-700 ease-house",
                     active === e.id ? "scale-x-100" : "scale-x-0",
                   )}
                 />

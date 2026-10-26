@@ -12,7 +12,7 @@ import { LangToggle } from "./LangToggle";
 import { MobileMenu } from "./MobileMenu";
 import { navItems } from "./nav";
 
-/** Fixed header: transparent over the hero, ink 90 % + blur once the page scrolls. */
+/** Fixed header: transparent over the hero, forest 90 % + blur once the page scrolls. */
 export function Header({ dict }: { dict: Dictionary }) {
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
@@ -23,14 +23,14 @@ export function Header({ dict }: { dict: Dictionary }) {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-[75] h-[var(--header-h)] border-b transition-[background-color,border-color,backdrop-filter] duration-700 ease-house",
-        scrolled ? "border-graphite-700 bg-ink/90 backdrop-blur-md" : "border-transparent bg-transparent",
+        scrolled ? "border-line bg-forest/90 backdrop-blur-md" : "border-transparent bg-transparent",
       )}
     >
       <div className="container-x grid-12 h-full items-center">
         <TransitionLink
           href={routes.home[lang]}
           aria-label={dict.a11y.home}
-          className="col-span-6 flex items-center text-silver-100 sm:col-span-5 lg:col-span-3"
+          className="col-span-6 flex items-center text-white sm:col-span-5 lg:col-span-3"
         >
           <Logo variant="mark" className="w-[132px] sm:w-[160px]" />
         </TransitionLink>
@@ -41,12 +41,12 @@ export function Header({ dict }: { dict: Dictionary }) {
               <li key={item.href}>
                 <TransitionLink
                   href={item.href}
-                  className="group relative inline-flex min-h-11 items-center text-silver-200 transition-colors duration-500 hover:text-silver-100"
+                  className="group relative inline-flex min-h-11 items-center text-cream-light transition-colors duration-500 hover:text-white"
                 >
                   {item.label}
                   <span
                     aria-hidden="true"
-                    className="absolute inset-x-0 bottom-2.5 h-px origin-right scale-x-0 bg-silver-100 transition-transform duration-700 ease-house group-hover:origin-left group-hover:scale-x-100"
+                    className="absolute inset-x-0 bottom-2.5 h-px origin-right scale-x-0 bg-white transition-transform duration-700 ease-house group-hover:origin-left group-hover:scale-x-100"
                   />
                 </TransitionLink>
               </li>

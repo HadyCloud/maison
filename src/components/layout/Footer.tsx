@@ -10,7 +10,7 @@ function Ext({ href, children }: { href: string; children: string }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex min-h-6 items-center text-silver-200 transition-colors duration-500 hover:text-silver-100"
+      className="inline-flex min-h-6 items-center text-cream-light transition-colors duration-500 hover:text-white"
     >
       {children}
     </a>
@@ -21,20 +21,20 @@ export function Footer({ dict }: { dict: Dictionary }) {
   const lang = dict.lang as Lang;
   const year = new Date().getFullYear();
   return (
-    <footer className="relative overflow-hidden border-graphite-700 border-t bg-ink pt-20">
+    <footer className="relative overflow-hidden border-line border-t bg-forest pt-20">
       <div className="container-x grid-12 gap-y-12">
         <div className="col-span-12 md:col-span-4">
-          <p className="label mb-5 text-graphite-400">{dict.footer.visit}</p>
-          <address className="text-silver-300 not-italic leading-relaxed">
+          <p className="label mb-5 text-sage-light">{dict.footer.visit}</p>
+          <address className="text-cream not-italic leading-relaxed">
             {site.address.street}
             <br />
             {site.address.postalCode.value} {site.address.city}
             <br />
-            <span className="label text-graphite-400">{site.address.metro}</span>
+            <span className="label text-sage-light">{site.address.metro}</span>
           </address>
           <a
             href={telHref()}
-            className="display mt-6 block text-3xl text-silver-100"
+            className="display mt-6 block text-3xl text-white"
             aria-label={`${site.phone.primary.display}, ${dict.a11y.phoneCall}`}
           >
             {site.phone.primary.display}
@@ -42,12 +42,12 @@ export function Footer({ dict }: { dict: Dictionary }) {
         </div>
 
         <div className="col-span-12 md:col-span-4">
-          <p className="label mb-5 text-graphite-400">{dict.reserve.hours}</p>
+          <p className="label mb-5 text-sage-light">{dict.reserve.hours}</p>
           <HoursTable dict={dict} />
         </div>
 
         <div className="col-span-12 flex flex-col gap-3 md:col-span-3 md:col-start-10">
-          <p className="label mb-2 text-graphite-400">{dict.footer.follow}</p>
+          <p className="label mb-2 text-sage-light">{dict.footer.follow}</p>
           <ul className="label flex flex-col gap-3">
             <li>
               <Ext href={site.social.instagram}>Instagram</Ext>
@@ -66,21 +66,21 @@ export function Footer({ dict }: { dict: Dictionary }) {
           </ul>
         </div>
 
-        <div className="col-span-12 flex flex-col gap-4 border-graphite-700 border-t pt-6 md:flex-row md:items-center md:justify-between">
-          <p className="text-graphite-400 text-sm">
+        <div className="col-span-12 flex flex-col gap-4 border-line border-t pt-6 md:flex-row md:items-center md:justify-between">
+          <p className="text-sage-light text-sm">
             {site.sister.url ? (
-              <a href={site.sister.url} className="underline decoration-graphite-500 underline-offset-4">
+              <a href={site.sister.url} className="underline decoration-sage underline-offset-4">
                 {dict.footer.sister}
               </a>
             ) : (
               dict.footer.sister
             )}
           </p>
-          <ul className="label flex flex-wrap gap-x-6 gap-y-2 text-graphite-400">
+          <ul className="label flex flex-wrap gap-x-6 gap-y-2 text-sage-light">
             <li>
               <TransitionLink
                 href={routes.legal[lang]}
-                className="inline-flex min-h-6 items-center hover:text-silver-100"
+                className="inline-flex min-h-6 items-center hover:text-white"
               >
                 {dict.footer.legal}
               </TransitionLink>
@@ -88,7 +88,7 @@ export function Footer({ dict }: { dict: Dictionary }) {
             <li>
               <TransitionLink
                 href={`${routes.menu[lang]}#allergenes`}
-                className="inline-flex min-h-6 items-center hover:text-silver-100"
+                className="inline-flex min-h-6 items-center hover:text-white"
               >
                 {dict.footer.allergens}
               </TransitionLink>
@@ -102,7 +102,7 @@ export function Footer({ dict }: { dict: Dictionary }) {
 
       {/* Giant logo, cropped by the bottom edge (decorative: the footer already names the house). */}
       <div aria-hidden="true" className="pointer-events-none container-x mt-20 select-none">
-        <Logo variant="mark" className="w-full translate-y-[24%] text-graphite-800" />
+        <Logo variant="mark" className="w-full translate-y-[24%] text-forest-light" />
       </div>
     </footer>
   );

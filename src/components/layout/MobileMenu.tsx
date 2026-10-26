@@ -38,7 +38,7 @@ export function MobileMenu({ dict }: { dict: Dictionary }) {
         aria-expanded={open}
         aria-controls="mobile-menu"
         aria-label={open ? dict.a11y.closeMenu : dict.a11y.openMenu}
-        className="label relative z-[76] inline-flex min-h-11 min-w-11 items-center justify-end text-silver-100"
+        className="label relative z-[76] inline-flex min-h-11 min-w-11 items-center justify-end text-white"
         data-testid="menu-toggle"
       >
         {open ? (dict.lang === "fr" ? "Fermer" : "Close") : "Menu"}
@@ -49,15 +49,15 @@ export function MobileMenu({ dict }: { dict: Dictionary }) {
           <m.nav
             id="mobile-menu"
             aria-label={dict.a11y.primaryNav}
-            className="fixed inset-0 z-[70] flex flex-col overflow-y-auto bg-graphite-900 container-x pt-[calc(var(--header-h)+2rem)] pb-8"
+            className="fixed inset-0 z-[70] flex flex-col overflow-y-auto bg-forest-deep container-x pt-[calc(var(--header-h)+2rem)] pb-8"
             initial={reduce ? { opacity: 0 } : { clipPath: "inset(100% 0 0 0)" }}
             animate={reduce ? { opacity: 1 } : { clipPath: "inset(0% 0 0 0)" }}
             exit={reduce ? { opacity: 0 } : { clipPath: "inset(0 0 100% 0)" }}
             transition={{ duration: reduce ? 0.2 : 0.9, ease: EASE }}
           >
-            <ul className="flex flex-1 flex-col border-graphite-700 border-t">
+            <ul className="flex flex-1 flex-col border-line border-t">
               {navItems(dict).map((item, i) => (
-                <li key={item.href} className="overflow-hidden border-graphite-700 border-b">
+                <li key={item.href} className="overflow-hidden border-line border-b">
                   <m.div
                     initial={reduce ? { opacity: 0 } : { y: "110%" }}
                     animate={reduce ? { opacity: 1 } : { y: "0%" }}
@@ -66,7 +66,7 @@ export function MobileMenu({ dict }: { dict: Dictionary }) {
                     <TransitionLink
                       href={item.href}
                       onClick={() => toggle(false)}
-                      className="display flex items-baseline justify-between py-3 text-[clamp(2.75rem,12vw,4.5rem)] leading-none text-silver-100"
+                      className="display flex items-baseline justify-between py-3 text-[clamp(2.75rem,12vw,4.5rem)] leading-none text-white"
                     >
                       <span>{item.label}</span>
                     </TransitionLink>
@@ -80,13 +80,13 @@ export function MobileMenu({ dict }: { dict: Dictionary }) {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: reduce ? 0 : 0.7 }}
             >
-              <a href={telHref()} className="display text-3xl text-silver-100">
+              <a href={telHref()} className="display text-3xl text-white">
                 {site.phone.primary.display}
               </a>
-              <p className="text-silver-300">
+              <p className="text-cream">
                 {site.address.street}, {site.address.postalCode.value} {site.address.city}
                 <br />
-                <span className="label text-graphite-400">{site.address.metro}</span>
+                <span className="label text-sage-light">{site.address.metro}</span>
               </p>
               <div className="flex items-center justify-between">
                 <div className="label flex gap-5">
@@ -94,7 +94,7 @@ export function MobileMenu({ dict }: { dict: Dictionary }) {
                     href={site.social.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-silver-200"
+                    className="text-cream-light"
                   >
                     Instagram
                   </a>
@@ -102,7 +102,7 @@ export function MobileMenu({ dict }: { dict: Dictionary }) {
                     href={site.social.facebook}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-silver-200"
+                    className="text-cream-light"
                   >
                     Facebook
                   </a>

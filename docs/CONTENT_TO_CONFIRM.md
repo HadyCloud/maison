@@ -104,7 +104,7 @@ Checked online on 20 Oct 2026.
 
 - Source used: `video/hero.mp4` (4:3, 1112×834, 24p stored at 60 fps, 10 s, with audio).
 - Treatment:
-  - Audio removed, 24 fps, very light desaturation (0.92) to sit on the graphite UI.
+  - Audio removed, 24 fps, very light desaturation (0.92) to sit on the green UI.
   - 0.6 s crossfade at the loop point.
   - **The "1080" tier is upscaled from 834p (Lanczos).** A native 1080p export would look sharper.
 - **There is also a 16:9, 1600×900 edit at `photos/maison_l_website_hero_10s.mp4`** (crossfaded, no audio). If that is the intended hero:
@@ -114,7 +114,7 @@ Checked online on 20 Oct 2026.
 
 ## 5. Design decisions to be aware of
 
-- An extra grey token **`graphite-400 #8B8B91`** was added. `graphite-500` (#6F6F75) fails WCAG AA for 11–12 px mono labels on ink (3.8:1), so it is kept for large or decorative use only.
+- **Palette:** the page green `#2E431A` is sampled from the logo file you sent (pure `rgb(46,67,26)`). Text colours are checked for WCAG AA on it: cream 8.1:1, white 10.9:1, `sage-light` (small meta text) 5.5:1. `sage` (3.5:1) is decorative or large text only.
 - The custom cursor is the only rounded shape (the brief asks for a circle).
 - **Lighthouse (mobile, simulated slow 4G):**
   - Home 90, menu 92. Accessibility, best practices and SEO are 100.

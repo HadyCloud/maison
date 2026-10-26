@@ -41,18 +41,18 @@ export function MenuPage({ dict }: { dict: Dictionary }) {
   return (
     <>
       <section className="container-x pt-[calc(var(--header-h)+clamp(4rem,12vh,9rem))] pb-14 md:pb-20">
-        <h1 className="display text-display text-silver-100">
+        <h1 className="display text-display text-white">
           <span className="block overflow-hidden pb-[0.08em]">
             <span className="rise [animation-delay:120ms]">
               <Emphasis text={dict.menuPage.title} />
             </span>
           </span>
         </h1>
-        <div className="mt-8 flex flex-col gap-2 border-graphite-700 border-t pt-4 md:flex-row md:items-center md:justify-between">
-          <p className="label text-silver-200">
+        <div className="mt-8 flex flex-col gap-2 border-line border-t pt-4 md:flex-row md:items-center md:justify-between">
+          <p className="label text-cream-light">
             {dict.menuPage.meta} {formatDate(menu.updatedAt)}
           </p>
-          {unconfirmed && <p className="label text-graphite-400">{dict.menuPage.priceDisclaimer}</p>}
+          {unconfirmed && <p className="label text-sage-light">{dict.menuPage.priceDisclaimer}</p>}
         </div>
       </section>
 
@@ -68,7 +68,7 @@ export function MenuPage({ dict }: { dict: Dictionary }) {
           {takeawayCategories.map((c) => (
             <Takeaway key={c.id} category={c} dict={dict} />
           ))}
-          <p id="allergenes" className="label mt-12 text-silver-300">
+          <p id="allergenes" className="label mt-12 text-cream">
             {dict.menuPage.allergens}
           </p>
         </div>

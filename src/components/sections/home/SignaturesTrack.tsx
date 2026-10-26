@@ -59,8 +59,8 @@ export function SignaturesTrack({ children }: { children: ReactNode }) {
         </m.div>
         {pinned && (
           <div aria-hidden="true" className="container-x absolute inset-x-0 bottom-8">
-            <div className="h-px w-full bg-graphite-700">
-              <m.div className="h-px bg-silver-100" style={{ width: progress }} />
+            <div className="h-px w-full bg-line">
+              <m.div className="h-px bg-white" style={{ width: progress }} />
             </div>
           </div>
         )}

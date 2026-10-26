@@ -27,7 +27,7 @@ test("mobile overlay menu traps focus and closes on Escape", async ({ page }) =>
 });
 
 test("mobile menu: sticky chips and full-screen photo sheet", async ({ page }) => {
-  await page.goto("/menu");
+  await page.goto("/menu", { waitUntil: "networkidle" }); // the photo sheet is lazy-loaded: wait until it is ready
   await expect(page.getByTestId("menu-chips")).toBeVisible();
   await page.locator("#kebbe-citrouille").scrollIntoViewIfNeeded();
   await page

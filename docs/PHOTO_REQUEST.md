@@ -1,6 +1,6 @@
 # Photos still needed
 
-Until these exist, the layout shows intentional tonal placeholders (graphite block, mono caption "PHOTO · …"). Drop new files into `photos/`, add a row to `src/content/photo-map.ts`, then run `pnpm assets`.
+Until these exist, the layout shows intentional tonal placeholders (tonal green block, mono caption "PHOTO · …"). Drop new files into `photos/`, add a row to `src/content/photo-map.ts`, then run `pnpm assets`.
 
 **House style for every shot:** dark ground (black marble or the green-black table), a single soft side light, deep shadows, no flash. Hands are fine; faces only with consent. Shoot RAW or high-quality JPEG, at least 2400 px on the long side.
 

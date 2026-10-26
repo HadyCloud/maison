@@ -16,14 +16,13 @@
 5. **Assets.** `pnpm assets` runs these pipelines, each re-runnable:
    - **photos:** sharp, grade, AVIF/WebP, focal thumbnail, LQIP.
    - **video:** ffmpeg, crossfade loop, H.264 and two-pass VP9 at 1080 and 720, poster.
-   - **map:** OSM data drawn as a static greyscale SVG plan.
+   - **map:** OSM data drawn as a static SVG plan in the brand greens.
    - **og:** rendered by Playwright with the real fonts.
    - **docs:** regenerates `PHOTO_MAP.md`.
 6. **Design.**
-   - Greys only, square corners, no shadows, 1 px hairlines, mono section indexes, film grain at about 4 %.
+   - Palette sampled from the logo: brand green `#2E431A` (page), a deeper and a lighter green, a muted green hairline, sage for meta text, creams and white for type. Square corners, no shadows, 1 px hairlines, film grain at about 4 %.
    - Instrument Serif for display, Geist for body, Geist Mono for labels, Noto Naskh Arabic for Arabic names.
    - The chef section is the single inverted (light) block.
-   - Food photos are the only colour on the page.
 7. **Motion.**
    - Masked line reveals: 0.9 s, `cubic-bezier(.22,1,.36,1)`.
    - Images: clip-path wipe with a scale settle from 1.08 to 1, plus parallax up to 8 %.

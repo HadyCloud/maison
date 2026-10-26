@@ -20,17 +20,17 @@ export function Reviews({ dict }: { dict: Dictionary }) {
       <div className="grid-12 gap-y-20">
         <div className="col-span-12 lg:col-span-6">
           <LineReveal
-            className="display text-[clamp(9rem,26vw,24rem)] text-silver-100 leading-[0.8]"
+            className="display text-[clamp(9rem,26vw,24rem)] text-white leading-[0.8]"
             lines={[
               <span key="r" className="tabular">
                 {formatRating(score, lang)}
-                <span className="align-top text-[0.22em] text-graphite-500">/5</span>
+                <span className="align-top text-[0.22em] text-sage">/5</span>
               </span>,
             ]}
           />
-          <p className="label mt-6 text-silver-200">
+          <p className="label mt-6 text-cream-light">
             {count} {dict.reviews.count}
-            <span className="text-graphite-400">
+            <span className="text-sage-light">
               {" "}
               · {dict.reviews.checked} {formatDate(site.google.rating.lastChecked)}
             </span>
@@ -46,10 +46,10 @@ export function Reviews({ dict }: { dict: Dictionary }) {
         </div>
 
         <div className="col-span-12 flex flex-col justify-end lg:col-span-5 lg:col-start-8">
-          <p className="label text-graphite-400">
+          <p className="label text-sage-light">
             {site.press.outlet} · {formatDate(site.press.date)}
           </p>
-          <p className="display mt-6 text-title text-silver-100">
+          <p className="display mt-6 text-title text-white">
             <span aria-hidden="true">{lang === "fr" ? "« " : "“"}</span>
             <q className="italic [quotes:none]" cite={press.url}>
               {press.heading}
@@ -63,14 +63,14 @@ export function Reviews({ dict }: { dict: Dictionary }) {
       </div>
 
       {shown.length > 0 && (
-        <ul className="grid-12 mt-24 gap-y-10 border-graphite-700 border-t pt-10" data-testid="review-quotes">
+        <ul className="grid-12 mt-24 gap-y-10 border-line border-t pt-10" data-testid="review-quotes">
           {shown.map((r) => (
             <li key={r.author + r.date} className="col-span-12 md:col-span-4">
               <blockquote>
-                <p className="display text-2xl text-silver-200 leading-snug">
+                <p className="display text-2xl text-cream-light leading-snug">
                   <Emphasis text={r.text} />
                 </p>
-                <footer className="label mt-4 text-graphite-400">
+                <footer className="label mt-4 text-sage-light">
                   {r.author} · {dict.reviews.reviewSource}
                 </footer>
               </blockquote>

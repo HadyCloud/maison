@@ -29,13 +29,13 @@ export function MapPlan({ dict }: { dict: Dictionary }) {
             height={920}
             loading="lazy"
             decoding="async"
-            className="block aspect-[4/3] h-auto w-full bg-ink object-cover"
+            className="block aspect-[4/3] h-auto w-full bg-forest object-cover"
           />
         ) : (
           <PhotoPlaceholder label="Plan · Gambetta" className="aspect-[4/3] w-full" />
         )}
       </a>
-      <figcaption className="label mt-3 flex items-center justify-between gap-4 text-graphite-400">
+      <figcaption className="label mt-3 flex items-center justify-between gap-4 text-sage-light">
         <span>
           {site.address.street} · {site.address.metro}
         </span>

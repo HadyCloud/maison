@@ -50,12 +50,12 @@ export function CurtainProvider({ children }: { children: ReactNode }) {
           <m.div
             key="curtain"
             aria-hidden="true"
-            className="fixed inset-0 z-[90] flex items-center justify-center bg-ink"
+            className="fixed inset-0 z-[90] flex items-center justify-center bg-forest"
             initial={{ clipPath: "inset(100% 0 0 0)" }}
             animate={{ clipPath: phase === "cover" ? "inset(0% 0 0 0)" : "inset(0 0 100% 0)" }}
             transition={{ duration: HALF, ease: EASE }}
           >
-            <Logo variant="mark" className="w-[min(64vw,22rem)] text-silver-100" />
+            <Logo variant="mark" className="w-[min(64vw,22rem)] text-white" />
           </m.div>
         )}
       </AnimatePresence>

@@ -9,11 +9,11 @@ export function HoursTable({ dict, className }: { dict: Dictionary; className?: 
       <caption className="sr-only">{dict.reserve.hours}</caption>
       <tbody>
         {weekRows(site.hours.week, dict).map((row) => (
-          <tr key={row.weekday} className="border-graphite-700 border-b last:border-b-0">
-            <th scope="row" className="py-2.5 pr-4 font-normal text-graphite-400">
+          <tr key={row.weekday} className="border-line border-b last:border-b-0">
+            <th scope="row" className="py-2.5 pr-4 font-normal text-sage-light">
               {row.day}
             </th>
-            <td className="tabular whitespace-nowrap py-2.5 text-right text-silver-200">{row.value}</td>
+            <td className="tabular whitespace-nowrap py-2.5 text-right text-cream-light">{row.value}</td>
           </tr>
         ))}
       </tbody>

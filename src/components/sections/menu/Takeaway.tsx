@@ -12,14 +12,14 @@ export function Takeaway({ category, dict }: { category: MenuCategory; dict: Dic
       id={category.id}
       data-spy
       aria-labelledby={`${category.id}-title`}
-      className="mt-28 border-graphite-700 border-t bg-graphite-900 p-6 md:p-10"
+      className="mt-28 border-line border-t bg-forest-deep p-6 md:p-10"
     >
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>
-          <h2 id={`${category.id}-title`} className="label text-silver-200">
+          <h2 id={`${category.id}-title`} className="label text-cream-light">
             {category.title[lang]}
           </h2>
-          <p className="mt-3 max-w-md text-silver-300">{dict.menuPage.takeawayIntro}</p>
+          <p className="mt-3 max-w-md text-cream">{dict.menuPage.takeawayIntro}</p>
         </div>
         <ButtonLink href={site.delivery.deliveroo} variant="outline">
           {dict.menuPage.deliveroo} ↗
@@ -31,16 +31,16 @@ export function Takeaway({ category, dict }: { category: MenuCategory; dict: Dic
             key={item.id}
             id={item.id}
             data-preview={item.photoIds[0]}
-            className="flex items-baseline justify-between gap-4 border-graphite-700 border-b py-3"
+            className="flex items-baseline justify-between gap-4 border-line border-b py-3"
           >
-            <span className="text-silver-200">{item.name[lang]}</span>
-            <span className="label tabular text-silver-300">
+            <span className="text-cream-light">{item.name[lang]}</span>
+            <span className="label tabular text-cream">
               {item.price !== null ? formatPrice(item.price, lang) : dict.menuPage.priceTbd}
             </span>
           </li>
         ))}
       </ul>
-      {category.note && <p className="label mt-5 text-graphite-400">{category.note[lang]}</p>}
+      {category.note && <p className="label mt-5 text-sage-light">{category.note[lang]}</p>}
     </section>
   );
 }

@@ -13,7 +13,7 @@ export function Story({ dict }: { dict: Dictionary }) {
       <div className="grid-12 gap-y-16">
         <LineReveal
           as="h2"
-          className="display col-span-12 text-display text-silver-100 lg:col-span-7"
+          className="display col-span-12 text-display text-white lg:col-span-7"
           lines={dict.story.pull.map((l) => <Emphasis key={l} text={l} />)}
         />
         <span id="story-title" className="sr-only">
@@ -30,9 +30,9 @@ export function Story({ dict }: { dict: Dictionary }) {
                 className="h-full w-full"
               />
             </ImageReveal>
-            <figcaption className="label mt-3 text-graphite-400">{dict.story.imageCaption}</figcaption>
+            <figcaption className="label mt-3 text-sage-light">{dict.story.imageCaption}</figcaption>
           </figure>
-          <FadeIn className="flex flex-col gap-5 text-lead text-silver-300">
+          <FadeIn className="flex flex-col gap-5 text-lead text-cream">
             {dict.story.body.map((p) => (
               <p key={p}>{p}</p>
             ))}
@@ -40,11 +40,11 @@ export function Story({ dict }: { dict: Dictionary }) {
         </div>
       </div>
 
-      <ul className="label mt-24 grid grid-cols-1 border-graphite-700 border-y text-silver-200 sm:grid-cols-3 md:mt-32">
+      <ul className="label mt-24 grid grid-cols-1 border-line border-y text-cream-light sm:grid-cols-3 md:mt-32">
         {dict.story.stats.map((s) => (
           <li
             key={s}
-            className="flex items-center justify-between gap-4 border-graphite-700 py-5 not-last:border-b sm:not-last:border-r sm:not-last:border-b-0 sm:px-6 sm:first:pl-0"
+            className="flex items-center justify-between gap-4 border-line py-5 not-last:border-b sm:not-last:border-r sm:not-last:border-b-0 sm:px-6 sm:first:pl-0"
           >
             <span>{s}</span>
           </li>

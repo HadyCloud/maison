@@ -5,9 +5,9 @@ import type { Dictionary, Lang } from "@/i18n";
 
 function Block({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <section className="grid-12 gap-y-3 border-graphite-700 border-t py-8">
-      <h2 className="label col-span-12 text-graphite-400 md:col-span-4">{title}</h2>
-      <div className="col-span-12 text-silver-300 leading-relaxed md:col-span-8">{children}</div>
+    <section className="grid-12 gap-y-3 border-line border-t py-8">
+      <h2 className="label col-span-12 text-sage-light md:col-span-4">{title}</h2>
+      <div className="col-span-12 text-cream leading-relaxed md:col-span-8">{children}</div>
     </section>
   );
 }
@@ -17,7 +17,7 @@ export function LegalPage({ dict }: { dict: Dictionary }) {
   const l = site.legal;
   return (
     <div className="container-x pt-[calc(var(--header-h)+clamp(4rem,12vh,9rem))] pb-28">
-      <h1 className="display text-headline text-silver-100">
+      <h1 className="display text-headline text-white">
         <Emphasis text={dict.legal.title} />
       </h1>
       <div className="mt-16">
@@ -31,7 +31,7 @@ export function LegalPage({ dict }: { dict: Dictionary }) {
             <br />
             <a
               href={`tel:${site.phone.primary.value}`}
-              className="underline decoration-graphite-500 underline-offset-4"
+              className="underline decoration-sage underline-offset-4"
             >
               {site.phone.primary.display}
             </a>
@@ -44,7 +44,7 @@ export function LegalPage({ dict }: { dict: Dictionary }) {
           <p>
             {l.host.name}, {l.host.address}
             <br />
-            <a href={l.host.url} className="underline decoration-graphite-500 underline-offset-4">
+            <a href={l.host.url} className="underline decoration-sage underline-offset-4">
               {l.host.url.replace("https://", "")}
             </a>
           </p>
@@ -62,7 +62,7 @@ export function LegalPage({ dict }: { dict: Dictionary }) {
           <p>
             {site.press.outlet}
             {lang === "fr" ? "\u00a0: " : ": "}
-            <a href={site.press[lang].url} className="underline decoration-graphite-500 underline-offset-4">
+            <a href={site.press[lang].url} className="underline decoration-sage underline-offset-4">
               {site.press[lang].heading}
             </a>
           </p>
