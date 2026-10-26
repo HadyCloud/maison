@@ -12,8 +12,8 @@ export function MenuSection({ category, dict }: { category: MenuCategory; dict: 
       aria-labelledby={`${category.id}-title`}
       className="scroll-mt-40 pt-12 first:pt-8 md:pt-16 md:first:pt-12"
     >
-      <header className="relative bg-[#c3b57f] text-[#2b3416] md:bg-[#dde3c9] md:text-forest">
-        <Arcade className="text-[#c3b57f] md:text-[#dde3c9]" />
+      <header className="relative bg-[#c3b57f] text-[#2b3416]">
+        <Arcade className="text-[#c3b57f]" />
         <div className="container-x mx-auto max-w-[calc(83rem+2*var(--gutter))] py-4 md:py-5 md:text-center">
           <h2 id={`${category.id}-title`} className="display text-title">
             {category.title[lang]}

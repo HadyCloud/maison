@@ -78,7 +78,7 @@ export const fr = {
     amenities: ["Terrasse", "Accès PMR", "Climatisation"],
   },
   footer: {
-    sister: "La maison sœur\u00a0: Za'atar, boulangerie libanaise, Lille.",
+    sister: "La maison sœur\u00a0: Za'atar, boulangerie libanaise, 139 rue des Postes, 59000 Lille.",
     allergens: "Allergènes",
     delivery: "Livraison Deliveroo",
     legalNotes: {

@@ -79,7 +79,7 @@ export const en = {
     amenities: ["Terrace", "Step-free access", "Air conditioning"],
   },
   footer: {
-    sister: "The sister house: Za'atar, Lebanese bakery, Lille.",
+    sister: "The sister house: Za'atar, Lebanese bakery, 139 rue des Postes, 59000 Lille.",
     allergens: "Allergens",
     delivery: "Deliveroo delivery",
     legalNotes: {
