@@ -14,9 +14,9 @@ export function Info({ dict }: { dict: Dictionary }) {
     <section
       id="infos"
       aria-labelledby="info-title"
-      className="theme-sand relative bg-surface py-[clamp(2.5rem,5vw,4rem)]"
+      className="theme-sand relative bg-[#dccfae] py-[clamp(2.5rem,5vw,4rem)]"
     >
-      <Arcade className="text-paper-deep" />
+      <Arcade className="text-[#dccfae]" />
       <div className="container-x">
         <div className="flex items-end justify-between gap-6">
           <div>
@@ -38,7 +38,7 @@ export function Info({ dict }: { dict: Dictionary }) {
         <div className="mt-5 grid items-stretch gap-4 md:mt-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-8">
           <MapPlan dict={dict} />
 
-          <div className="flex flex-col justify-between gap-5 rounded-[1.5rem] bg-paper p-5 shadow-[0_1px_0_rgb(0_0_0/0.04)] md:p-8">
+          <div className="flex flex-col justify-between gap-5 rounded-[1.5rem] bg-[#ebe0c6] p-5 shadow-[0_1px_0_rgb(0_0_0/0.05)] md:p-8">
             <div className="grid gap-5 sm:grid-cols-2">
               <div className="flex flex-col gap-5">
                 <div>
