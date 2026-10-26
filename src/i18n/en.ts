@@ -76,7 +76,6 @@ export const en = {
     title: "The *signatures*",
     intro: "Five plates that speak for the house.",
     all: "The full menu",
-    view: "View",
   },
   reviews: {
     label: "In their words",

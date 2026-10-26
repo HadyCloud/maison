@@ -12,22 +12,11 @@ type Props = {
   priority?: boolean;
   /** Caption for the tonal placeholder when the photo is missing, e.g. "Kafta Maison L". */
   placeholder?: string;
-  cursor?: "view";
   style?: CSSProperties;
 };
 
 /** Pre-processed AVIF/WebP set with an LQIP backdrop and intrinsic dimensions (no CLS). */
-export function Picture({
-  id,
-  alt,
-  sizes,
-  className,
-  imgClassName,
-  priority,
-  placeholder,
-  cursor,
-  style,
-}: Props) {
+export function Picture({ id, alt, sizes, className, imgClassName, priority, placeholder, style }: Props) {
   const img = id ? getImage(id) : null;
   if (!img) return <PhotoPlaceholder label={placeholder ?? alt} className={className} />;
   return (
@@ -42,7 +31,6 @@ export function Picture({
         loading={priority ? "eager" : "lazy"}
         fetchPriority={priority ? "high" : "auto"}
         decoding={priority ? "sync" : "async"}
-        data-cursor={cursor}
         className={cn("h-full w-full object-cover", imgClassName)}
         style={{
           objectPosition: objectPosition(img),

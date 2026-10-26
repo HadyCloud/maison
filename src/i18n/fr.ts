@@ -75,7 +75,6 @@ export const fr = {
     title: "Les *signatures*",
     intro: "Cinq assiettes qui disent la maison.",
     all: "Toute la carte",
-    view: "Voir",
   },
   reviews: {
     label: "Ils en parlent",

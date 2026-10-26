@@ -181,12 +181,6 @@ html.lenis body {
   overflow: clip;
 }
 
-/* Custom cursor: native pointer hidden only while the custom one is active. */
-html.has-cursor,
-html.has-cursor * {
-  cursor: none !important;
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

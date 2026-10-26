@@ -23,7 +23,6 @@ No API key is stored in the repo. `PROMPT.md`, which contains one, is gitignored
 | `ImageReveal.tsx` | Mask Reveal — balick; Scroll Reveal Image — unlumen | Clip-path wipe + scale settle 1.08 → 1 + optional parallax ≤ 8 %. Border-radius animation from the reference removed. |
 | `SignaturesTrack.tsx` (horizontal scroll) | Scroll Horizontal Gallery — motiondotdev; Horizontal Scroll Gallery — pulkitxm | Motion `useScroll` on a pinned section; height computed from the real track width; progress hairline. Mobile and reduced motion → vertical / 3-column grid. |
 | `MenuIndex.tsx` (scroll-spy) | Scroll Spy — ddoemonn; Table of Contents — inference-sh | IntersectionObserver spy, desktop sticky index with progress hairline, mobile sticky chips (square, filled when active). No sliding pill. |
-| `Cursor.tsx` | Custom Cursor — soralabs; Cursor Follow — educalvolpz | 10 px circle, grows to a 44 px ring on interactive elements, 88 px "VOIR" disc on dish photos; `mix-blend-difference`; desktop + fine pointer only; loaded lazily. |
 | `Footer.tsx` | — | Giant cropped wordmark drawn as an SVG `<text>` (decorative, outside contrast audits). |
 | `Curtain.tsx` + `TransitionLink.tsx` | — | 300 ms ink cover + 300 ms reveal; same-page anchors scroll with Lenis; FR↔EN does a hard load (two root layouts). |
 
@@ -38,7 +37,7 @@ No API key is stored in the repo. `PROMPT.md`, which contains one, is gitignored
 ```
 src/components/
   layout/   SiteShell · Providers · Header · MobileMenu · useFocusTrap · LangToggle · Footer · HoursTable · nav
-  motion/   SmoothScroll (Lenis) · Curtain · TransitionLink · Reveal · ImageReveal · Cursor · motion-features
+  motion/   SmoothScroll (Lenis) · Curtain · TransitionLink · Reveal · ImageReveal · motion-features
   ui/       Picture · PhotoPlaceholder · ButtonLink · SectionLabel · Emphasis · JsonLd
   sections/ home/  Hero · HeroVideo · ServiceStatus · Story · Chef · Signatures · SignaturesTrack · SignatureCard
                    Interlude · Reviews · Reserve · MapPlan · HomePage

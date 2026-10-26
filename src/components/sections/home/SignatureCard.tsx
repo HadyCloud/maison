@@ -34,7 +34,6 @@ export function SignatureCard({
             alt={photo?.alt[lang] ?? item.name[lang]}
             placeholder={item.name.fr}
             sizes="(min-width: 1024px) 30vw, 92vw"
-            cursor="view"
             className="h-full w-full"
             imgClassName="transition-transform duration-[1400ms] ease-house hover:scale-[1.03]"
           />

@@ -19,7 +19,7 @@ export function SiteShell({ lang, children }: { lang: Lang; children: ReactNode 
         >
           {dict.a11y.skip}
         </a>
-        <Providers viewLabel={dict.signatures.view}>
+        <Providers>
           <Header dict={dict} />
           <main id="contenu" tabIndex={-1} className="outline-none">
             {children}
