@@ -7,6 +7,14 @@ import { thumbSrc } from "@/lib/media";
 export function MenuItemRow({ item, dict }: { item: MenuItem; dict: Dictionary }) {
   const lang = dict.lang as Lang;
   const photoId = item.photoIds[0];
+  const words = item.name[lang].split(" ");
+  const last = words.pop();
+  const lead = words.length ? `${words.join(" ")} ` : "";
+  const leaf = item.tags.includes("VG")
+    ? dict.menuPage.tags.VG
+    : item.tags.includes("V")
+      ? dict.menuPage.tags.V
+      : null;
   return (
     <li
       id={item.id}
@@ -20,7 +28,21 @@ export function MenuItemRow({ item, dict }: { item: MenuItem; dict: Dictionary }
       <div className="min-w-0 lg:order-2">
         <div className="flex items-baseline justify-between gap-4">
           <h3 className="display text-dish text-fg lg:text-[1.65rem]">
-            {item.name[lang]}
+            {lead}
+            <span className="whitespace-nowrap">
+              {last}
+              {leaf && (
+                <svg
+                  viewBox="0 0 24 24"
+                  role="img"
+                  aria-label={leaf}
+                  className="ml-2 inline-block size-[0.75em] -translate-y-[0.1em] fill-[#5f8f2f]"
+                >
+                  <title>{leaf}</title>
+                  <path d="M20.5 3.5C11 3 4.5 7.8 4.5 15c0 1.3.3 2.4.8 3.4C3.9 19.600 3 20.900 3 20.900l1.500.9s.9-1.200 2.100-2.200c1 .5 2.100.8 3.400.8 7.200 0 11-6.500 10.500-16.900ZM8 17.500c1.200-3.800 4.500-7.100 8.500-8.700-3.100 2.100-5.600 4.900-7 8.800L8 17.500Z" />
+                </svg>
+              )}
+            </span>
             {item.pieces && (
               <span className="label ml-3 align-middle text-muted">
                 {item.pieces} {dict.menuPage.pieces}
