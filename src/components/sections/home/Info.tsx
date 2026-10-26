@@ -38,9 +38,9 @@ export function Info({ dict }: { dict: Dictionary }) {
         <div className="mt-5 grid items-stretch gap-4 md:mt-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-8">
           <MapPlan dict={dict} />
 
-          <div className="flex flex-col justify-between gap-5 rounded-[1.5rem] bg-[#ebe0c6] p-5 shadow-[0_1px_0_rgb(0_0_0/0.05)] md:p-8">
-            <div className="grid gap-5 sm:grid-cols-2">
-              <div className="flex flex-col gap-5">
+          <div className="flex flex-col justify-between gap-4 rounded-[1.5rem] bg-[#ebe0c6] p-4 shadow-[0_1px_0_rgb(0_0_0/0.05)] md:p-8">
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="flex flex-col gap-4">
                 <div>
                   <p className="label mb-2 text-accent">{i.address}</p>
                   <address className="text-fg not-italic leading-snug">
@@ -49,15 +49,17 @@ export function Info({ dict }: { dict: Dictionary }) {
                     {site.address.postalCode.value} {site.address.city}
                   </address>
                   <p className="label mt-1.5 text-[0.65rem] text-muted">{site.address.metro}</p>
-                  <ButtonLink href={site.google.directionsUrl} variant="underline" className="mt-2">
-                    {i.directions} ↗
-                  </ButtonLink>
+                  <div className="hidden sm:block">
+                    <ButtonLink href={site.google.directionsUrl} variant="underline" className="mt-2">
+                      {i.directions} ↗
+                    </ButtonLink>
+                  </div>
                 </div>
                 <div>
                   <p className="label mb-2 text-accent">{i.byPhone}</p>
                   <a
                     href={telHref()}
-                    className="display inline-block text-[clamp(1.75rem,3vw,2.25rem)] text-fg leading-none tabular"
+                    className="display inline-block text-[clamp(1.5rem,2.2vw,1.75rem)] text-fg leading-none tabular"
                     aria-label={`${site.phone.primary.display}, ${dict.a11y.phoneCall}`}
                     data-testid="reserve-phone"
                   >
@@ -72,17 +74,16 @@ export function Info({ dict }: { dict: Dictionary }) {
                   )}
                 </div>
               </div>
-              <div>
+              <div className="hidden sm:block">
                 <p className="label mb-2 text-accent">{i.hours}</p>
                 <HoursTable dict={dict} />
-                {!site.hours.confirmed && <p className="mt-2 text-accent text-xs">{i.hoursNote}</p>}
               </div>
             </div>
 
-            <div className="flex flex-col gap-3 border-rule border-t pt-5 md:flex-row md:items-center md:justify-between md:gap-6">
+            <div className="flex flex-col gap-3 border-rule border-t pt-4 md:flex-row md:items-center md:justify-between md:gap-6">
               <div>
                 <p className="label mb-1 text-accent">{i.privatisation.label}</p>
-                <p className="display text-fg text-lead leading-snug">
+                <p className="display text-[1.25rem] text-fg leading-snug md:text-[1.4rem]">
                   <Emphasis text={i.privatisation.line} />
                 </p>
               </div>
