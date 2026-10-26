@@ -18,7 +18,7 @@ export function Reviews({ dict }: { dict: Dictionary }) {
       className="theme-forest relative bg-[#454f24] py-[clamp(2.5rem,5vw,4rem)] lg:py-24"
     >
       <Arcade className="text-[#454f24]" />
-      <div className="container-x">
+      <div className="container-x lg:ml-[var(--align-l,var(--gutter))] lg:mr-[var(--align-r,var(--gutter))] lg:px-0">
         <ReviewsVideo>
           <p
             className="absolute bottom-0 left-0 flex items-center gap-3 rounded-tr-[1.25rem] bg-[#36401b] py-3 pr-5 pl-4 text-paper md:gap-4 md:rounded-tr-[1.75rem] md:py-4 md:pr-8 md:pl-6"
@@ -32,8 +32,13 @@ export function Reviews({ dict }: { dict: Dictionary }) {
               {ratingText}
             </span>
           </p>
+          <div className="absolute right-4 bottom-4 hidden md:block lg:right-6 lg:bottom-6">
+            <ButtonLink href={site.google.writeReviewUrl} variant="fill">
+              {r.write} →
+            </ButtonLink>
+          </div>
         </ReviewsVideo>
-        <div className="mt-5 flex justify-center md:mt-6">
+        <div className="mt-5 flex justify-center md:hidden">
           <ButtonLink href={site.google.writeReviewUrl} variant="outline">
             {r.write} →
           </ButtonLink>

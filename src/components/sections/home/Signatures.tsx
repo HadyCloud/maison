@@ -43,8 +43,8 @@ export function Signatures({ dict }: { dict: Dictionary }) {
           <SignatureCard key={item.id} item={item} index={i} lang={lang} priceTbd={dict.menuPage.priceTbd} />
         ))}
       </SignaturesTrack>
-      <div className="container-x hidden lg:block lg:pt-24">
-        <div className="mx-auto flex max-w-[70rem] items-end justify-between">
+      <div className="hidden lg:ml-[var(--align-l,var(--gutter))] lg:mr-[var(--align-r,var(--gutter))] lg:block lg:pt-24">
+        <div className="flex items-end justify-between">
           <div>
             <LineReveal
               as="h2"

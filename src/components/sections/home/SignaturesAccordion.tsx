@@ -24,8 +24,15 @@ export function SignaturesAccordion({
 }) {
   const [active, setActive] = useState(0);
   return (
-    <div className="container-x hidden pt-10 pb-24 lg:block">
-      <div className="mx-auto flex h-[clamp(26rem,56svh,35rem)] max-w-[70rem] overflow-hidden rounded-[1.75rem]">
+    <div className="hidden pt-10 pb-24 lg:ml-[var(--align-l,var(--gutter))] lg:mr-[var(--align-r,var(--gutter))] lg:block">
+      <div
+        className="grid h-[clamp(26rem,56svh,35rem)] overflow-hidden rounded-[1.75rem] transition-[grid-template-columns] duration-700 ease-house"
+        style={{
+          gridTemplateColumns: items
+            .map((_, i) => (i === active ? "min(38.9rem, 56%)" : "minmax(0,1fr)"))
+            .join(" "),
+        }}
+      >
         {items.map((item, i) => {
           const photoId = item.photoIds[0];
           const photo = photoId ? photoById(photoId) : undefined;
@@ -37,11 +44,7 @@ export function SignaturesAccordion({
               data-testid="signature-card"
               onMouseEnter={() => setActive(i)}
               onFocus={() => setActive(i)}
-              className={cn(
-                "relative min-w-0 overflow-hidden text-paper transition-[flex-grow] duration-700 ease-house",
-                open ? "grow-[5]" : "grow-[1]",
-              )}
-              style={{ flexBasis: 0 }}
+              className={cn("relative min-w-0 overflow-hidden text-paper")}
             >
               <TransitionLink
                 href={`${routes.menu}#${item.id}`}
