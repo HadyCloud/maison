@@ -11,11 +11,11 @@ export function MenuItemRow({ item, dict }: { item: MenuItem; dict: Dictionary }
     <li
       id={item.id}
       data-testid="menu-item"
-      className="grid grid-cols-[1fr_4rem] gap-x-5 border-rule border-b py-5 sm:grid-cols-[1fr_5rem] sm:gap-x-6"
+      className="grid grid-cols-[1fr_4rem] gap-x-5 border-rule border-b py-5 sm:grid-cols-[1fr_5rem] sm:gap-x-6 lg:grid-cols-[1fr_8rem] lg:gap-x-10 lg:py-7"
     >
       <div className="min-w-0">
         <div className="flex items-baseline justify-between gap-4">
-          <h3 className="display text-dish text-fg">
+          <h3 className="display text-dish text-fg lg:text-[1.75rem]">
             {item.name[lang]}
             {item.pieces && (
               <span className="label ml-3 align-middle text-muted">
@@ -28,7 +28,9 @@ export function MenuItemRow({ item, dict }: { item: MenuItem; dict: Dictionary }
             {item.priceNote && <span className="ml-2 text-muted">{item.priceNote[lang]}</span>}
           </p>
         </div>
-        {item.description[lang] && <p className="mt-2 max-w-[56ch] text-fg/85">{item.description[lang]}</p>}
+        {item.description[lang] && (
+          <p className="mt-2 max-w-[56ch] text-fg/85 lg:text-lg">{item.description[lang]}</p>
+        )}
         {item.tags.length > 0 && (
           <p className="label mt-2 flex flex-wrap gap-x-3 text-[0.625rem] text-muted">
             {item.tags.map((t) => (
@@ -40,7 +42,7 @@ export function MenuItemRow({ item, dict }: { item: MenuItem; dict: Dictionary }
         )}
       </div>
       {photoId && (
-        <picture className="block size-16 self-start overflow-hidden rounded-xl bg-paper-deep sm:size-20">
+        <picture className="block size-16 self-start overflow-hidden rounded-xl bg-paper-deep sm:size-20 lg:size-32">
           <source type="image/avif" srcSet={thumbSrc(photoId, "avif")} />
           <img
             src={thumbSrc(photoId, "webp")}
