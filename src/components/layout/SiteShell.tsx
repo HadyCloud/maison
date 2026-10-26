@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { fontVariables } from "@/app/fonts";
 import { JsonLd } from "@/components/ui/JsonLd";
-import { getDictionary, type Lang } from "@/i18n";
+import { dirOf, getDictionary, type Lang } from "@/i18n";
 import { restaurantJsonLd } from "@/lib/seo";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
@@ -11,7 +11,7 @@ import { Providers } from "./Providers";
 export function SiteShell({ lang, children }: { lang: Lang; children: ReactNode }) {
   const dict = getDictionary(lang);
   return (
-    <html lang={lang} className={fontVariables}>
+    <html lang={lang} dir={dirOf(lang)} className={fontVariables}>
       <body className="theme-paper bg-surface text-fg">
         <a
           href="#contenu"

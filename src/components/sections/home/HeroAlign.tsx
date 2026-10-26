@@ -7,7 +7,7 @@ const TAGLINE_START = 0.1397;
 
 /**
  * Desktop only: publishes the hero's visual edges as CSS variables so the sections below can line up with them.
- * `--align-logo`: left edge of the logo frame. `--align-l`: left edge of the logo's tagline. `--align-r`: distance from the right of the page to the end of
+ * `--align-logo`: start edge of the logo frame. `--align-l`: start edge of the logo's tagline. `--align-r`: inline-end distance to the end of
  * the "Réserver une table" button. Falls back to the page gutter until measured (and below 1024px).
  */
 export function HeroAlign() {
@@ -25,18 +25,26 @@ export function HeroAlign() {
       }
       const l = logo.getBoundingClientRect();
       const r = reserve.getBoundingClientRect();
-      root.style.setProperty("--align-logo", `${Math.round(l.left)}px`);
-      root.style.setProperty("--align-l", `${Math.round(l.left + l.width * TAGLINE_START)}px`);
-      root.style.setProperty("--align-r", `${Math.round(root.clientWidth - r.right)}px`);
+      // Logical insets: from the inline-start edge (left in French/English, right in Arabic) and from the inline-end edge.
+      const rtl = getComputedStyle(root).direction === "rtl";
+      const logoInset = rtl ? root.clientWidth - l.right : l.left;
+      const endInset = rtl ? r.left : root.clientWidth - r.right;
+      root.style.setProperty("--align-logo", `${Math.round(logoInset)}px`);
+      root.style.setProperty("--align-l", `${Math.round(logoInset + l.width * TAGLINE_START)}px`);
+      root.style.setProperty("--align-r", `${Math.round(endInset)}px`);
     };
     measure();
     const ro = new ResizeObserver(measure);
     ro.observe(logo);
     ro.observe(reserve);
     window.addEventListener("resize", measure);
+    // The language button flips the page direction in place: measure again when it does.
+    const mo = new MutationObserver(() => requestAnimationFrame(measure));
+    mo.observe(root, { attributes: true, attributeFilter: ["dir"] });
     document.fonts?.ready.then(measure);
     return () => {
       ro.disconnect();
+      mo.disconnect();
       window.removeEventListener("resize", measure);
     };
   }, []);

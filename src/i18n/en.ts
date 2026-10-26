@@ -15,7 +15,7 @@ export const en = {
     skip: "Skip to content",
     primaryNav: "Main navigation",
     language: "Language",
-    langNames: { fr: "Français", en: "English" },
+    langNames: { fr: "Français", en: "English", ar: "العربية" },
     home: "Maison L, home",
     phoneCall: "Call Maison L",
     categories: "Menu categories",

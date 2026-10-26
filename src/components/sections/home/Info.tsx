@@ -42,12 +42,14 @@ export function Info({ dict }: { dict: Dictionary }) {
               <div className="flex flex-col gap-4">
                 <div>
                   <p className="label mb-2 text-accent">{i.address}</p>
-                  <address className="text-fg not-italic leading-snug">
+                  <address dir="ltr" className="text-fg not-italic leading-snug rtl:text-right">
                     {site.address.street}
                     <br />
                     {site.address.postalCode.value} {site.address.city}
                   </address>
-                  <p className="label mt-1.5 text-[0.65rem] text-muted">{site.address.metro}</p>
+                  <p dir="ltr" className="label mt-1.5 text-[0.65rem] text-muted rtl:text-right">
+                    {site.address.metro}
+                  </p>
                   <div className="hidden sm:block">
                     <ButtonLink href={site.google.directionsUrl} variant="underline" className="mt-2">
                       {i.directions} ↗
@@ -57,6 +59,7 @@ export function Info({ dict }: { dict: Dictionary }) {
                 <div>
                   <p className="label mb-2 text-accent">{i.byPhone}</p>
                   <a
+                    dir="ltr"
                     href={telHref()}
                     className="display inline-block text-[clamp(1.5rem,2.2vw,1.75rem)] text-fg leading-none tabular"
                     aria-label={`${site.phone.primary.display}, ${dict.a11y.phoneCall}`}

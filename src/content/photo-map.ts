@@ -33,7 +33,7 @@ export type PhotoEntry = {
   focalPoint: { x: number; y: number };
   notes: string;
   usage: PhotoUsage[];
-  alt: { fr: string; en: string };
+  alt: { fr: string; en: string; ar?: string };
   /** Process into public/images. Unused duplicates stay documented but are skipped. */
   process: boolean;
 };

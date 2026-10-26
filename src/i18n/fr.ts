@@ -14,7 +14,7 @@ export const fr = {
     skip: "Aller au contenu",
     primaryNav: "Navigation principale",
     language: "Langue",
-    langNames: { fr: "Français", en: "English" },
+    langNames: { fr: "Français", en: "English", ar: "العربية" },
     home: "Maison L, accueil",
     phoneCall: "Appeler Maison L",
     categories: "Catégories de la carte",

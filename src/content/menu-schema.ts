@@ -3,12 +3,12 @@ import { z } from "zod";
 export const tagSchema = z.enum(["V", "VG", "SG", "EPICE", "A_PARTAGER", "SIGNATURE"]);
 export type MenuTag = z.infer<typeof tagSchema>;
 
-const localized = z.object({ fr: z.string().min(1), en: z.string().min(1) });
-const optionalLocalized = z.object({ fr: z.string(), en: z.string() });
+const localized = z.object({ fr: z.string().min(1), en: z.string().min(1), ar: z.string().min(1) });
+const optionalLocalized = z.object({ fr: z.string(), en: z.string(), ar: z.string() });
 
 export const menuItemSchema = z.object({
   id: z.string().regex(/^[a-z0-9-]+$/),
-  name: z.object({ fr: z.string().min(1), en: z.string().min(1) }),
+  name: localized,
   description: optionalLocalized,
   /** Euros. `null` = price to confirm (rendered as "Prix sur place"). */
   price: z.number().positive().nullable(),

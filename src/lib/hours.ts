@@ -65,13 +65,13 @@ export function getServiceStatus(now: ZonedNow, week: Week): ServiceStatus {
 /** FR: 19H, 22H30 · EN: 19:00 */
 export function formatTime(hhmm: string, lang: Lang): string {
   const [h = "0", m = "00"] = hhmm.split(":");
-  if (lang === "en") return `${h.padStart(2, "0")}:${m}`;
+  if (lang !== "fr") return `${h.padStart(2, "0")}:${m}`;
   return m === "00" ? `${Number(h)}H` : `${Number(h)}H${m}`;
 }
 
 /** FR: 19H à 23H · EN: 19:00 to 23:00 */
 export function formatWindow(w: ServiceWindow, lang: Lang): string {
-  return `${formatTime(w.open, lang)} ${lang === "fr" ? "à" : "to"} ${formatTime(w.close, lang)}`;
+  return `${formatTime(w.open, lang)} ${lang === "fr" ? "à" : lang === "ar" ? "إلى" : "to"} ${formatTime(w.close, lang)}`;
 }
 
 /** FR: "CE SOIR, DE 19H À 23H" / "FERMÉ, RÉOUVERTURE DEMAIN À 12H" · EN: "TONIGHT, 19:00 TO 23:00". */

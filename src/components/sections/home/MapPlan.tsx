@@ -35,6 +35,7 @@ export function MapPlan({ dict }: { dict: Dictionary }) {
       </div>
       <p className="label pointer-events-none absolute inset-x-0 bottom-3 flex justify-center md:bottom-4">
         <a
+          dir="ltr"
           href={site.google.directionsUrl}
           target="_blank"
           rel="noopener noreferrer"

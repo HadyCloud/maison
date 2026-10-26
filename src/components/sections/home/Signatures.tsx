@@ -32,7 +32,10 @@ export function Signatures({ dict }: { dict: Dictionary }) {
               </span>
             </div>
             <ButtonLink href={routes.menu} variant="underline" className="self-start">
-              {dict.signatures.all} →
+              {dict.signatures.all}{" "}
+              <span aria-hidden="true" className="inline-block rtl:-scale-x-100">
+                →
+              </span>
             </ButtonLink>
           </div>
         }
@@ -41,7 +44,7 @@ export function Signatures({ dict }: { dict: Dictionary }) {
           <SignatureCard key={item.id} item={item} index={i} lang={lang} priceTbd={dict.menuPage.priceTbd} />
         ))}
       </SignaturesTrack>
-      <div className="hidden lg:ml-[var(--align-logo,var(--gutter))] lg:mr-[var(--align-r,var(--gutter))] lg:block lg:pt-24">
+      <div className="hidden lg:ms-[var(--align-logo,var(--gutter))] lg:me-[var(--align-r,var(--gutter))] lg:block lg:pt-24">
         <div className="flex items-end justify-between">
           <div>
             <LineReveal
@@ -51,7 +54,10 @@ export function Signatures({ dict }: { dict: Dictionary }) {
             />
           </div>
           <ButtonLink href={routes.menu} variant="underline">
-            {dict.signatures.all} →
+            {dict.signatures.all}{" "}
+            <span aria-hidden="true" className="inline-block rtl:-scale-x-100">
+              →
+            </span>
           </ButtonLink>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import { Amiri, Geist, Geist_Mono, Instrument_Serif, Noto_Sans_Arabic } from "next/font/google";
 
 // Self-hosted at build time by next/font (no request to Google at runtime).
 // Google's "latin" subset already covers œ, €, – and — so latin-ext is not shipped.
@@ -24,4 +24,26 @@ export const mono = Geist_Mono({
   display: "swap",
 });
 
-export const fontVariables = [serif.variable, sans.variable, mono.variable].join(" ");
+// Arabic faces: only fetched by browsers when Arabic text is on screen (unicode-range subsets).
+export const arabicSerif = Amiri({
+  weight: ["400", "700"],
+  subsets: ["arabic"],
+  variable: "--font-amiri",
+  display: "swap",
+  preload: false,
+});
+
+export const arabicSans = Noto_Sans_Arabic({
+  subsets: ["arabic"],
+  variable: "--font-noto-arabic",
+  display: "swap",
+  preload: false,
+});
+
+export const fontVariables = [
+  serif.variable,
+  sans.variable,
+  mono.variable,
+  arabicSerif.variable,
+  arabicSans.variable,
+].join(" ");

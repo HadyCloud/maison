@@ -2,7 +2,8 @@
  * La carte — seed from Deliveroo / Privateaser / eatbu (October 2026).
  * Every price is `priceConfirmed: false` until Jalal validates it (Deliveroo prices run higher than dine-in).
  */
-import { type Menu, type MenuItem, type MenuTag, menuSchema } from "./menu-schema";
+import { categoryAr, itemAr, noteAr, perPersonAr } from "./menu-ar";
+import { type MenuItem, type MenuTag, menuSchema } from "./menu-schema";
 
 type Seed = {
   id: string;
@@ -31,10 +32,10 @@ function item(s: Seed): MenuItem {
   const tags = [...(s.tags ?? []), ...(signature ? (["SIGNATURE"] as const) : [])];
   return {
     id: s.id,
-    name: { fr: s.fr, en: s.en },
-    description: { fr: s.dFr ?? "", en: s.dEn ?? "" },
+    name: { fr: s.fr, en: s.en, ar: itemAr[s.id]?.n ?? s.en },
+    description: { fr: s.dFr ?? "", en: s.dEn ?? "", ar: itemAr[s.id]?.d ?? "" },
     price: s.price,
-    ...(s.perPerson ? { priceNote: { fr: "par personne", en: "per person" } } : {}),
+    ...(s.perPerson ? { priceNote: { fr: "par personne", en: "per person", ar: perPersonAr } } : {}),
     ...(s.pieces ? { pieces: s.pieces } : {}),
     tags,
     ...(signature ? { signature: true } : {}),
@@ -44,7 +45,7 @@ function item(s: Seed): MenuItem {
   };
 }
 
-const rawMenu: Menu = {
+const rawMenu = {
   updatedAt: "2026-10-20",
   categories: [
     {
@@ -680,7 +681,15 @@ const rawMenu: Menu = {
   ],
 };
 
-export const menu: Menu = menuSchema.parse(rawMenu);
+// Category titles are written in French and English above; the Arabic ones come from menu-ar.ts.
+export const menu = menuSchema.parse({
+  ...rawMenu,
+  categories: rawMenu.categories.map((c) => ({
+    ...c,
+    title: { ...c.title, ar: categoryAr[c.id] ?? c.title.en },
+    ...("note" in c && c.note ? { note: { ...c.note, ar: noteAr[c.id] ?? c.note.en } } : {}),
+  })),
+});
 
 export const dineInCategories = menu.categories.filter((c) => c.items.every((i) => i.dineIn));
 export const takeawayCategories = menu.categories.filter((c) => c.items.some((i) => !i.dineIn));

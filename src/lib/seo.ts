@@ -20,7 +20,7 @@ export function pageMetadata(opts: {
       title: opts.title,
       description: opts.description,
       url: path,
-      locale: opts.lang === "fr" ? "fr_FR" : "en_GB",
+      locale: opts.lang === "fr" ? "fr_FR" : opts.lang === "ar" ? "ar_AR" : "en_GB",
       images: [
         { url: "/og.jpg", width: 1200, height: 630, alt: "Maison L, cuisine authentique libanaise, Lille" },
       ],

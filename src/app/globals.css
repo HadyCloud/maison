@@ -319,3 +319,22 @@ html.lenis body {
 .marquee-track[data-reverse="true"] {
   animation-direction: reverse;
 }
+
+/* Arabic: its own faces, no letter-spacing (it would break the joined letters), no italics, mirrored layout via dir="rtl". */
+html[lang="ar"] {
+  --font-display: var(--font-amiri), "Times New Roman", serif;
+  --font-sans: var(--font-noto-arabic), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-noto-arabic), ui-sans-serif, system-ui, sans-serif;
+}
+html[lang="ar"] body {
+  font-family: var(--font-sans);
+}
+html[lang="ar"] * {
+  letter-spacing: 0 !important;
+}
+html[lang="ar"] em,
+html[lang="ar"] i,
+html[lang="ar"] .italic {
+  font-style: normal;
+  font-weight: 700;
+}

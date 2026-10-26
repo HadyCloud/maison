@@ -5,10 +5,10 @@ import { useTransition } from "react";
 import { type Dictionary, LANG_COOKIE, type Lang } from "@/i18n";
 import { cn } from "@/lib/format";
 
-const LANGS: Lang[] = ["fr", "en"];
+const LANGS: Lang[] = ["fr", "en", "ar"];
 
 /**
- * FR · EN buttons. Switching stays on the same page: it stores the choice in a small preference cookie
+ * FR · EN · AR buttons. Switching stays on the same page: it stores the choice in a small preference cookie
  * (only set when the visitor clicks) and asks the server to re-render the page in that language.
  */
 export function LangToggle({ dict, className }: { dict: Dictionary; className?: string }) {

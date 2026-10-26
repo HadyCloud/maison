@@ -143,7 +143,7 @@ async function main() {
     ? `<g transform="translate(${metro.x} ${metro.y})"><circle r="17" fill="#2E431A"/><path d="M-7 6V-6L0 2 7-6V6" fill="none" stroke="#F4EEE1" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>`
     : "";
   // Static, lazy-loaded SVG (keeps ~40 KB of path data out of the HTML and the RSC payload).
-  // Palette: sand ground, oak streets, Gambetta in walnut, brand-green pin.
+  // Palette: sand ground, oak streets, Gambetta in walnut, red location pin, green métro marker.
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}">
 <title>Plan, Maison L, 324 rue Léon Gambetta, Lille (© OpenStreetMap contributors, ODbL)</title>
 <rect width="${W}" height="${H}" fill="#EDE3CC"/>
@@ -159,7 +159,7 @@ async function main() {
 <path d="${layers.gambetta.join("")}" stroke="#F4EEE1" stroke-width="1.6" stroke-dasharray="1 7"/>
 </g>
 ${metroMark}
-<g transform="translate(${HALF_W} ${HALF_H})"><circle r="50" fill="#2E431A" fill-opacity=".12"/><circle r="24" fill="#2E431A"/><circle r="24" fill="none" stroke="#F4EEE1" stroke-width="3.5"/><circle r="7" fill="#F4EEE1"/></g>
+<g transform="translate(${HALF_W} ${HALF_H})"><ellipse cy="2" rx="26" ry="9" fill="#2a1a10" fill-opacity=".28"/><g transform="scale(1.9)"><path d="M0 0C-5-11-23-26-23-45a23 23 0 0 1 46 0C23-26 5-11 0 0Z" fill="#D9392B" stroke="#8F1D14" stroke-width="1.6"/><circle cy="-45" r="9" fill="#fff"/></g></g>
 </svg>
 `;
   writeFileSync(OUT, svg);

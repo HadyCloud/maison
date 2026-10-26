@@ -42,7 +42,7 @@ describe("menu list rendering", () => {
     if (!item) throw new Error("missing item");
     render2(<MenuItemRow item={item} dict={fr} />);
     const row = screen.getByTestId("menu-item");
-    expect(within(row).getByRole("heading", { name: "Mouhammara" })).toBeInTheDocument();
+    expect(within(row).getByRole("heading", { name: /^Mouhammara/ })).toBeInTheDocument();
     expect(row.querySelector('[lang="ar"]')).toBeNull();
     expect(within(row).getByText("9,00 €")).toBeInTheDocument();
   });

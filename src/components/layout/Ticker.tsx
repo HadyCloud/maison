@@ -15,7 +15,10 @@ export function Ticker({ dict }: { dict: Dictionary }) {
     </ul>
   );
   return (
-    <div className="ticker theme-wood wood-grain relative flex h-[var(--ticker-h)] items-center overflow-hidden bg-surface text-fg">
+    <div
+      dir="ltr"
+      className="ticker theme-wood wood-grain relative flex h-[var(--ticker-h)] items-center overflow-hidden bg-surface text-fg"
+    >
       <div className="ticker-track">
         {row(false)}
         {row(true)}

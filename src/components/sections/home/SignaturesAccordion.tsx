@@ -24,7 +24,7 @@ export function SignaturesAccordion({
 }) {
   const [active, setActive] = useState(0);
   return (
-    <div className="hidden pt-10 pb-24 lg:ml-[var(--align-l,var(--gutter))] lg:mr-[var(--align-r,var(--gutter))] lg:block">
+    <div className="hidden pt-10 pb-24 lg:ms-[var(--align-l,var(--gutter))] lg:me-[var(--align-r,var(--gutter))] lg:block">
       <div
         className="grid h-[clamp(26rem,56svh,35rem)] overflow-hidden rounded-[1.75rem] transition-[grid-template-columns] duration-700 ease-house"
         style={{
@@ -98,7 +98,12 @@ export function SignaturesAccordion({
                   {item.description[lang] && (
                     <span className="max-w-[36ch] text-paper/85">{item.description[lang]}</span>
                   )}
-                  <span className="label mt-2">{cta} →</span>
+                  <span className="label mt-2">
+                    {cta}{" "}
+                    <span aria-hidden="true" className="inline-block rtl:-scale-x-100">
+                      →
+                    </span>
+                  </span>
                 </span>
               </TransitionLink>
             </article>
