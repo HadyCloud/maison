@@ -51,25 +51,24 @@ export function MenuTabs({ tabs, label }: { tabs: Tab[]; label: string }) {
       data-testid="menu-tabs"
       className="sticky top-[var(--header-h)] z-30 border-rule border-b bg-surface"
     >
-      <div
-        ref={rowRef}
-        className="container-x mx-auto flex w-fit max-w-full gap-2 md:gap-1 overflow-x-auto py-2 [scrollbar-width:none]"
-      >
-        {tabs.map((t) => (
-          <a
-            key={t.id}
-            href={`#${t.id}`}
-            data-tab={t.id}
-            onClick={(e) => go(e, t.id)}
-            aria-current={active === t.id ? "true" : undefined}
-            className={cn(
-              "label inline-flex shrink-0 items-center rounded-full px-4 md:px-3 transition-colors duration-500 min-h-9 border-0",
-              active === t.id ? "bg-forest text-paper" : "bg-paper-deep text-muted hover:text-fg",
-            )}
-          >
-            {t.title}
-          </a>
-        ))}
+      <div ref={rowRef} className="container-x relative overflow-x-auto py-2 [scrollbar-width:none]">
+        <div className="mx-auto flex w-full min-w-max max-w-[83rem] gap-2 md:gap-1 lg:justify-between">
+          {tabs.map((t) => (
+            <a
+              key={t.id}
+              href={`#${t.id}`}
+              data-tab={t.id}
+              onClick={(e) => go(e, t.id)}
+              aria-current={active === t.id ? "true" : undefined}
+              className={cn(
+                "label inline-flex shrink-0 items-center rounded-full px-4 md:px-3 transition-colors duration-500 min-h-9 border-0",
+                active === t.id ? "bg-forest text-paper" : "bg-paper-deep text-muted hover:text-fg",
+              )}
+            >
+              {t.title}
+            </a>
+          ))}
+        </div>
       </div>
     </nav>
   );

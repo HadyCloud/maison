@@ -13,8 +13,8 @@ export function MenuItemRow({ item, dict }: { item: MenuItem; dict: Dictionary }
       data-testid="menu-item"
       className={cn(
         "grid grid-cols-[1fr_4rem] gap-x-5 border-rule border-b py-5 sm:grid-cols-[1fr_5rem] sm:gap-x-6",
-        "lg:items-center lg:gap-x-6 lg:rounded-[1.5rem] lg:border-0 lg:bg-paper-deep/60 lg:p-5",
-        photoId ? "lg:grid-cols-[8.5rem_1fr]" : "lg:grid-cols-1",
+        "lg:min-h-[12.1rem] lg:items-center lg:gap-x-7 lg:rounded-[1.5rem] lg:border-0 lg:bg-paper-deep/60 lg:p-5",
+        photoId ? "lg:grid-cols-[9.35rem_1fr]" : "lg:grid-cols-1",
       )}
     >
       <div className="min-w-0 lg:order-2">
@@ -41,7 +41,7 @@ export function MenuItemRow({ item, dict }: { item: MenuItem; dict: Dictionary }
         )}
       </div>
       {photoId && (
-        <picture className="block size-16 self-start overflow-hidden rounded-xl bg-paper-deep sm:size-20 lg:order-1 lg:size-[8.5rem] lg:self-center">
+        <picture className="block size-16 self-start overflow-hidden rounded-xl bg-paper-deep sm:size-20 lg:order-1 lg:size-[9.35rem] lg:self-center">
           <source type="image/avif" srcSet={thumbSrc(photoId, "avif")} />
           <img
             src={thumbSrc(photoId, "webp")}
