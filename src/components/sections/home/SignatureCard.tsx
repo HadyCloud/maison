@@ -27,7 +27,7 @@ export function SignatureCard({
       >
         {String(index + 1).padStart(2, "0")}
       </span>
-      <TransitionLink href={`${routes.menu[lang]}#${item.id}`} className="block" aria-label={item.name[lang]}>
+      <TransitionLink href={`${routes.menu}#${item.id}`} className="block" aria-label={item.name[lang]}>
         <ImageReveal className="aspect-[4/5] w-full" delay={0.05 * index}>
           <Picture
             id={photoId}

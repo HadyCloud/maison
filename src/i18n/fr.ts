@@ -15,7 +15,8 @@ export const fr = {
     openMenu: "Ouvrir le menu",
     closeMenu: "Fermer le menu",
     primaryNav: "Navigation principale",
-    langSwitch: "read in English",
+    language: "Langue",
+    langNames: { fr: "Français", en: "English" },
     home: "Maison L, accueil",
     phoneCall: "Appeler Maison L",
     categories: "Catégories de la carte",
@@ -25,8 +26,6 @@ export const fr = {
     carte: "La Carte",
     info: "Infos",
     reserve: "Réserver",
-    langShort: "EN",
-    langCurrent: "FR",
   },
   hero: {
     tagline: "La générosité, *à voix basse.*",
@@ -85,7 +84,8 @@ export const fr = {
       office: "Siège\u00a0:",
       publisher: "Directeur de la publication\u00a0:",
       host: "Hébergeur\u00a0:",
-      privacy: "Ce site n'utilise ni cookies ni outil de mesure d'audience.",
+      privacy:
+        "Ce site n'utilise aucun traceur ni outil de mesure d'audience. Un cookie de préférence de langue n'est déposé que si vous changez de langue.",
       map: "Plan © les contributeurs d'OpenStreetMap (ODbL).",
     },
   },

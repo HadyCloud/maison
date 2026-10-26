@@ -16,7 +16,8 @@ export const en = {
     openMenu: "Open menu",
     closeMenu: "Close menu",
     primaryNav: "Main navigation",
-    langSwitch: "lire en français",
+    language: "Language",
+    langNames: { fr: "Français", en: "English" },
     home: "Maison L, home",
     phoneCall: "Call Maison L",
     categories: "Menu categories",
@@ -26,8 +27,6 @@ export const en = {
     carte: "Menu",
     info: "Info",
     reserve: "Book",
-    langShort: "FR",
-    langCurrent: "EN",
   },
   hero: {
     tagline: "Generosity, *softly spoken.*",
@@ -86,7 +85,8 @@ export const en = {
       office: "Registered office:",
       publisher: "Publisher:",
       host: "Hosting:",
-      privacy: "This site sets no cookies and uses no analytics.",
+      privacy:
+        "This site uses no trackers and no analytics. A language-preference cookie is set only if you change language.",
       map: "Map © OpenStreetMap contributors (ODbL).",
     },
   },

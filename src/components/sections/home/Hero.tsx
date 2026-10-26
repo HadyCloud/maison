@@ -6,7 +6,7 @@ import { Emphasis } from "@/components/ui/Emphasis";
 import { Logo } from "@/components/ui/Logo";
 import { Picture } from "@/components/ui/Picture";
 import { bookingHref } from "@/config/site";
-import { type Dictionary, type Lang, routes } from "@/i18n";
+import { type Dictionary, routes } from "@/i18n";
 import { HeroVideo } from "./HeroVideo";
 import { ServiceStatus } from "./ServiceStatus";
 
@@ -34,7 +34,6 @@ function Poster() {
 }
 
 export function Hero({ dict }: { dict: Dictionary }) {
-  const lang = dict.lang as Lang;
   // The lockup is a CSS mask (fetched in CORS mode): preload it to match.
   preload("/brand/logo.svg", { as: "image", crossOrigin: "anonymous", fetchPriority: "high" });
   const video = hasVideo();
@@ -76,7 +75,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
             <ButtonLink href={bookingHref()} variant="fill" testId="hero-reserve">
               {dict.hero.reserve}
             </ButtonLink>
-            <ButtonLink href={routes.menu[lang]} variant="underline">
+            <ButtonLink href={routes.menu} variant="underline">
               {dict.hero.menu}
             </ButtonLink>
           </div>

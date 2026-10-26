@@ -4,14 +4,12 @@ import { useLenis } from "lenis/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { ComponentProps, MouseEvent } from "react";
-import { langFromPath } from "@/i18n";
 import { useCurtainNavigate } from "./Curtain";
 
 type Props = Omit<ComponentProps<typeof Link>, "href"> & { href: string };
 
 /**
- * Internal link that plays the page curtain, smooth-scrolls same-page anchors with Lenis,
- * and does a hard load when switching language (FR/EN live under different root layouts).
+ * Internal link: plays the page curtain between pages and smooth-scrolls same-page anchors with Lenis.
  */
 export function TransitionLink({ href, onClick, ...rest }: Props) {
   const navigate = useCurtainNavigate();
@@ -39,7 +37,7 @@ export function TransitionLink({ href, onClick, ...rest }: Props) {
       }
       return;
     }
-    navigate(url.pathname + url.hash, { hard: langFromPath(url.pathname) !== langFromPath(pathname) });
+    navigate(url.pathname + url.hash);
   };
 
   return <Link href={href} onClick={handle} {...rest} />;

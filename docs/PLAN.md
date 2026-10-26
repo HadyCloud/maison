@@ -2,10 +2,9 @@
 
 1. **Stack.** Next.js 16 App Router, React 19 and TypeScript strict (`noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`). Tailwind v4 is CSS-first, with `@theme` tokens and Tailwind's default palette, radii and shadows wiped. Also Motion, Lenis, Zod, Biome and pnpm.
 2. **Routes.** There are two root layouts:
-   - `app/(fr)` serves `/` and `/menu` with `<html lang="fr">`.
-   - `app/(en)/en` serves `/en` and `/en/menu`.
-   - Language pairs live in `src/i18n` and drive the toggle, hreflang and the sitemap.
-3. **Rendering.** Everything is statically prerendered. Server Components are the default. Client components are reserved for interactive leaves: hero video, live "ce soir" line, Lenis, curtain, cursor, header, mobile overlay, scroll-spy, hover preview, photo sheet and the signatures scroll.
+   - `app/layout.tsx` serves `/` and `/menu`; `<html lang>` follows the visitor's language.
+   - French is the default. The FR · EN buttons set a `lang` cookie and call `router.refresh()`, so the same URL re-renders in English (`src/lib/lang.ts` reads the cookie on the server).
+3. **Rendering.** Pages are rendered on demand (they read the language cookie). Server Components are the default. Client components are reserved for interactive leaves: hero video, live "ce soir" line, Lenis, curtain, cursor, header, mobile overlay, scroll-spy, hover preview, photo sheet and the signatures scroll.
 4. **Content as data.**
    - `src/config/site.ts` holds the facts, each with a `confirmed` flag.
    - `src/content/menu.ts` is the menu, Zod-validated.
@@ -51,3 +50,7 @@ Ideas borrowed (not copied) from La Magie de Paris and Za'atar: a top ticker, al
 - Header: wood ticker, then the nav row, transparent with light text over the hero and beige with green text after scrolling.
 - Home: hero (photo/video, warm dark overlay), signatures on beige, Infos on green with a beige map in a thin frame, wood footer.
 - La Carte: green title band, beige body with sticky tabs, wood panel for takeaway.
+
+## Revision (Oct 2026): one URL per page
+
+The separate `/en` routes were removed. There is no hreflang or language alternate any more; the sitemap lists `/` and `/menu` only.

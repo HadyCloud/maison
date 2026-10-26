@@ -2,7 +2,7 @@
 
 Site for **Maison L**, a Lebanese restaurant at 324 rue Léon Gambetta, Lille. Built with Next.js 16 (App Router, React 19), TypeScript strict, Tailwind v4, Motion, Lenis and Zod, using pnpm and Biome.
 
-Two pages, in French and English: Home (hero, signatures, Infos with map and contact) at `/` and `/en`, and La Carte at `/menu` and `/en/menu`. The "Infos" link in the top bar scrolls to the last section of the home page. The legal mentions are small print in the footer. Every page is statically prerendered. There are no trackers and no cookies, so there is no cookie banner. If analytics are added later, use a cookieless tool (e.g. Vercel Web Analytics or Plausible) and update the footer legal text.
+Two pages: Home (hero, signatures, Infos with map and contact) at `/`, and La Carte at `/menu`. The site is in French; the **FR · EN** buttons in the top bar switch the text in place, without changing the URL. The choice is remembered in a small `lang` cookie that is only set when a visitor clicks EN (no trackers, no analytics, so no cookie banner). Pages are rendered per request because they read that cookie. The "Infos" link in the top bar scrolls to the last section of the home page. The legal mentions are small print in the footer. If analytics are added later, use a cookieless tool (e.g. Vercel Web Analytics or Plausible) and update the footer legal text.
 
 ## Run it
 

@@ -4,7 +4,7 @@ import { expectNoA11yViolations } from "./axe";
 const BOOKING = process.env.NEXT_PUBLIC_RESERVATION_URL || "tel:+33955316701";
 
 test("reservation links point to the booking URL or the phone", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/", { waitUntil: "networkidle" });
   await expect(page.getByTestId("hero-reserve")).toHaveAttribute("href", BOOKING);
 
   await page

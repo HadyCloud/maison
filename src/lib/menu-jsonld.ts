@@ -6,10 +6,10 @@ export function menuJsonLd(menu: Menu, lang: Lang) {
   return {
     "@context": "https://schema.org",
     "@type": "Menu",
-    "@id": `${SITE_URL}${routes.menu[lang]}#menu`,
+    "@id": `${SITE_URL}${routes.menu}#menu`,
     name: lang === "fr" ? "La Carte de Maison L" : "The Maison L menu",
     inLanguage: lang,
-    url: `${SITE_URL}${routes.menu[lang]}`,
+    url: `${SITE_URL}${routes.menu}`,
     hasMenuSection: menu.categories.map((c) => ({
       "@type": "MenuSection",
       name: c.title[lang],

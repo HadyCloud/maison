@@ -1,14 +1,12 @@
-import { type Dictionary, type Lang, routes } from "@/i18n";
+import { type Dictionary, routes } from "@/i18n";
 
 export type NavItem = { href: string; label: string };
 
 /** Home, the menu page, and the Infos section (map + contact) at the bottom of the home page. */
 export function navItems(dict: Dictionary): NavItem[] {
-  const lang = dict.lang as Lang;
-  const home = routes.home[lang];
   return [
-    { href: home, label: dict.nav.home },
-    { href: routes.menu[lang], label: dict.nav.carte },
-    { href: `${home === "/" ? "" : home}/#infos`, label: dict.nav.info },
+    { href: routes.home, label: dict.nav.home },
+    { href: routes.menu, label: dict.nav.carte },
+    { href: `${routes.home}#infos`, label: dict.nav.info },
   ];
 }

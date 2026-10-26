@@ -4,7 +4,7 @@ import { useMotionValueEvent, useScroll } from "motion/react";
 import { useState } from "react";
 import { TransitionLink } from "@/components/motion/TransitionLink";
 import { Logo } from "@/components/ui/Logo";
-import { type Dictionary, type Lang, routes } from "@/i18n";
+import { type Dictionary, routes } from "@/i18n";
 import { cn } from "@/lib/format";
 import { LangToggle } from "./LangToggle";
 import { MobileMenu } from "./MobileMenu";
@@ -19,7 +19,6 @@ export function Header({ dict }: { dict: Dictionary }) {
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
   useMotionValueEvent(scrollY, "change", (y) => setScrolled(y > 32));
-  const lang = dict.lang as Lang;
 
   return (
     <header className="fixed inset-x-0 top-0 z-[75]">
@@ -32,7 +31,7 @@ export function Header({ dict }: { dict: Dictionary }) {
       >
         <div className="container-x flex h-full items-center justify-between gap-6">
           <TransitionLink
-            href={routes.home[lang]}
+            href={routes.home}
             aria-label={dict.a11y.home}
             className="flex shrink-0 items-center text-fg"
           >

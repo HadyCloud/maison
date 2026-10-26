@@ -8,7 +8,7 @@ import { Logo } from "@/components/ui/Logo";
 const HALF = 0.3; // 300 ms cover + 300 ms reveal = 600 ms
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-type Navigate = (href: string, opts?: { hard?: boolean }) => void;
+type Navigate = (href: string) => void;
 const CurtainContext = createContext<Navigate | null>(null);
 
 export function useCurtainNavigate(): Navigate {
@@ -25,8 +25,8 @@ export function CurtainProvider({ children }: { children: ReactNode }) {
   const fromPath = useRef(pathname);
 
   const navigate = useCallback<Navigate>(
-    (href, opts) => {
-      const go = () => (opts?.hard ? window.location.assign(href) : router.push(href));
+    (href) => {
+      const go = () => router.push(href);
       if (reduce) return go();
       fromPath.current = window.location.pathname;
       setPhase("cover");

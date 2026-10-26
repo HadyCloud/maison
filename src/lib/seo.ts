@@ -8,23 +8,19 @@ export function pageMetadata(opts: {
   title: string;
   description: string;
 }): Metadata {
-  const pair = routes[opts.route];
+  const path = routes[opts.route];
   return {
     metadataBase: new URL(SITE_URL),
     title: opts.title,
     description: opts.description,
-    alternates: {
-      canonical: pair[opts.lang],
-      languages: { fr: pair.fr, en: pair.en, "x-default": pair.fr },
-    },
+    alternates: { canonical: path },
     openGraph: {
       type: "website",
       siteName: site.name,
       title: opts.title,
       description: opts.description,
-      url: pair[opts.lang],
+      url: path,
       locale: opts.lang === "fr" ? "fr_FR" : "en_GB",
-      alternateLocale: opts.lang === "fr" ? "en_GB" : "fr_FR",
       images: [
         { url: "/og.jpg", width: 1200, height: 630, alt: "Maison L, cuisine authentique libanaise, Lille" },
       ],
@@ -43,7 +39,7 @@ export function pageMetadata(opts: {
 const DAY_NAMES = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] as const;
 
 /** Restaurant JSON-LD. No aggregateRating: self-serving review markup is against Google's guidelines. */
-export function restaurantJsonLd(lang: Lang) {
+export function restaurantJsonLd() {
   const openingHoursSpecification = Object.entries(site.hours.week).flatMap(([day, windows]) =>
     windows.map((w) => ({
       "@type": "OpeningHoursSpecification",
@@ -57,7 +53,7 @@ export function restaurantJsonLd(lang: Lang) {
     "@type": "Restaurant",
     "@id": `${SITE_URL}/#restaurant`,
     name: site.name,
-    url: `${SITE_URL}${routes.home[lang]}`,
+    url: `${SITE_URL}${routes.home}`,
     image: [`${SITE_URL}/og.jpg`, `${SITE_URL}/images/salle-1600.webp`],
     telephone: site.phone.primary.value,
     servesCuisine: "Lebanese",
@@ -73,8 +69,8 @@ export function restaurantJsonLd(lang: Lang) {
     geo: { "@type": "GeoCoordinates", latitude: site.address.geo.lat, longitude: site.address.geo.lng },
     hasMap: site.google.mapsUrl,
     openingHoursSpecification,
-    menu: `${SITE_URL}${routes.menu[lang]}`,
-    hasMenu: `${SITE_URL}${routes.menu[lang]}`,
+    menu: `${SITE_URL}${routes.menu}`,
+    hasMenu: `${SITE_URL}${routes.menu}`,
     sameAs: [site.social.instagram, site.social.facebook, site.social.tiktok].filter(Boolean),
     paymentAccepted: "Ticket Restaurant",
   };

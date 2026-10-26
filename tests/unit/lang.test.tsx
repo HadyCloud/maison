@@ -1,39 +1,20 @@
-import { render, screen } from "@testing-library/react";
-import type { ReactNode } from "react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-const nav = vi.hoisted(() => ({ pathname: "/menu", push: vi.fn() }));
-vi.mock("next/navigation", () => ({
-  usePathname: () => nav.pathname,
-  useRouter: () => ({ push: nav.push }),
-}));
-vi.mock("next/link", () => ({
-  default: ({ href, children, ...rest }: { href: string; children: ReactNode }) => (
-    <a href={href} {...rest}>
-      {children}
-    </a>
-  ),
-}));
+const router = vi.hoisted(() => ({ refresh: vi.fn() }));
+vi.mock("next/navigation", () => ({ useRouter: () => router }));
 
 import { LangToggle } from "@/components/layout/LangToggle";
-import { alternatePath, dictionaries, langFromPath } from "@/i18n";
+import { dictionaries, LANG_COOKIE, parseLang } from "@/i18n";
 import { en } from "@/i18n/en";
 import { fr } from "@/i18n/fr";
 
-describe("language routing", () => {
-  it("maps every FR route to its EN twin and back", () => {
-    expect(alternatePath("/", "en")).toBe("/en");
-    expect(alternatePath("/menu", "en")).toBe("/en/menu");
-    expect(alternatePath("/en/menu", "fr")).toBe("/menu");
-    expect(alternatePath("/en/", "fr")).toBe("/");
-    expect(alternatePath("/mentions-legales", "en")).toBe("/en");
-    expect(alternatePath("/unknown", "en")).toBe("/en");
-  });
-
-  it("detects the language from the path", () => {
-    expect(langFromPath("/en/menu")).toBe("en");
-    expect(langFromPath("/menu")).toBe("fr");
-    expect(langFromPath("/english")).toBe("fr");
+describe("language preference", () => {
+  it("is French unless the cookie says English", () => {
+    expect(parseLang(undefined)).toBe("fr");
+    expect(parseLang("")).toBe("fr");
+    expect(parseLang("de")).toBe("fr");
+    expect(parseLang("en")).toBe("en");
   });
 
   it("keeps both dictionaries structurally identical", () => {
@@ -47,21 +28,29 @@ describe("language routing", () => {
 
 describe("<LangToggle>", () => {
   beforeEach(() => {
-    nav.pathname = "/menu";
+    router.refresh.mockClear();
+    // biome-ignore lint/suspicious/noDocumentCookie: resetting the cookie jar between tests
+    document.cookie = `${LANG_COOKIE}=; max-age=0; path=/`;
   });
 
-  it("links the French menu to the English menu with hreflang", () => {
+  it("marks the current language and offers the other one", () => {
     render(<LangToggle dict={fr} />);
-    const link = screen.getByTestId("lang-toggle");
-    expect(link).toHaveAttribute("href", "/en/menu");
-    expect(link).toHaveAttribute("hreflang", "en");
-    expect(link).toHaveAccessibleName("EN, read in English");
+    expect(screen.getByTestId("lang-fr")).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByTestId("lang-en")).toHaveAttribute("aria-pressed", "false");
+    expect(screen.getByTestId("lang-en")).toHaveAccessibleName("EN, English");
   });
 
-  it("links the English home back to the French home", () => {
-    nav.pathname = "/en";
+  it("stores the choice and re-renders the same page, without navigating", () => {
+    render(<LangToggle dict={fr} />);
+    fireEvent.click(screen.getByTestId("lang-en"));
+    expect(document.cookie).toContain(`${LANG_COOKIE}=en`);
+    expect(router.refresh).toHaveBeenCalledTimes(1);
+  });
+
+  it("does nothing when the current language is clicked", () => {
     render(<LangToggle dict={en} />);
-    expect(screen.getByTestId("lang-toggle")).toHaveAttribute("href", "/");
-    expect(screen.getByText("EN")).toHaveAttribute("aria-current", "true");
+    fireEvent.click(screen.getByTestId("lang-en"));
+    expect(router.refresh).not.toHaveBeenCalled();
+    expect(document.cookie).not.toContain(`${LANG_COOKIE}=`);
   });
 });

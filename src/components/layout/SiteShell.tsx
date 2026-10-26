@@ -27,7 +27,7 @@ export function SiteShell({ lang, children }: { lang: Lang; children: ReactNode 
           <Footer dict={dict} />
         </Providers>
         <div aria-hidden="true" className="grain" />
-        <JsonLd data={restaurantJsonLd(lang)} />
+        <JsonLd data={restaurantJsonLd()} />
       </body>
     </html>
   );

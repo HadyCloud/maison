@@ -2,7 +2,7 @@ import { TransitionLink } from "@/components/motion/TransitionLink";
 import { Arcade } from "@/components/ui/Arcade";
 import { Logo } from "@/components/ui/Logo";
 import { site } from "@/config/site";
-import { type Dictionary, type Lang, routes } from "@/i18n";
+import { type Dictionary, routes } from "@/i18n";
 
 function Ext({ href, children }: { href: string; children: string }) {
   return (
@@ -19,7 +19,6 @@ function Ext({ href, children }: { href: string; children: string }) {
 
 /** Slim footer: logo, social links, sister venue, and the legal mentions as small print (no separate page). */
 export function Footer({ dict }: { dict: Dictionary }) {
-  const lang = dict.lang as Lang;
   const f = dict.footer;
   const n = f.legalNotes;
   const l = site.legal;
@@ -28,7 +27,7 @@ export function Footer({ dict }: { dict: Dictionary }) {
       <Arcade className="text-wood-dark" />
       <div className="container-x py-12 md:py-16">
         <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-          <TransitionLink href={routes.home[lang]} aria-label={dict.a11y.home} className="text-fg">
+          <TransitionLink href={routes.home} aria-label={dict.a11y.home} className="text-fg">
             <Logo className="w-[260px]" />
           </TransitionLink>
           <ul className="label flex flex-wrap gap-x-8 gap-y-3">
@@ -48,7 +47,7 @@ export function Footer({ dict }: { dict: Dictionary }) {
             </li>
             <li>
               <TransitionLink
-                href={`${routes.menu[lang]}#allergenes`}
+                href={`${routes.menu}#allergenes`}
                 className="inline-flex min-h-6 items-center text-fg transition-colors duration-500 hover:text-accent"
               >
                 {f.allergens}
