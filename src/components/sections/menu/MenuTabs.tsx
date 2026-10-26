@@ -53,7 +53,7 @@ export function MenuTabs({ tabs, label }: { tabs: Tab[]; label: string }) {
     >
       <div
         ref={rowRef}
-        className="container-x flex gap-6 overflow-x-auto py-1 [scrollbar-width:none] max-md:gap-2 max-md:py-2"
+        className="container-x mx-auto flex w-fit max-w-full gap-2 md:gap-1 overflow-x-auto py-2 [scrollbar-width:none]"
       >
         {tabs.map((t) => (
           <a
@@ -63,10 +63,8 @@ export function MenuTabs({ tabs, label }: { tabs: Tab[]; label: string }) {
             onClick={(e) => go(e, t.id)}
             aria-current={active === t.id ? "true" : undefined}
             className={cn(
-              "label inline-flex min-h-11 shrink-0 items-center border-b px-0.5 transition-colors duration-500 max-md:min-h-9 max-md:rounded-full max-md:border-0 max-md:px-4",
-              active === t.id
-                ? "border-accent text-fg max-md:bg-forest max-md:text-paper"
-                : "border-transparent text-muted max-md:bg-paper-deep",
+              "label inline-flex shrink-0 items-center rounded-full px-4 md:px-3 transition-colors duration-500 min-h-9 border-0",
+              active === t.id ? "bg-forest text-paper" : "bg-paper-deep text-muted hover:text-fg",
             )}
           >
             {t.title}

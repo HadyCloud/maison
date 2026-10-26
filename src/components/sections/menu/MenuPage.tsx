@@ -15,7 +15,7 @@ export function MenuPage({ dict }: { dict: Dictionary }) {
   return (
     <>
       <header className="theme-forest bg-surface pt-[calc(var(--header-h)+clamp(1.5rem,4vh,2.5rem))] pb-12 md:pb-14">
-        <div className="container-x mx-auto max-w-3xl">
+        <div className="container-x mx-auto max-w-4xl md:text-center">
           <h1 className="display text-display text-fg">
             <span className="block overflow-hidden pb-[0.08em]">
               <span className="rise [animation-delay:120ms]">
@@ -29,16 +29,18 @@ export function MenuPage({ dict }: { dict: Dictionary }) {
       <div className="theme-paper relative bg-surface pb-24">
         <Arcade className="text-paper" />
         <MenuTabs tabs={tabs} label={dict.a11y.categories} />
-        <div id="menu-list" className="container-x mx-auto max-w-3xl">
+        <div id="menu-list">
           {dineInCategories.map((c) => (
             <MenuSection key={c.id} category={c} dict={dict} />
           ))}
-          {takeawayCategories.map((c) => (
-            <Takeaway key={c.id} category={c} dict={dict} />
-          ))}
-          <p id="allergenes" className="label mt-12 text-muted">
-            {dict.menuPage.allergens}
-          </p>
+          <div className="container-x mx-auto max-w-4xl">
+            {takeawayCategories.map((c) => (
+              <Takeaway key={c.id} category={c} dict={dict} />
+            ))}
+            <p id="allergenes" className="label mt-12 text-muted md:text-center">
+              {dict.menuPage.allergens}
+            </p>
+          </div>
         </div>
       </div>
 
