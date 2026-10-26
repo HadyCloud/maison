@@ -14,81 +14,92 @@ export function Info({ dict }: { dict: Dictionary }) {
     <section
       id="infos"
       aria-labelledby="info-title"
-      className="theme-forest relative bg-surface py-[clamp(3rem,7vw,6rem)]"
+      className="theme-sand relative bg-surface py-[clamp(2.5rem,5vw,4rem)]"
     >
-      <Arcade className="text-forest" />
+      <Arcade className="text-paper-deep" />
       <div className="container-x">
-        <h2 id="info-title" className="display text-headline text-fg">
-          <Emphasis text={i.title} />
-        </h2>
-        <Ornament className="mt-4" />
-
-        <div className="grid-12 mt-8 gap-y-8 md:mt-12">
-          <div className="col-span-12 lg:col-span-7">
-            <MapPlan dict={dict} />
+        <div className="flex items-end justify-between gap-6">
+          <div>
+            <h2 id="info-title" className="display text-headline text-fg">
+              <Emphasis text={i.title} />
+            </h2>
+            <Ornament className="mt-3" />
           </div>
+          <ul className="label hidden flex-wrap justify-end gap-x-5 gap-y-1 text-muted md:flex">
+            {i.amenities.map((a) => (
+              <li key={a} className="flex items-center gap-2">
+                <span aria-hidden="true" className="block size-1 rotate-45 bg-accent" />
+                {a}
+              </li>
+            ))}
+          </ul>
+        </div>
 
-          <div className="col-span-12 flex flex-col gap-7 lg:col-span-5">
-            <div>
-              <p className="label mb-3 text-accent">{i.address}</p>
-              <address className="text-lead text-fg not-italic leading-relaxed">
-                {site.address.street}
-                <br />
-                {site.address.postalCode.value} {site.address.city}
-              </address>
-              <p className="label mt-2 text-accent">{site.address.metro}</p>
-              <ButtonLink href={site.google.directionsUrl} variant="underline" className="mt-2">
-                {i.directions} ↗
-              </ButtonLink>
-            </div>
+        <div className="mt-5 grid items-stretch gap-4 md:mt-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-8">
+          <MapPlan dict={dict} />
 
-            <div>
-              <p className="label mb-3 text-accent">{i.byPhone}</p>
-              <a
-                href={telHref()}
-                className="display inline-block text-[clamp(2.25rem,4.4vw,3.75rem)] text-fg leading-none tabular"
-                aria-label={`${site.phone.primary.display}, ${dict.a11y.phoneCall}`}
-                data-testid="reserve-phone"
-              >
-                {site.phone.primary.display}
-              </a>
-              {site.reservationUrl && (
-                <div className="mt-6">
-                  <ButtonLink href={site.reservationUrl} variant="fill" testId="reserve-online">
-                    {i.online}
+          <div className="flex flex-col justify-between gap-5 rounded-[1.5rem] bg-paper p-5 shadow-[0_1px_0_rgb(0_0_0/0.04)] md:p-8">
+            <div className="grid gap-5 sm:grid-cols-2">
+              <div className="flex flex-col gap-5">
+                <div>
+                  <p className="label mb-2 text-accent">{i.address}</p>
+                  <address className="text-fg not-italic leading-snug">
+                    {site.address.street}
+                    <br />
+                    {site.address.postalCode.value} {site.address.city}
+                  </address>
+                  <p className="label mt-1.5 text-[0.65rem] text-muted">{site.address.metro}</p>
+                  <ButtonLink href={site.google.directionsUrl} variant="underline" className="mt-2">
+                    {i.directions} ↗
                   </ButtonLink>
                 </div>
-              )}
+                <div>
+                  <p className="label mb-2 text-accent">{i.byPhone}</p>
+                  <a
+                    href={telHref()}
+                    className="display inline-block text-[clamp(1.75rem,3vw,2.25rem)] text-fg leading-none tabular"
+                    aria-label={`${site.phone.primary.display}, ${dict.a11y.phoneCall}`}
+                    data-testid="reserve-phone"
+                  >
+                    {site.phone.primary.display}
+                  </a>
+                  {site.reservationUrl && (
+                    <div className="mt-3">
+                      <ButtonLink href={site.reservationUrl} variant="fill" testId="reserve-online">
+                        {i.online}
+                      </ButtonLink>
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div>
+                <p className="label mb-2 text-accent">{i.hours}</p>
+                <HoursTable dict={dict} />
+                {!site.hours.confirmed && <p className="mt-2 text-accent text-xs">{i.hoursNote}</p>}
+              </div>
             </div>
 
-            <div>
-              <p className="label mb-3 text-accent">{i.hours}</p>
-              <HoursTable dict={dict} />
-              {!site.hours.confirmed && <p className="mt-3 text-accent text-xs">{i.hoursNote}</p>}
+            <div className="flex flex-col gap-3 border-rule border-t pt-5 md:flex-row md:items-center md:justify-between md:gap-6">
+              <div>
+                <p className="label mb-1 text-accent">{i.privatisation.label}</p>
+                <p className="display text-fg text-lead leading-snug">
+                  <Emphasis text={i.privatisation.line} />
+                </p>
+              </div>
+              <ButtonLink href={telHref()} variant="outline" className="shrink-0 self-start md:self-center">
+                {i.privatisation.cta}
+              </ButtonLink>
             </div>
+            <ul className="label flex flex-wrap gap-x-5 gap-y-1 text-muted md:hidden">
+              {i.amenities.map((a) => (
+                <li key={a} className="flex items-center gap-2">
+                  <span aria-hidden="true" className="block size-1 rotate-45 bg-accent" />
+                  {a}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-
-        <div className="grid-12 mt-10 items-center gap-y-4 border-rule border-y py-6 md:mt-14">
-          <p className="label col-span-12 text-accent md:col-span-2">{i.privatisation.label}</p>
-          <p className="display col-span-12 text-title text-fg md:col-span-7">
-            <Emphasis text={i.privatisation.line} />
-          </p>
-          <div className="col-span-12 md:col-span-3 md:justify-self-end">
-            <ButtonLink href={telHref()} variant="outline">
-              {i.privatisation.cta}
-            </ButtonLink>
-          </div>
-        </div>
-
-        <ul className="label mt-6 flex flex-wrap gap-x-6 gap-y-2 text-fg">
-          {i.amenities.map((a) => (
-            <li key={a} className="flex items-center gap-2">
-              <span aria-hidden="true" className="block size-1 rotate-45 bg-accent" />
-              {a}
-            </li>
-          ))}
-        </ul>
       </div>
     </section>
   );

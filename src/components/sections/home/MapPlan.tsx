@@ -15,7 +15,7 @@ export function MapPlan({ dict }: { dict: Dictionary }) {
   const hasPlan = existsSync(join(process.cwd(), "public", PLAN));
   const arch = { clipPath: "url(#arch-window)" };
   return (
-    <figure className="mx-auto w-full max-w-xl lg:max-w-none">
+    <figure className="mx-auto w-full max-w-xs lg:max-w-none">
       <svg width="0" height="0" aria-hidden="true" focusable="false" className="absolute">
         <clipPath id="arch-window" clipPathUnits="objectBoundingBox">
           <path d="M0 1V0.34C0 0.18 0.36 0.14 0.5 0C0.64 0.14 1 0.18 1 0.34V1Z" />
@@ -27,7 +27,7 @@ export function MapPlan({ dict }: { dict: Dictionary }) {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`${dict.info.directions}, ${dict.info.mapAlt}`}
-          className="block bg-accent p-[5px]"
+          className="block bg-accent/70 p-[3px]"
           style={arch}
         >
           <div className="bg-paper-deep" style={arch}>
@@ -39,10 +39,10 @@ export function MapPlan({ dict }: { dict: Dictionary }) {
                 height={920}
                 loading="lazy"
                 decoding="async"
-                className="block aspect-[5/4] h-auto w-full object-cover lg:aspect-[6/5]"
+                className="block aspect-[3/2] h-auto w-full object-cover lg:aspect-[6/5]"
               />
             ) : (
-              <PhotoPlaceholder label="Plan · Gambetta" className="aspect-[5/4] w-full lg:aspect-[6/5]" />
+              <PhotoPlaceholder label="Plan · Gambetta" className="aspect-[3/2] w-full lg:aspect-[6/5]" />
             )}
           </div>
         </a>

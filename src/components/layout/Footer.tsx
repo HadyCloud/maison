@@ -20,8 +20,6 @@ function Ext({ href, children }: { href: string; children: string }) {
 /** Slim footer: logo, social links, sister venue, and the legal mentions as small print (no separate page). */
 export function Footer({ dict }: { dict: Dictionary }) {
   const f = dict.footer;
-  const n = f.legalNotes;
-  const l = site.legal;
   return (
     <footer className="theme-wood wood-grain relative bg-surface text-fg">
       <Arcade className="text-wood-dark" />
@@ -58,18 +56,9 @@ export function Footer({ dict }: { dict: Dictionary }) {
 
         <p className="mt-5 text-muted text-sm">{f.sister}</p>
 
-        <div className="mt-5 flex flex-col gap-1.5 border-rule border-t pt-4 text-muted text-xs leading-relaxed">
-          <p>
-            © {new Date().getFullYear()} {l.company}, {n.capital} {l.capital}. {l.rcs}. TVA {l.vat}.{" "}
-            {n.office} {l.registeredOffice}.
-          </p>
-          <p>
-            {n.publisher} {l.representative.value}. {n.host} {l.host.name}, {l.host.address}.
-          </p>
-          <p>
-            {n.privacy} {n.map}
-          </p>
-        </div>
+        <p className="mt-5 border-rule border-t pt-4 text-muted text-xs">
+          © {new Date().getFullYear()} Maison L
+        </p>
       </div>
     </footer>
   );
