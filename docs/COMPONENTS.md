@@ -20,7 +20,7 @@ No API key is stored in the repo. `PROMPT.md`, which contains one, is gitignored
 | `ButtonLink.tsx` (CTA hovers) | — | Fill wipes `scaleY` from the bottom (700 ms, house ease); underline links draw left to right. |
 | `Reveal.tsx` (`LineReveal`, `FadeIn`) | Text Reveal (Mask) — soralabs | Lines are authored explicitly (no SplitText dependency); 0.9 s, `cubic-bezier(.22,1,.36,1)`, 90 ms stagger; reduced motion → fade. Hero and `/menu` titles use a pure-CSS `.rise` so the LCP text never waits for hydration. |
 | `ImageReveal.tsx` | Mask Reveal — balick; Scroll Reveal Image — unlumen | Clip-path wipe + scale settle 1.08 → 1 + optional parallax ≤ 8 %. Border-radius animation from the reference removed. |
-| `SignaturesTrack.tsx` (horizontal scroll) | Scroll Horizontal Gallery — motiondotdev; Horizontal Scroll Gallery — pulkitxm | Motion `useScroll` on a pinned section; height computed from the real track width; progress hairline. Mobile and reduced motion → vertical / 3-column grid. |
+| `SignaturesAccordion.tsx` (desktop hover) · `SignaturesStack.tsx` (mobile tap) | Scroll Horizontal Gallery — motiondotdev; Horizontal Scroll Gallery — pulkitxm | Motion `useScroll` on a pinned section; height computed from the real track width; progress hairline. Mobile and reduced motion → vertical / 3-column grid. |
 | `Footer.tsx` | — | Giant cropped wordmark drawn as an SVG `<text>` (decorative, outside contrast audits). |
 | `Curtain.tsx` + `TransitionLink.tsx` | — | 300 ms ink cover + 300 ms reveal; same-page anchors scroll with Lenis; FR↔EN does a hard load (two root layouts). |
 
