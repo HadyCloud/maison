@@ -3,7 +3,7 @@ import type { Review } from "@/content/reviews";
 function Card({ review }: { review: Review }) {
   return (
     <li className="flex w-[15rem] shrink-0 flex-col gap-3 rounded-[1.1rem] bg-paper p-4 text-forest text-sm md:w-[21rem] md:p-5 md:text-base">
-      <p className="leading-relaxed">
+      <p className="line-clamp-3 min-h-[4.875em] leading-relaxed">
         <span aria-hidden="true" className="text-accent">
           «&nbsp;
         </span>
