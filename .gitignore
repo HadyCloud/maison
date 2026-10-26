@@ -1,7 +1,7 @@
 # Raw sources stay local — processed assets live in public/
-photos/
-photos-online/
-video/
+/photos/
+/photos-online/
+/video/
 
 # PROMPT.md contains a third-party API key: never commit it
 PROMPT.md
@@ -29,4 +29,4 @@ test-results/
 
 # Asset pipeline cache
 .cache/
-reports/
+/reports/
