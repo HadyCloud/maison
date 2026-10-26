@@ -21,6 +21,7 @@ export const fr = {
     categories: "Catégories de la carte",
   },
   nav: {
+    home: "Accueil",
     carte: "La Carte",
     info: "Infos",
     reserve: "Réserver",

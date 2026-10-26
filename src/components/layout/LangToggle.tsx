@@ -10,12 +10,12 @@ export function LangToggle({ dict, className }: { dict: Dictionary; className?: 
   const current = dict.lang as Lang;
   const other: Lang = current === "fr" ? "en" : "fr";
   return (
-    <div className={cn("label flex items-center gap-2", className)}>
+    <div className={cn("flex items-center gap-2 text-[0.8125rem] uppercase tracking-[0.3em]", className)}>
       <span aria-current="true" className="text-fg">
         {dict.nav.langCurrent}
       </span>
       <span aria-hidden="true" className="text-muted">
-        /
+        ·
       </span>
       <TransitionLink
         href={alternatePath(pathname, other)}

@@ -3,9 +3,7 @@
 import { useMotionValueEvent, useScroll } from "motion/react";
 import { useState } from "react";
 import { TransitionLink } from "@/components/motion/TransitionLink";
-import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Logo } from "@/components/ui/Logo";
-import { bookingHref } from "@/config/site";
 import { type Dictionary, type Lang, routes } from "@/i18n";
 import { cn } from "@/lib/format";
 import { LangToggle } from "./LangToggle";
@@ -32,44 +30,35 @@ export function Header({ dict }: { dict: Dictionary }) {
           scrolled ? "theme-paper border-rule bg-surface" : "theme-forest border-transparent bg-transparent",
         )}
       >
-        <div className="container-x grid-12 h-full items-center">
+        <div className="container-x flex h-full items-center justify-between gap-6">
           <TransitionLink
             href={routes.home[lang]}
             aria-label={dict.a11y.home}
-            className="col-span-6 flex items-center text-fg sm:col-span-5 lg:col-span-3"
+            className="flex shrink-0 items-center text-fg"
           >
             <Logo className="w-[176px] sm:w-[260px] lg:w-[236px] xl:w-[300px]" />
           </TransitionLink>
 
-          <nav aria-label={dict.a11y.primaryNav} className="col-span-6 hidden lg:block">
-            <ul className="label flex items-center gap-8">
-              {navItems(dict).map((item) => (
-                <li key={item.href}>
-                  <TransitionLink
-                    href={item.href}
-                    className="group relative inline-flex min-h-11 items-center text-fg transition-colors duration-500"
-                  >
-                    {item.label}
-                    <span
-                      aria-hidden="true"
-                      className="absolute inset-x-0 bottom-2.5 h-px origin-right scale-x-0 bg-accent transition-transform duration-700 ease-house group-hover:origin-left group-hover:scale-x-100"
-                    />
-                  </TransitionLink>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <div className="col-span-6 flex items-center justify-end gap-4 sm:col-span-7 sm:gap-5 lg:col-span-3 lg:gap-7">
+          <div className="flex items-center gap-10 xl:gap-14">
+            <nav aria-label={dict.a11y.primaryNav} className="hidden lg:block">
+              <ul className="flex items-center gap-10 text-[0.8125rem] uppercase tracking-[0.3em] xl:gap-14">
+                {navItems(dict).map((item) => (
+                  <li key={item.href}>
+                    <TransitionLink
+                      href={item.href}
+                      className="group relative inline-flex min-h-11 items-center text-fg transition-colors duration-500"
+                    >
+                      {item.label}
+                      <span
+                        aria-hidden="true"
+                        className="absolute inset-x-0 bottom-2.5 h-px origin-right scale-x-0 bg-accent transition-transform duration-700 ease-house group-hover:origin-left group-hover:scale-x-100"
+                      />
+                    </TransitionLink>
+                  </li>
+                ))}
+              </ul>
+            </nav>
             <LangToggle dict={dict} className="hidden lg:flex" />
-            <ButtonLink
-              href={bookingHref()}
-              variant="outline"
-              className="min-h-10 px-4"
-              testId="header-reserve"
-            >
-              {dict.nav.reserve}
-            </ButtonLink>
             <MobileMenu dict={dict} />
           </div>
         </div>

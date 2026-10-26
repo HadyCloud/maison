@@ -5,7 +5,6 @@ const BOOKING = process.env.NEXT_PUBLIC_RESERVATION_URL || "tel:+33955316701";
 
 test("reservation links point to the booking URL or the phone", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByTestId("header-reserve")).toHaveAttribute("href", BOOKING);
   await expect(page.getByTestId("hero-reserve")).toHaveAttribute("href", BOOKING);
 
   await page

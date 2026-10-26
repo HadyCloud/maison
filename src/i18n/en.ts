@@ -22,7 +22,8 @@ export const en = {
     categories: "Menu categories",
   },
   nav: {
-    carte: "The Menu",
+    home: "Home",
+    carte: "Menu",
     info: "Info",
     reserve: "Book",
     langShort: "FR",
