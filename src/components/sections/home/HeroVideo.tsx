@@ -82,7 +82,6 @@ export function HeroVideo({ basePath = "/video/hero" }: { basePath?: string }) {
       disableRemotePlayback
       onPlaying={() => setPlaying(true)}
     >
-      <source src={`${basePath}-${tier}.webm`} type="video/webm" />
       <source src={`${basePath}-${tier}.mp4`} type="video/mp4" />
     </video>
   );

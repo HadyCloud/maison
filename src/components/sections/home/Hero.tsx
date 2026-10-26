@@ -43,8 +43,21 @@ export function Hero({ dict }: { dict: Dictionary }) {
       <div className="absolute inset-0">
         {video ? (
           <>
-            <Poster />
-            <HeroVideo />
+            {/* Phones: the 4:3 clip shows whole at full width under the header; a blurred copy of the poster fills the rest. */}
+            <img
+              src="/video/hero-poster-960.jpg"
+              alt=""
+              aria-hidden="true"
+              width={960}
+              height={720}
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 size-full scale-125 object-cover opacity-80 blur-2xl md:hidden"
+            />
+            <div className="absolute inset-0 max-md:inset-x-0 max-md:top-[var(--header-h)] max-md:bottom-auto max-md:aspect-[4/3] max-md:[mask-image:linear-gradient(to_bottom,black_80%,transparent)]">
+              <Poster />
+              <HeroVideo />
+            </div>
           </>
         ) : (
           <Picture id="salle" alt="" sizes="100vw" priority className="absolute inset-0 h-full w-full" />

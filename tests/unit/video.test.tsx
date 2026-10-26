@@ -38,7 +38,7 @@ describe("<HeroVideo> fallback", () => {
   it("stays invisible over the poster when autoplay is refused", async () => {
     render(<HeroVideo />);
     const video = await screen.findByTestId("hero-video", {}, { timeout: 2000 });
-    expect(video.querySelector("source")?.getAttribute("src")).toMatch(/hero-(720|1080)\.webm$/);
+    expect(video.querySelector("source")?.getAttribute("src")).toMatch(/hero-(720|1080)\.mp4$/);
     await act(async () => {
       for (const o of observers) o.cb([{ isIntersecting: true, target: video }]);
     });
