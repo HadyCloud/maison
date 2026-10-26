@@ -1,21 +1,8 @@
 import { TransitionLink } from "@/components/motion/TransitionLink";
 import { Arcade } from "@/components/ui/Arcade";
 import { Logo } from "@/components/ui/Logo";
-import { site } from "@/config/site";
+import { SocialLinks } from "@/components/ui/SocialLinks";
 import { type Dictionary, routes } from "@/i18n";
-
-function Ext({ href, children }: { href: string; children: string }) {
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-flex min-h-6 items-center text-fg transition-colors duration-500 hover:text-accent"
-    >
-      {children}
-    </a>
-  );
-}
 
 /** Slim footer: logo, social links, sister venue, and the legal mentions as small print (no separate page). */
 export function Footer({ dict }: { dict: Dictionary }) {
@@ -28,30 +15,7 @@ export function Footer({ dict }: { dict: Dictionary }) {
           <TransitionLink href={routes.home} aria-label={dict.a11y.home} className="text-fg">
             <Logo className="w-[260px]" />
           </TransitionLink>
-          <ul className="label flex flex-wrap gap-x-8 gap-y-3">
-            <li>
-              <Ext href={site.social.instagram}>Instagram</Ext>
-            </li>
-            <li>
-              <Ext href={site.social.facebook}>Facebook</Ext>
-            </li>
-            {site.social.tiktok && (
-              <li>
-                <Ext href={site.social.tiktok}>TikTok</Ext>
-              </li>
-            )}
-            <li>
-              <Ext href={site.delivery.deliveroo}>{f.delivery}</Ext>
-            </li>
-            <li>
-              <TransitionLink
-                href={`${routes.menu}#allergenes`}
-                className="inline-flex min-h-6 items-center text-fg transition-colors duration-500 hover:text-accent"
-              >
-                {f.allergens}
-              </TransitionLink>
-            </li>
-          </ul>
+          <SocialLinks dict={dict} className="flex flex-wrap items-center gap-x-4 gap-y-2 md:hidden" />
         </div>
 
         <p className="mt-5 text-muted text-sm">{f.sister}</p>

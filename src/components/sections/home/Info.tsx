@@ -3,6 +3,7 @@ import { Arcade } from "@/components/ui/Arcade";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Emphasis } from "@/components/ui/Emphasis";
 import { Ornament } from "@/components/ui/Ornament";
+import { SocialLinks } from "@/components/ui/SocialLinks";
 import { site, telHref } from "@/config/site";
 import type { Dictionary } from "@/i18n";
 import { MapPlan } from "./MapPlan";
@@ -73,6 +74,7 @@ export function Info({ dict }: { dict: Dictionary }) {
                     </div>
                   )}
                 </div>
+                <SocialLinks dict={dict} className="hidden flex-wrap items-center gap-x-3 gap-y-1 md:flex" />
               </div>
               <div className="hidden sm:block">
                 <p className="label mb-2 text-accent">{i.hours}</p>
