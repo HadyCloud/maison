@@ -76,7 +76,7 @@ export const en = {
       line: "Up to 120 guests · partial or full private hire · *lounge evenings*",
       cta: "Call to book the room",
     },
-    amenities: ["Terrace", "Step-free access", "Air conditioning", "Ticket Restaurant"],
+    amenities: ["Terrace", "Step-free access", "Air conditioning"],
   },
   footer: {
     sister: "The sister house: Za'atar, Lebanese bakery, Lille.",

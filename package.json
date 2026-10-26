@@ -20,7 +20,7 @@
     "assets": "node scripts/assets.ts",
     "assets:photos": "node scripts/photos.ts",
     "assets:video": "node scripts/video.ts",
-    "assets:map": "node scripts/map.ts",
+    "assets:map": "node scripts/map.ts && node scripts/map-dark.ts",
     "assets:og": "node scripts/og.ts",
     "screens": "node scripts/screenshots.ts",
     "lighthouse": "node scripts/lighthouse.ts",

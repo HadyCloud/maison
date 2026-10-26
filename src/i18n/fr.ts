@@ -75,7 +75,7 @@ export const fr = {
       line: "Jusqu'à 120 invités · privatisation partielle ou totale · *soirées lounge*",
       cta: "Appeler pour privatiser",
     },
-    amenities: ["Terrasse", "Accès PMR", "Climatisation", "Ticket Restaurant"],
+    amenities: ["Terrasse", "Accès PMR", "Climatisation"],
   },
   footer: {
     sister: "La maison sœur\u00a0: Za'atar, boulangerie libanaise, Lille.",
