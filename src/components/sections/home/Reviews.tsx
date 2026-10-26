@@ -15,7 +15,7 @@ export function Reviews({ dict }: { dict: Dictionary }) {
     <section
       id="avis"
       aria-label={r.label}
-      className="theme-forest relative bg-[#454f24] py-[clamp(2.5rem,5vw,4rem)]"
+      className="theme-forest relative bg-[#454f24] py-[clamp(2.5rem,5vw,4rem)] lg:py-24"
     >
       <Arcade className="text-[#454f24]" />
       <div className="container-x">

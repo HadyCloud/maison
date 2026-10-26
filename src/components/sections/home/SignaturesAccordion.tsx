@@ -24,7 +24,7 @@ export function SignaturesAccordion({
 }) {
   const [active, setActive] = useState(0);
   return (
-    <div className="container-x hidden pt-10 pb-[var(--band-gap)] lg:block">
+    <div className="container-x hidden pt-10 pb-24 lg:block">
       <div className="flex h-[clamp(30rem,68svh,44rem)] overflow-hidden rounded-[1.75rem]">
         {items.map((item, i) => {
           const photoId = item.photoIds[0];

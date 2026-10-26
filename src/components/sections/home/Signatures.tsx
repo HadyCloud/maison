@@ -16,7 +16,7 @@ export function Signatures({ dict }: { dict: Dictionary }) {
     <section
       id="signatures"
       aria-labelledby="signatures-title"
-      className="theme-paper relative bg-surface pb-10 md:pb-14 lg:pb-0"
+      className="theme-paper relative bg-surface pb-20 md:pb-14 lg:pb-0"
     >
       <Arcade className="text-paper" />
       <SignaturesTrack
@@ -43,7 +43,7 @@ export function Signatures({ dict }: { dict: Dictionary }) {
           <SignatureCard key={item.id} item={item} index={i} lang={lang} priceTbd={dict.menuPage.priceTbd} />
         ))}
       </SignaturesTrack>
-      <div className="container-x hidden pt-[var(--band-gap)] lg:flex lg:items-end lg:justify-between">
+      <div className="container-x hidden lg:flex lg:pt-24 lg:items-end lg:justify-between">
         <div>
           <LineReveal
             as="h2"

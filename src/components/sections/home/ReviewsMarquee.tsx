@@ -2,7 +2,7 @@ import type { Review } from "@/content/reviews";
 
 function Card({ review }: { review: Review }) {
   return (
-    <li className="flex w-[17.5rem] shrink-0 flex-col justify-between gap-4 rounded-[1.25rem] bg-paper p-5 text-forest md:w-[26rem] md:p-6">
+    <li className="flex w-[15rem] shrink-0 flex-col gap-3 rounded-[1.1rem] bg-paper p-4 text-forest text-sm md:w-[21rem] md:p-5 md:text-base">
       <p className="leading-relaxed">
         <span aria-hidden="true" className="text-accent">
           «&nbsp;
@@ -25,7 +25,7 @@ function Card({ review }: { review: Review }) {
 
 function Row({ items, reverse }: { items: Review[]; reverse?: boolean }) {
   const list = (hidden: boolean) => (
-    <ul className="flex shrink-0 gap-4 pr-4" aria-hidden={hidden || undefined}>
+    <ul className="flex shrink-0 items-start gap-3 pr-3" aria-hidden={hidden || undefined}>
       {items.map((r) => (
         <Card key={r.id} review={r} />
       ))}
@@ -43,7 +43,7 @@ function Row({ items, reverse }: { items: Review[]; reverse?: boolean }) {
 export function ReviewsMarquee({ reviews }: { reviews: Review[] }) {
   const half = Math.ceil(reviews.length / 2);
   return (
-    <div className="marquee flex flex-col gap-4 overflow-hidden">
+    <div className="marquee flex flex-col gap-3 overflow-hidden">
       <Row items={reviews.slice(0, half)} />
       <Row items={reviews.slice(half)} reverse />
     </div>

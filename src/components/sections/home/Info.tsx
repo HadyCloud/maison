@@ -15,7 +15,7 @@ export function Info({ dict }: { dict: Dictionary }) {
     <section
       id="infos"
       aria-labelledby="info-title"
-      className="theme-sand relative bg-[#dccfae] md:bg-[#e8dcb8] py-[clamp(2.5rem,5vw,4rem)]"
+      className="theme-sand relative bg-[#dccfae] md:bg-[#e8dcb8] py-[clamp(2.5rem,5vw,4rem)] lg:py-24"
     >
       <Arcade className="text-[#dccfae] md:text-[#e8dcb8]" />
       <div className="container-x">
