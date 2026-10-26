@@ -23,7 +23,7 @@ export function MenuItemRow({ item, dict }: { item: MenuItem; dict: Dictionary }
               </span>
             )}
           </h3>
-          <p className="label tabular whitespace-nowrap text-accent">
+          <p className="label tabular whitespace-nowrap text-accent max-md:rounded-full max-md:bg-paper-deep max-md:px-2.5 max-md:py-0.5 max-md:text-wood-ink">
             {item.price !== null ? formatPrice(item.price, lang) : dict.menuPage.priceTbd}
             {item.priceNote && <span className="ml-2 text-muted">{item.priceNote[lang]}</span>}
           </p>
@@ -40,7 +40,7 @@ export function MenuItemRow({ item, dict }: { item: MenuItem; dict: Dictionary }
         )}
       </div>
       {photoId && (
-        <picture className="block size-16 self-start overflow-hidden bg-paper-deep sm:size-20">
+        <picture className="block size-16 self-start overflow-hidden rounded-xl bg-paper-deep sm:size-20 md:rounded-none">
           <source type="image/avif" srcSet={thumbSrc(photoId, "avif")} />
           <img
             src={thumbSrc(photoId, "webp")}
