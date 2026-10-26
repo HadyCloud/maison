@@ -56,10 +56,9 @@ export const fr = {
   },
   reviews: {
     label: "Avis des clients",
+    on: "sur",
     googleReviews: "avis Google",
     write: "Laisser un avis Google",
-    pause: "Pause",
-    play: "Lecture",
   },
   info: {
     title: "Infos *pratiques*",

@@ -57,10 +57,9 @@ export const en = {
   },
   reviews: {
     label: "Guest reviews",
+    on: "from",
     googleReviews: "Google reviews",
     write: "Leave a Google review",
-    pause: "Pause",
-    play: "Play",
   },
   info: {
     title: "Find *us*",

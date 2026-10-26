@@ -1,8 +1,4 @@
-"use client";
-
-import { useState } from "react";
 import type { Review } from "@/content/reviews";
-import { cn } from "@/lib/format";
 
 function Card({ review }: { review: Review }) {
   return (
@@ -43,37 +39,13 @@ function Row({ items, reverse }: { items: Review[]; reverse?: boolean }) {
   );
 }
 
-/** Two rows of review cards moving in opposite directions, with a pause control (and pause on hover). */
-export function ReviewsMarquee({
-  reviews,
-  pauseLabel,
-  playLabel,
-}: {
-  reviews: Review[];
-  pauseLabel: string;
-  playLabel: string;
-}) {
-  const [paused, setPaused] = useState(false);
+/** Two rows of review cards drifting in opposite directions, non-stop. */
+export function ReviewsMarquee({ reviews }: { reviews: Review[] }) {
   const half = Math.ceil(reviews.length / 2);
   return (
-    <div>
-      <div data-paused={paused} className="marquee flex flex-col gap-4 overflow-hidden">
-        <Row items={reviews.slice(0, half)} />
-        <Row items={reviews.slice(half)} reverse />
-      </div>
-      <div className="container-x mt-5 flex justify-end">
-        <button
-          type="button"
-          onClick={() => setPaused((p) => !p)}
-          aria-pressed={paused}
-          className={cn(
-            "label inline-flex min-h-10 items-center gap-2 rounded-full border border-forest/40 px-4 text-forest transition-colors duration-500 hover:bg-forest hover:text-paper",
-          )}
-        >
-          <span aria-hidden="true">{paused ? "▶" : "❙❙"}</span>
-          {paused ? playLabel : pauseLabel}
-        </button>
-      </div>
+    <div className="marquee flex flex-col gap-4 overflow-hidden">
+      <Row items={reviews.slice(0, half)} />
+      <Row items={reviews.slice(half)} reverse />
     </div>
   );
 }

@@ -1,10 +1,10 @@
 "use client";
 
 import { useReducedMotion } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { type ReactNode, useEffect, useRef, useState } from "react";
 
 /** Wide looping clip: 720p on phones, 1080p otherwise. Plays only while on screen; the poster stays under it. */
-export function ReviewsVideo() {
+export function ReviewsVideo({ children }: { children?: ReactNode }) {
   const reduce = useReducedMotion();
   const ref = useRef<HTMLVideoElement>(null);
   const [tier, setTier] = useState<"720" | "1080" | null>(null);
@@ -71,6 +71,7 @@ export function ReviewsVideo() {
           onPlaying={() => setPlaying(true)}
         />
       )}
+      {children}
     </div>
   );
 }

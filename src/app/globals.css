@@ -319,7 +319,3 @@ html.lenis body {
 .marquee-track[data-reverse="true"] {
   animation-direction: reverse;
 }
-.marquee[data-paused="true"] .marquee-track,
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
-}
