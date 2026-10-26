@@ -20,10 +20,13 @@ export function SignatureCard({
   const photoId = item.photoIds[0];
   const photo = photoId ? photoById(photoId) : undefined;
   return (
-    <article className="relative flex w-full flex-col" data-testid="signature-card">
+    <article
+      className="relative flex w-full flex-col pt-[calc(var(--num)*0.82)]"
+      data-testid="signature-card"
+    >
       <span
         aria-hidden="true"
-        className="index-outline pointer-events-none absolute -top-[0.82em] -left-[0.04em] text-[clamp(4rem,6.2vw,6.5rem)]"
+        className="index-outline pointer-events-none absolute top-0 -left-[0.04em] text-[length:var(--num)]"
       >
         {String(index + 1).padStart(2, "0")}
       </span>

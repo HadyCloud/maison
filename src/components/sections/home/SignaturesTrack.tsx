@@ -43,13 +43,13 @@ export function SignaturesTrack({ intro, children }: { intro: ReactNode; childre
     <div
       ref={sectionRef}
       className="relative"
-      style={pinned ? { height: `calc(100vh + ${distance}px)` } : undefined}
+      style={pinned ? { height: `calc(100svh - var(--header-h) + ${distance}px)` } : undefined}
     >
       <div
         className={
           pinned
-            ? "sticky top-0 flex h-screen flex-col justify-center overflow-hidden pt-[var(--header-h)]"
-            : ""
+            ? "sticky top-[var(--header-h)] flex h-[calc(100svh-var(--header-h))] flex-col justify-start overflow-hidden pt-[var(--band-gap)]"
+            : "pt-[var(--band-gap)]"
         }
       >
         {!pinned && <div className="container-x">{intro}</div>}
@@ -58,8 +58,8 @@ export function SignaturesTrack({ intro, children }: { intro: ReactNode; childre
           style={pinned ? { x } : {}}
           className={
             pinned
-              ? "container-x flex w-max flex-row items-start gap-[6vw] pt-24 [&>article]:w-[min(30vw,46vh)] [&>article]:shrink-0"
-              : "flex snap-x snap-mandatory flex-row items-start gap-5 overflow-x-auto scroll-px-[var(--gutter)] px-[var(--gutter)] pt-16 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] md:gap-8 [&::-webkit-scrollbar]:hidden [&>article]:w-[72vw] [&>article]:max-w-[21rem] [&>article]:shrink-0 [&>article]:snap-start"
+              ? "container-x flex w-max flex-row items-start gap-[6vw] [&>article]:w-[min(30vw,calc((100svh-var(--header-h)-var(--band-gap)-var(--num)*0.82-11rem)*0.8))] [&>article]:shrink-0"
+              : "flex snap-x snap-mandatory flex-row items-start gap-5 overflow-x-auto scroll-px-[var(--gutter)] px-[var(--gutter)] pt-8 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] md:gap-8 [&::-webkit-scrollbar]:hidden [&>article]:w-[72vw] [&>article]:max-w-[21rem] [&>article]:shrink-0 [&>article]:snap-start"
           }
         >
           {pinned && intro}

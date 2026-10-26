@@ -4,7 +4,9 @@ import { expect, type Page } from "@playwright/test";
 /** WCAG 2.2 A/AA scan. The grain overlay is decorative (aria-hidden) and excluded. */
 export async function expectNoA11yViolations(page: Page) {
   // Freeze colour transitions (e.g. the header turning beige on scroll) so contrast is measured on final colours.
-  await page.addStyleTag({ content: "*,*::before,*::after{transition:none!important;animation:none!important}" });
+  await page.addStyleTag({
+    content: "*,*::before,*::after{transition:none!important;animation:none!important}",
+  });
   await page.waitForTimeout(150);
   const results = await new AxeBuilder({ page })
     .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"])

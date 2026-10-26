@@ -55,7 +55,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
         />
       </div>
 
-      <div className="container-x absolute inset-x-0 bottom-0 pb-12 md:pb-14">
+      <div className="container-x absolute inset-x-0 bottom-0 pb-[calc(var(--band-gap)*0.8)]">
         <div className="grid-12 items-end gap-y-8">
           <div className="col-span-12 lg:col-span-8">
             <h1 id="hero-title" className="text-white">
