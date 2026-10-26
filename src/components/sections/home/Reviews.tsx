@@ -44,7 +44,7 @@ export function Reviews({ dict }: { dict: Dictionary }) {
           </div>
         </ReviewsVideo>
         <div className="mt-5 flex justify-center md:hidden">
-          <ButtonLink href={site.google.writeReviewUrl} variant="outline">
+          <ButtonLink href={site.google.writeReviewUrl} variant="fill">
             {r.write} →
           </ButtonLink>
         </div>
