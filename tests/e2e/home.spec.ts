@@ -18,7 +18,7 @@ test("home: hero with poster, video and live service status", async ({ page }) =
 
   // Home is only: hero, signatures, infos.
   await expect(page.locator("main > section")).toHaveCount(3);
-  await expect(page.getByTestId("signature-card")).toHaveCount(5);
+  await expect(page.getByTestId("signature-card").filter({ visible: true })).toHaveCount(5);
   await expectNoA11yViolations(page);
 });
 

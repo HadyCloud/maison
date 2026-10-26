@@ -53,6 +53,7 @@ export const en = {
     label: "Signatures",
     title: "The *signatures*",
     all: "The full menu",
+    discover: "Discover",
   },
   info: {
     title: "Find *us*",

@@ -52,6 +52,7 @@ export const fr = {
     label: "Signatures",
     title: "Les *signatures*",
     all: "Toute la carte",
+    discover: "Découvrir",
   },
   info: {
     title: "Infos *pratiques*",
