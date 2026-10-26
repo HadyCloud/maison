@@ -1,7 +1,6 @@
 import { TransitionLink } from "@/components/motion/TransitionLink";
 import { Arcade } from "@/components/ui/Arcade";
 import { Logo } from "@/components/ui/Logo";
-import { SocialLinks } from "@/components/ui/SocialLinks";
 import { type Dictionary, routes } from "@/i18n";
 
 /** Slim footer: logo, social links, sister venue, and the legal mentions as small print (no separate page). */
@@ -15,7 +14,6 @@ export function Footer({ dict }: { dict: Dictionary }) {
           <TransitionLink href={routes.home} aria-label={dict.a11y.home} className="text-fg">
             <Logo className="w-[260px]" />
           </TransitionLink>
-          <SocialLinks dict={dict} className="flex flex-wrap items-center gap-x-4 gap-y-2 md:hidden" />
         </div>
 
         <p className="mt-5 text-muted text-sm">{f.sister}</p>

@@ -80,6 +80,10 @@ export function Info({ dict }: { dict: Dictionary }) {
                 <p className="label mb-2 text-accent">{i.hours}</p>
                 <HoursTable dict={dict} />
               </div>
+              <div className="sm:hidden">
+                <p className="label mb-2 text-accent">{i.hours}</p>
+                <HoursTable dict={dict} grouped />
+              </div>
             </div>
 
             <div className="flex flex-col gap-3 border-rule border-t pt-4 md:flex-row md:items-center md:justify-between md:gap-6">
@@ -89,18 +93,23 @@ export function Info({ dict }: { dict: Dictionary }) {
                   <Emphasis text={i.privatisation.line} />
                 </p>
               </div>
-              <ButtonLink href={telHref()} variant="outline" className="shrink-0 self-start md:self-center">
-                {i.privatisation.cta}
-              </ButtonLink>
+              <div className="hidden shrink-0 self-start md:block md:self-center">
+                <ButtonLink href={telHref()} variant="outline">
+                  {i.privatisation.cta}
+                </ButtonLink>
+              </div>
             </div>
-            <ul className="label flex flex-wrap gap-x-5 gap-y-1 text-muted md:hidden">
-              {i.amenities.map((a) => (
-                <li key={a} className="flex items-center gap-2">
-                  <span aria-hidden="true" className="block size-1 rotate-45 bg-accent" />
-                  {a}
-                </li>
-              ))}
-            </ul>
+            <div className="flex flex-col gap-3 md:hidden">
+              <SocialLinks dict={dict} className="flex items-center gap-2" />
+              <ul className="label flex flex-wrap items-center gap-x-5 gap-y-1 text-muted">
+                {i.amenities.map((a) => (
+                  <li key={a} className="flex items-center gap-2">
+                    <span aria-hidden="true" className="block size-1 rotate-45 bg-accent" />
+                    {a}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
