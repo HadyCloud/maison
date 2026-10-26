@@ -7,13 +7,13 @@ import { Logo } from "@/components/ui/Logo";
 import { type Dictionary, routes } from "@/i18n";
 import { cn } from "@/lib/format";
 import { LangToggle } from "./LangToggle";
-import { MobileMenu } from "./MobileMenu";
 import { navItems } from "./nav";
 import { Ticker } from "./Ticker";
 
 /**
- * Fixed header: wood ticker on top, then the nav row. The nav row is transparent with light text over the hero
- * and turns beige with green text once the page scrolls (no backdrop blur: it would trap the mobile overlay).
+ * Fixed header: wood ticker on top, then the nav. The nav is transparent with light text over the hero and turns
+ * beige with green text once the page scrolls. Desktop: one row. Phone: logo + FR · EN on top, the links below
+ * (no hamburger: everything stays visible).
  */
 export function Header({ dict }: { dict: Dictionary }) {
   const { scrollY } = useScroll();
@@ -29,37 +29,35 @@ export function Header({ dict }: { dict: Dictionary }) {
           scrolled ? "theme-paper border-rule bg-surface" : "theme-forest border-transparent bg-transparent",
         )}
       >
-        <div className="container-x flex h-full items-center justify-between gap-6">
+        <div className="container-x grid h-full grid-cols-[1fr_auto] grid-rows-[3.5rem_2.75rem] items-center lg:flex lg:grid-rows-none lg:gap-10 xl:gap-14">
           <TransitionLink
             href={routes.home}
             aria-label={dict.a11y.home}
-            className="flex shrink-0 items-center text-fg"
+            className="flex items-center text-fg"
           >
-            <Logo className="w-[176px] sm:w-[260px] lg:w-[236px] xl:w-[300px]" />
+            <Logo className="w-[176px] sm:w-[220px] lg:w-[236px] xl:w-[300px]" />
           </TransitionLink>
 
-          <div className="flex items-center gap-10 xl:gap-14">
-            <nav aria-label={dict.a11y.primaryNav} className="hidden lg:block">
-              <ul className="flex items-center gap-10 text-[0.8125rem] uppercase tracking-[0.3em] xl:gap-14">
-                {navItems(dict).map((item) => (
-                  <li key={item.href}>
-                    <TransitionLink
-                      href={item.href}
-                      className="group relative inline-flex min-h-11 items-center text-fg transition-colors duration-500"
-                    >
-                      {item.label}
-                      <span
-                        aria-hidden="true"
-                        className="absolute inset-x-0 bottom-2.5 h-px origin-right scale-x-0 bg-accent transition-transform duration-700 ease-house group-hover:origin-left group-hover:scale-x-100"
-                      />
-                    </TransitionLink>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-            <LangToggle dict={dict} className="hidden lg:flex" />
-            <MobileMenu dict={dict} />
-          </div>
+          <LangToggle dict={dict} className="lg:order-3" />
+
+          <nav aria-label={dict.a11y.primaryNav} className="col-span-2 lg:order-2 lg:col-auto lg:ml-auto">
+            <ul className="flex h-11 items-center justify-between border-fg/20 border-t text-[0.6875rem] uppercase tracking-[0.22em] lg:h-auto lg:justify-start lg:gap-10 lg:border-0 lg:text-[0.8125rem] lg:tracking-[0.3em] xl:gap-14">
+              {navItems(dict).map((item) => (
+                <li key={item.href}>
+                  <TransitionLink
+                    href={item.href}
+                    className="group relative inline-flex min-h-11 items-center text-fg transition-colors duration-500"
+                  >
+                    {item.label}
+                    <span
+                      aria-hidden="true"
+                      className="absolute inset-x-0 bottom-2.5 h-px origin-right scale-x-0 bg-accent transition-transform duration-700 ease-house group-hover:origin-left group-hover:scale-x-100"
+                    />
+                  </TransitionLink>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
       </div>
     </header>

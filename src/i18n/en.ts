@@ -13,8 +13,6 @@ export const en = {
   },
   a11y: {
     skip: "Skip to content",
-    openMenu: "Open menu",
-    closeMenu: "Close menu",
     primaryNav: "Main navigation",
     language: "Language",
     langNames: { fr: "Français", en: "English" },

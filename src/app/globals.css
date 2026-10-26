@@ -75,9 +75,15 @@
   :root {
     color-scheme: light;
     --ticker-h: 2.25rem;
-    --nav-h: 4.5rem;
+    --nav-h: 6.25rem; /* phone: logo row + links row */
     --header-h: calc(var(--ticker-h) + var(--nav-h));
     --gutter: clamp(1.25rem, 3.2vw, 3rem);
+  }
+
+  @media (min-width: 1024px) {
+    :root {
+      --nav-h: 4.5rem;
+    }
   }
 
   html {

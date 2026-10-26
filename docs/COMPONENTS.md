@@ -10,7 +10,7 @@ No API key is stored in the repo. `PROMPT.md`, which contains one, is gitignored
 
 | Ours | Magic source | What we kept | What we changed / stripped |
 |---|---|---|---|
-| `src/components/layout/MobileMenu.tsx` + `useFocusTrap.ts` | **Immersive Full Screen Navigation** — hyperiux (`id 27229`) | Focus-trap logic (visible-focusables filter, Tab/Shift+Tab wrap, Escape, focus restore); clip-path wipe from the bottom; staggered link reveal; body scroll lock | Rewritten from GSAP to Motion; GSAP dependency dropped. Orange overlay → `forest-deep`. Hamburger bars → mono text toggle ("MENU / FERMER"). Image row, social SVG icons and agency block removed. Links in Instrument Serif with mono indexes on hairlines. Phone, address, socials as text. Lenis paused while open. Reduced motion → 0.2 s fade. |
+| _(removed)_ `MobileMenu.tsx`, `useFocusTrap.ts` | Full-screen overlay menu from 21st.dev "Immersive Full Screen Navigation" | Removed: on phones the top bar now shows every link and FR · EN directly, no hamburger. |
 
 ## Searched on Magic, hand-written (no code retrieved)
 
@@ -34,7 +34,7 @@ No API key is stored in the repo. `PROMPT.md`, which contains one, is gitignored
 
 ```
 src/components/
-  layout/   SiteShell · Providers · Header · MobileMenu · useFocusTrap · LangToggle · Footer · HoursTable · nav
+  layout/   SiteShell · Providers · Header · LangToggle · Footer · HoursTable · nav
   motion/   SmoothScroll (Lenis) · Curtain · TransitionLink · Reveal · ImageReveal · motion-features
   ui/       Picture · PhotoPlaceholder · ButtonLink · SectionLabel · Emphasis · JsonLd
   sections/ home/  Hero · HeroVideo · ServiceStatus · Signatures · SignaturesTrack · SignatureCard

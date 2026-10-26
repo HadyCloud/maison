@@ -1,29 +1,27 @@
 import { expect, test } from "@playwright/test";
 import { expectNoA11yViolations } from "./axe";
 
-test("mobile overlay menu traps focus and closes on Escape", async ({ page }) => {
-  await page.goto("/");
-  const toggle = page.getByTestId("menu-toggle");
-  await toggle.click();
-  const overlay = page.locator("#mobile-menu");
-  await expect(overlay).toBeVisible();
-  await expect(toggle).toHaveAttribute("aria-expanded", "true");
-  await page.waitForTimeout(1600); // let the staggered reveal finish before measuring contrast
+test("phone top bar shows every link and the language selector, with no hamburger", async ({ page }) => {
+  await page.goto("/", { waitUntil: "networkidle" });
+  const nav = page.getByRole("navigation", { name: "Navigation principale" });
+  for (const name of ["Accueil", "La Carte", "Infos"])
+    await expect(nav.getByRole("link", { name })).toBeVisible();
+  await expect(page.getByTestId("lang-fr")).toBeVisible();
+  await expect(page.getByTestId("lang-en")).toBeVisible();
+  await expect(page.getByRole("button", { name: /menu/i })).toHaveCount(0);
+  expect(
+    await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth),
+  ).toBe(true);
   await expectNoA11yViolations(page);
 
-  for (let i = 0; i < 14; i++) await page.keyboard.press("Tab");
-  const inside = await page.evaluate(() => {
-    const a = document.activeElement;
-    return (
-      !!a &&
-      (document.getElementById("mobile-menu")?.contains(a) || a.getAttribute("data-testid") === "menu-toggle")
-    );
-  });
-  expect(inside).toBe(true);
-
-  await page.keyboard.press("Escape");
-  await expect(overlay).toHaveCount(0);
-  await expect(toggle).toBeFocused();
+  // The links work from the bar: Infos scrolls to the last section, La Carte opens the menu.
+  await nav.getByRole("link", { name: "Infos" }).click();
+  await expect(page.locator("#infos")).toBeInViewport({ ratio: 0.15 });
+  await page.getByTestId("lang-en").click();
+  const navEn = page.getByRole("navigation", { name: "Main navigation" });
+  await expect(navEn.getByRole("link", { name: "Home" })).toBeVisible();
+  await navEn.getByRole("link", { name: "Menu" }).click();
+  await expect(page).toHaveURL(/\/menu$/);
 });
 
 test("mobile menu page: sticky tabs stay under the header while scrolling", async ({ page }) => {

@@ -12,8 +12,6 @@ export const fr = {
   },
   a11y: {
     skip: "Aller au contenu",
-    openMenu: "Ouvrir le menu",
-    closeMenu: "Fermer le menu",
     primaryNav: "Navigation principale",
     language: "Langue",
     langNames: { fr: "Français", en: "English" },
