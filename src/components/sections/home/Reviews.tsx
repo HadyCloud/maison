@@ -20,22 +20,27 @@ export function Reviews({ dict }: { dict: Dictionary }) {
       <Arcade className="text-[#454f24]" />
       <div className="container-x lg:ml-[var(--align-l,var(--gutter))] lg:mr-[var(--align-r,var(--gutter))] lg:px-0">
         <ReviewsVideo>
-          <p
-            className="absolute bottom-0 left-0 flex items-center gap-3 rounded-tr-[1.25rem] bg-[#36401b] py-3 pr-5 pl-4 text-paper md:gap-4 md:rounded-tr-[1.75rem] md:py-4 md:pr-8 md:pl-6"
-            role="img"
-            aria-label={ratingText}
-          >
-            <span aria-hidden="true" className="text-[0.95rem] text-wood-light tracking-[0.15em] md:text-xl">
-              ★★★★★
-            </span>
-            <span aria-hidden="true" className="label text-[0.65rem] md:text-sm">
-              {ratingText}
-            </span>
-          </p>
-          <div className="absolute right-4 bottom-4 hidden md:block lg:right-6 lg:bottom-6">
-            <ButtonLink href={site.google.writeReviewUrl} variant="fill">
-              {r.write} →
-            </ButtonLink>
+          <div className="absolute inset-x-0 bottom-0 flex items-center justify-between">
+            <p
+              className="flex items-center gap-3 rounded-tr-[1.25rem] bg-[#36401b] py-3 pr-5 pl-4 text-paper md:gap-4 md:rounded-tr-[1.75rem] md:py-4 md:pr-8 md:pl-6"
+              role="img"
+              aria-label={ratingText}
+            >
+              <span
+                aria-hidden="true"
+                className="text-[0.95rem] text-wood-light tracking-[0.15em] md:text-xl"
+              >
+                ★★★★★
+              </span>
+              <span aria-hidden="true" className="label text-[0.65rem] md:text-sm">
+                {ratingText}
+              </span>
+            </p>
+            <div className="hidden pr-4 md:block lg:pr-6">
+              <ButtonLink href={site.google.writeReviewUrl} variant="fill">
+                {r.write} →
+              </ButtonLink>
+            </div>
           </div>
         </ReviewsVideo>
         <div className="mt-5 flex justify-center md:hidden">
