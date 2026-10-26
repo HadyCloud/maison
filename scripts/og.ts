@@ -22,12 +22,10 @@ body { width: 1200px; height: 630px; background: #2e431a; color: #ffffff; positi
 .photo { position: absolute; right: 0; top: 0; width: 400px; height: 630px; background: url(${photoData}) center/cover; filter: saturate(.9) brightness(.85); }
 .label { font-family: "GM"; font-size: 15px; letter-spacing: .14em; text-transform: uppercase; color: #dce0d0; position: absolute; left: 64px; }
 .logo { position: absolute; left: 64px; bottom: 108px; width: 672px; height: auto; }
-.tag { font-family: "IS"; font-style: italic; font-size: 40px; color: #eef0e7; position: absolute; left: 64px; top: 120px; }
 .rule { position: absolute; left: 64px; width: 672px; bottom: 74px; height: 1px; background: #546b40; }
 </style></head><body>
 <div class="photo"></div>
 <div class="label" style="top:60px">Lille · Gambetta</div>
-<div class="tag">La générosité, à voix basse.</div>
 <img class="logo" src="${logoData}" alt="">
 <div class="rule"></div>
 <div class="label" style="bottom:44px;color:#b3bda0">324 rue Léon Gambetta · Métro Gambetta</div>

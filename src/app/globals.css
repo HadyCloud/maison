@@ -38,7 +38,6 @@
   --font-display: var(--font-instrument-serif), "Times New Roman", serif;
   --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
-  --font-arabic: var(--font-naskh), "Geeza Pro", serif;
 
   --ease-house: cubic-bezier(0.22, 1, 0.36, 1);
 
@@ -118,15 +117,8 @@
     outline-offset: 3px;
   }
 
-  /* System Arabic face first; the Naskh webfont is swapped in after `load` (html.fonts-ready). */
-  [lang="ar"] {
-    font-family: "Geeza Pro", "Noto Naskh Arabic", "Segoe UI", serif;
-  }
   .fonts-ready body {
     font-family: var(--font-sans);
-  }
-  .fonts-ready [lang="ar"] {
-    font-family: var(--font-arabic);
   }
 
   img,
@@ -292,24 +284,6 @@ html.lenis body {
     opacity: 1;
   }
 }
-@keyframes scroll-line {
-  0% {
-    transform: scaleY(0);
-    transform-origin: top;
-  }
-  45% {
-    transform: scaleY(1);
-    transform-origin: top;
-  }
-  55% {
-    transform: scaleY(1);
-    transform-origin: bottom;
-  }
-  100% {
-    transform: scaleY(0);
-    transform-origin: bottom;
-  }
-}
 .rise {
   display: block;
   animation: rise 0.9s var(--ease-house) both;
@@ -317,14 +291,10 @@ html.lenis body {
 .fade-in {
   animation: fade 1.2s var(--ease-house) both;
 }
-.scroll-line {
-  animation: scroll-line 2.4s var(--ease-house) infinite;
-}
 @media (prefers-reduced-motion: reduce) {
   .rise {
     animation: fade 0.4s ease both;
   }
-  .scroll-line,
   .ticker-track {
     animation: none;
   }

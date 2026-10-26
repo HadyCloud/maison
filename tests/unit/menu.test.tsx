@@ -37,15 +37,13 @@ describe("menu data", () => {
 describe("menu list rendering", () => {
   const render2 = (ui: React.ReactElement) => render(<ul>{ui}</ul>);
 
-  it("renders name, Arabic name (rtl), description and aligned price", () => {
+  it("renders name, description and price, and no Arabic name", () => {
     const item = menuItemById("mouhammara");
     if (!item) throw new Error("missing item");
     render2(<MenuItemRow item={item} dict={fr} />);
     const row = screen.getByTestId("menu-item");
     expect(within(row).getByRole("heading", { name: "Mouhammara" })).toBeInTheDocument();
-    const ar = within(row).getByText(item.name.ar);
-    expect(ar).toHaveAttribute("lang", "ar");
-    expect(ar).toHaveAttribute("dir", "rtl");
+    expect(row.querySelector('[lang="ar"]')).toBeNull();
     expect(within(row).getByText("9,00 €")).toBeInTheDocument();
   });
 

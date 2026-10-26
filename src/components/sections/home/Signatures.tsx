@@ -31,7 +31,6 @@ export function Signatures({ dict }: { dict: Dictionary }) {
                 {dict.signatures.label}
               </span>
               <Ornament className="mt-6" />
-              <p className="mt-6 max-w-xs text-lead text-muted">{dict.signatures.intro}</p>
             </div>
             <ButtonLink href={routes.menu} variant="underline" className="self-start">
               {dict.signatures.all} →

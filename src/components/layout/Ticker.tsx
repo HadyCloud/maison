@@ -1,4 +1,5 @@
 import type { Dictionary } from "@/i18n";
+import { ServiceStatus } from "./ServiceStatus";
 
 /** Thin strip above the header: facts about the house, scrolling slowly. The second copy only fills the loop. */
 export function Ticker({ dict }: { dict: Dictionary }) {
@@ -14,12 +15,15 @@ export function Ticker({ dict }: { dict: Dictionary }) {
     </ul>
   );
   return (
-    <div className="ticker theme-wood wood-grain flex h-[var(--ticker-h)] items-center overflow-hidden bg-surface text-fg">
+    <div className="ticker theme-wood wood-grain relative flex h-[var(--ticker-h)] items-center overflow-hidden bg-surface text-fg">
       <div className="ticker-track">
         {row(false)}
         {row(true)}
         {row(true)}
         {row(true)}
+      </div>
+      <div className="absolute inset-y-0 right-0 flex items-center bg-[linear-gradient(to_right,transparent,var(--surface)_1.25rem)] pr-[var(--gutter)] pl-8">
+        <ServiceStatus dict={dict} />
       </div>
     </div>
   );

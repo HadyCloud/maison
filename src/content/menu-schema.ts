@@ -8,7 +8,7 @@ const optionalLocalized = z.object({ fr: z.string(), en: z.string() });
 
 export const menuItemSchema = z.object({
   id: z.string().regex(/^[a-z0-9-]+$/),
-  name: z.object({ fr: z.string().min(1), en: z.string().min(1), ar: z.string().min(1) }),
+  name: z.object({ fr: z.string().min(1), en: z.string().min(1) }),
   description: optionalLocalized,
   /** Euros. `null` = price to confirm (rendered as "Prix sur place"). */
   price: z.number().positive().nullable(),

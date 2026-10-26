@@ -3,7 +3,7 @@ import type { Dictionary, Lang } from "@/i18n";
 import { formatPrice } from "@/lib/format";
 import { thumbSrc } from "@/lib/media";
 
-/** One dish: name and price on the first line, Arabic name, description, tags. A small photo on the right when mapped. */
+/** One dish: name and price on the first line, description, tags. A small photo on the right when mapped. */
 export function MenuItemRow({ item, dict }: { item: MenuItem; dict: Dictionary }) {
   const lang = dict.lang as Lang;
   const photoId = item.photoIds[0];
@@ -28,9 +28,6 @@ export function MenuItemRow({ item, dict }: { item: MenuItem; dict: Dictionary }
             {item.priceNote && <span className="ml-2 text-muted">{item.priceNote[lang]}</span>}
           </p>
         </div>
-        <p lang="ar" dir="rtl" className="mt-0.5 text-left text-base text-muted">
-          {item.name.ar}
-        </p>
         {item.description[lang] && <p className="mt-2 max-w-[56ch] text-fg/85">{item.description[lang]}</p>}
         {item.tags.length > 0 && (
           <p className="label mt-2 flex flex-wrap gap-x-3 text-[0.625rem] text-muted">

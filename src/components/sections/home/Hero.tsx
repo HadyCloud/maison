@@ -2,13 +2,11 @@ import { existsSync } from "node:fs";
 import { join } from "node:path";
 import { preload } from "react-dom";
 import { ButtonLink } from "@/components/ui/ButtonLink";
-import { Emphasis } from "@/components/ui/Emphasis";
 import { Logo } from "@/components/ui/Logo";
 import { Picture } from "@/components/ui/Picture";
 import { bookingHref } from "@/config/site";
 import { type Dictionary, routes } from "@/i18n";
 import { HeroVideo } from "./HeroVideo";
-import { ServiceStatus } from "./ServiceStatus";
 
 const hasVideo = () => existsSync(join(process.cwd(), "public/video/hero-1080.mp4"));
 
@@ -65,11 +63,6 @@ export function Hero({ dict }: { dict: Dictionary }) {
               {/* The logo is the LCP element: painted immediately, no entrance delay. */}
               <Logo className="w-full max-w-[min(100%,60rem)]" />
             </h1>
-            <p className="display mt-6 overflow-hidden text-[clamp(1.5rem,3vw,2.5rem)] text-cream-light leading-tight md:mt-8">
-              <span className="rise [animation-delay:380ms]">
-                <Emphasis text={dict.hero.tagline} />
-              </span>
-            </p>
           </div>
           <div className="fade-in col-span-12 flex flex-wrap items-center gap-x-8 gap-y-3 [animation-delay:650ms] lg:col-span-4 lg:justify-end">
             <ButtonLink href={bookingHref()} variant="fill" testId="hero-reserve">
@@ -78,16 +71,6 @@ export function Hero({ dict }: { dict: Dictionary }) {
             <ButtonLink href={routes.menu} variant="underline">
               {dict.hero.menu}
             </ButtonLink>
-          </div>
-        </div>
-
-        <div className="fade-in mt-8 flex items-center justify-between border-white/15 border-t pt-4 [animation-delay:800ms]">
-          <ServiceStatus dict={dict} />
-          <div className="label flex items-center gap-3 text-sage-light" aria-hidden="true">
-            <span className="hidden sm:inline">{dict.hero.scroll}</span>
-            <span className="relative block h-8 w-px overflow-hidden bg-white/15">
-              <span className="scroll-line absolute inset-0 bg-white" />
-            </span>
           </div>
         </div>
       </div>

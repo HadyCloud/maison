@@ -18,7 +18,7 @@
    - **docs:** regenerates `PHOTO_MAP.md`.
 6. **Design.**
    - Palette sampled from the logo: brand green `#2E431A` (page), a deeper and a lighter green, a muted green hairline, sage for meta text, creams and white for type. Square corners, no shadows, 1 px hairlines, film grain at about 4 %.
-   - Instrument Serif for display, Geist for body, Geist Mono for labels, Noto Naskh Arabic for Arabic names.
+   - Instrument Serif for display, Geist for body and Geist Mono for labels.
 7. **Motion.**
    - Masked line reveals: 0.9 s, `cubic-bezier(.22,1,.36,1)`.
    - Images: clip-path wipe with a scale settle from 1.08 to 1, plus parallax up to 8 %.
@@ -54,3 +54,7 @@ Ideas borrowed (not copied) from La Magie de Paris and Za'atar: a top ticker, al
 ## Revision (Oct 2026): one URL per page
 
 The separate `/en` routes were removed. There is no hreflang or language alternate any more; the sitemap lists `/` and `/menu` only.
+
+## Revision (Oct 2026): quieter hero
+
+The opening-status line moved from the hero to a pill at the right end of the wood ticker (open/closed dot, Europe/Paris time). The "Défiler" hint, the hero tagline, the Signatures intro line and all Arabic dish names were removed.

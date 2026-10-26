@@ -27,10 +27,8 @@ export const en = {
     reserve: "Book",
   },
   hero: {
-    tagline: "Generosity, *softly spoken.*",
     reserve: "Book a table",
     menu: "See the menu",
-    scroll: "Scroll",
   },
   status: {
     tonight: "Tonight",
@@ -54,7 +52,6 @@ export const en = {
   signatures: {
     label: "Signatures",
     title: "The *signatures*",
-    intro: "Five plates that speak for the house.",
     all: "The full menu",
   },
   info: {

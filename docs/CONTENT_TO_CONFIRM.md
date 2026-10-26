@@ -47,46 +47,8 @@ Checked online on 20 Oct 2026.
   - Grilled bread stuffed with meat, arayes? (`arayes`).
   - Braised stuffed aubergines on labneh with walnuts and pomegranate (`aubergine-labneh`). This is *not* the foie de volaille.
 - **Unclear items:**
-  - "Kebbé houmous": what is it exactly? The Arabic name is a guess.
+  - "Kebbé houmous": what is it exactly?
   - Is the eatbu "Planche de beignets" photo the "Assortiment de mezzés du chef"?
-
-### Arabic names, to validate (`name.ar`)
-
-| Dish | Proposed | Dish | Proposed |
-|---|---|---|---|
-| Houmous | حمّص | Kebbé viande | كبّة باللحمة |
-| Houmous au basilic | حمّص بالحبق | Kebbé houmous | كبّة حمّص |
-| Houmous de betterave | حمّص بالشمندر | Kebbé d'aubergines | كبّة باذنجان |
-| Moutabal | متبّل | Kebbé soudjouk | كبّة سجق |
-| Mouhammara | محمّرة | Kebbé citrouille | كبّة يقطين |
-| Moussaka libanaise | مسقّعة | Kebbé assortis | كبّة مشكّلة |
-| Warak enab | ورق عنب | Falafel | فلافل |
-| Labneh | لبنة | Samboussek viande | سمبوسك باللحمة |
-| Chankliche | شنكليش | Fatayer épinards | فطاير سبانخ |
-| Taboulé | تبّولة | Rakakat fromage | رقاقات بالجبنة |
-| Fattouche | فتّوش | Assortiment du chef | تشكيلة مازة الشيف |
-| Salade du moine | سلطة الراهب | Mezzé Maison L | مازة ميزون إل |
-| Moussabbaha | مسبّحة | Assiette végétarienne | صحن نباتي |
-| Houmous à la viande | حمّص باللحمة | Assiette gourmande | صحن الذوّاقة |
-| Houmous balila | حمّص بليلة | Assiette Beyrouth | صحن بيروت |
-| Fattet houmous | فتّة حمّص | Kafta | كفتة |
-| Batata harra | بطاطا حرّة | Kafta aux poivrons rouges | كفتة بالفليفلة الحمراء |
-| Foie de volaille | سودة دجاج | Kafta Maison L | كفتة ميزون إل |
-| Makanek | مقانق | Chiche taouk | شيش طاووق |
-| Brochettes d'agneau | شقف غنم | Grillade mixte | مشاوي مشكّلة |
-| Chawarma poulet | شاورما دجاج | Chawarma bœuf | شاورما لحمة |
-| Frites | بطاطا مقليّة | Aych el saray | عيش السرايا |
-| Nammoura | نمّورة | Mouhalabiyeh | مهلّبيّة |
-| Baklawa noix de cajou | بقلاوة بالكاجو | Osmalliyeh | عثمليّة |
-| Maison L (boisson) | ميزون إل | Ward | ورد |
-| Limonade libanaise | ليموناضة | Jallab | جلّاب |
-| Thé à la menthe | شاي بالنعناع | Café | قهوة |
-| Eaux | مياه | Softs | مشروبات غازيّة |
-| Sandwich lahmé | سندويش لحمة | Sandwich chiche taouk | سندويش طاووق |
-| Sandwich kafta | سندويش كفتة | Sandwich falafel | سندويش فلافل |
-| Sandwich chawarma poulet | سندويش شاورما دجاج | Sandwich chawarma bœuf | سندويش شاورما لحمة |
-
-"Maison L" is transliterated as **ميزون إل**. Jalal may prefer another spelling, or to keep it in Latin letters.
 
 ## 3. Copy & quotes (these sections are no longer on the site; kept for reference)
 

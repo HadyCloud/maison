@@ -1,8 +1,6 @@
 /**
  * La carte — seed from Deliveroo / Privateaser / eatbu (October 2026).
  * Every price is `priceConfirmed: false` until Jalal validates it (Deliveroo prices run higher than dine-in).
- * Arabic names are proposals to validate (docs/CONTENT_TO_CONFIRM.md). Dietary tags are inferred from
- * the listed ingredients only and must be confirmed before launch; no "SG" (gluten-free) claim is made.
  */
 import { type Menu, type MenuItem, type MenuTag, menuSchema } from "./menu-schema";
 
@@ -10,7 +8,6 @@ type Seed = {
   id: string;
   fr: string;
   en: string;
-  ar: string;
   dFr?: string;
   dEn?: string;
   price: number | null;
@@ -34,7 +31,7 @@ function item(s: Seed): MenuItem {
   const tags = [...(s.tags ?? []), ...(signature ? (["SIGNATURE"] as const) : [])];
   return {
     id: s.id,
-    name: { fr: s.fr, en: s.en, ar: s.ar },
+    name: { fr: s.fr, en: s.en },
     description: { fr: s.dFr ?? "", en: s.dEn ?? "" },
     price: s.price,
     ...(s.perPerson ? { priceNote: { fr: "par personne", en: "per person" } } : {}),
@@ -58,7 +55,7 @@ const rawMenu: Menu = {
           id: "houmous",
           fr: "Houmous",
           en: "Hummus",
-          ar: "حمّص",
+
           dFr: "Pois chiches, crème de sésame, huile d'olive.",
           dEn: "Chickpeas, sesame cream, olive oil.",
           price: 8.5,
@@ -69,7 +66,7 @@ const rawMenu: Menu = {
           id: "houmous-basilic",
           fr: "Houmous au basilic",
           en: "Basil hummus",
-          ar: "حمّص بالحبق",
+
           dFr: "Sauce basilic, pignons grillés.",
           dEn: "Basil sauce, toasted pine nuts.",
           price: 9,
@@ -80,7 +77,7 @@ const rawMenu: Menu = {
           id: "houmous-betterave",
           fr: "Houmous de betterave",
           en: "Beetroot hummus",
-          ar: "حمّص بالشمندر",
+
           dFr: "Le houmous, teinté de betterave.",
           dEn: "Hummus, coloured with beetroot.",
           price: 8,
@@ -91,7 +88,7 @@ const rawMenu: Menu = {
           id: "moutabal",
           fr: "Moutabal",
           en: "Moutabal",
-          ar: "متبّل",
+
           dFr: "Caviar d'aubergine, crème de sésame.",
           dEn: "Aubergine caviar, sesame cream.",
           price: 9.5,
@@ -102,7 +99,7 @@ const rawMenu: Menu = {
           id: "mouhammara",
           fr: "Mouhammara",
           en: "Mouhammara",
-          ar: "محمّرة",
+
           dFr: "Poivrons rouges, noix, ail, citron, mélasse de grenade, huile d'olive.",
           dEn: "Red peppers, walnuts, garlic, lemon, pomegranate molasses, olive oil.",
           price: 9,
@@ -113,7 +110,7 @@ const rawMenu: Menu = {
           id: "moussaka-libanaise",
           fr: "Moussaka libanaise",
           en: "Lebanese moussaka",
-          ar: "مسقّعة",
+
           dFr: "Aubergines et pois chiches cuisinés.",
           dEn: "Aubergines and chickpeas, cooked together.",
           price: 9,
@@ -124,7 +121,7 @@ const rawMenu: Menu = {
           id: "warak-enab",
           fr: "Warak enab",
           en: "Warak enab",
-          ar: "ورق عنب",
+
           dFr: "Feuilles de vigne farcies de riz citronné.",
           dEn: "Vine leaves filled with lemony rice.",
           price: 9,
@@ -135,7 +132,7 @@ const rawMenu: Menu = {
           id: "labneh",
           fr: "Labneh",
           en: "Labneh",
-          ar: "لبنة",
+
           price: null,
           tags: ["V"],
           photos: ["labneh"],
@@ -144,7 +141,7 @@ const rawMenu: Menu = {
           id: "chankliche",
           fr: "Chankliche",
           en: "Shanklish",
-          ar: "شنكليش",
+
           price: null,
           tags: ["V"],
           photos: ["chankliche"],
@@ -159,7 +156,7 @@ const rawMenu: Menu = {
           id: "taboule",
           fr: "Taboulé",
           en: "Tabbouleh",
-          ar: "تبّولة",
+
           dFr: "Persil, tomate, huile d'olive, citron.",
           dEn: "Parsley, tomato, olive oil, lemon.",
           price: 9,
@@ -169,7 +166,7 @@ const rawMenu: Menu = {
           id: "fattouche",
           fr: "Fattouche",
           en: "Fattoush",
-          ar: "فتّوش",
+
           dFr: "Crudités, sumac, ail, pain libanais grillé.",
           dEn: "Raw vegetables, sumac, garlic, toasted Lebanese bread.",
           price: 10,
@@ -180,7 +177,7 @@ const rawMenu: Menu = {
           id: "salade-du-moine",
           fr: "Salade du moine",
           en: "Monk's salad",
-          ar: "سلطة الراهب",
+
           dFr: "Aubergines grillées, tomates, oignons, persil, citron, mélasse de grenade.",
           dEn: "Grilled aubergines, tomatoes, onions, parsley, lemon, pomegranate molasses.",
           price: 12,
@@ -197,7 +194,7 @@ const rawMenu: Menu = {
           id: "moussabbaha",
           fr: "Moussabbaha",
           en: "Msabbaha",
-          ar: "مسبّحة",
+
           dFr: "Pois chiches, crème de sésame aillée.",
           dEn: "Chickpeas, garlicky sesame cream.",
           price: 9,
@@ -207,7 +204,7 @@ const rawMenu: Menu = {
           id: "houmous-viande",
           fr: "Houmous à la viande",
           en: "Hummus with lamb",
-          ar: "حمّص باللحمة",
+
           dFr: "Émincé d'agneau, pignons.",
           dEn: "Sliced lamb, pine nuts.",
           price: 10,
@@ -216,7 +213,7 @@ const rawMenu: Menu = {
           id: "houmous-balila",
           fr: "Houmous balila",
           en: "Hummus balila",
-          ar: "حمّص بليلة",
+
           dFr: "Pois chiches, sauce du chef.",
           dEn: "Chickpeas, the chef's sauce.",
           price: 8,
@@ -225,7 +222,7 @@ const rawMenu: Menu = {
           id: "fattet-houmous",
           fr: "Fattet houmous",
           en: "Fatteh hummus",
-          ar: "فتّة حمّص",
+
           dFr: "Pois chiches, yaourt, ail, pignons.",
           dEn: "Chickpeas, yoghurt, garlic, pine nuts.",
           price: 14,
@@ -235,7 +232,7 @@ const rawMenu: Menu = {
           id: "batata-harra",
           fr: "Batata harra",
           en: "Batata harra",
-          ar: "بطاطا حرّة",
+
           dFr: "Pommes de terre, ail, coriandre.",
           dEn: "Potatoes, garlic, coriander.",
           price: 9,
@@ -246,7 +243,7 @@ const rawMenu: Menu = {
           id: "foie-de-volaille",
           fr: "Foie de volaille",
           en: "Chicken livers",
-          ar: "سودة دجاج",
+
           dFr: "Mélasse de grenade, ail.",
           dEn: "Pomegranate molasses, garlic.",
           price: 9.5,
@@ -255,7 +252,7 @@ const rawMenu: Menu = {
           id: "makanek",
           fr: "Makanek",
           en: "Makanek",
-          ar: "مقانق",
+
           dFr: "Saucisses libanaises, citron, mélasse de grenade.",
           dEn: "Lebanese sausages, lemon, pomegranate molasses.",
           price: 9.5,
@@ -270,7 +267,7 @@ const rawMenu: Menu = {
           id: "kebbe-viande",
           fr: "Kebbé viande",
           en: "Meat kebbeh",
-          ar: "كبّة باللحمة",
+
           price: 9,
           pieces: 3,
           photos: ["kebbe-viande"],
@@ -279,7 +276,7 @@ const rawMenu: Menu = {
           id: "kebbe-houmous",
           fr: "Kebbé houmous",
           en: "Hummus kebbeh",
-          ar: "كبّة حمّص",
+
           price: 9,
           pieces: 4,
         }),
@@ -287,7 +284,7 @@ const rawMenu: Menu = {
           id: "kebbe-aubergine",
           fr: "Kebbé d'aubergines",
           en: "Aubergine kebbeh",
-          ar: "كبّة باذنجان",
+
           price: 9,
           pieces: 4,
         }),
@@ -295,7 +292,7 @@ const rawMenu: Menu = {
           id: "kebbe-soudjouk",
           fr: "Kebbé soudjouk",
           en: "Soujouk kebbeh",
-          ar: "كبّة سجق",
+
           price: 9,
           pieces: 3,
         }),
@@ -303,7 +300,7 @@ const rawMenu: Menu = {
           id: "kebbe-citrouille",
           fr: "Kebbé citrouille",
           en: "Pumpkin kebbeh",
-          ar: "كبّة يقطين",
+
           dFr: "Farce de blettes et pois chiches.",
           dEn: "Filled with chard and chickpeas.",
           price: 9,
@@ -315,7 +312,7 @@ const rawMenu: Menu = {
           id: "kebbe-assortis",
           fr: "Kebbé assortis",
           en: "Kebbeh selection",
-          ar: "كبّة مشكّلة",
+
           dFr: "Viande, houmous, aubergine, soudjouk, citrouille.",
           dEn: "Meat, hummus, aubergine, soujouk, pumpkin.",
           price: 11,
@@ -325,7 +322,7 @@ const rawMenu: Menu = {
           id: "falafel",
           fr: "Falafel",
           en: "Falafel",
-          ar: "فلافل",
+
           dFr: "Fèves et pois chiches, crème de sésame.",
           dEn: "Broad beans and chickpeas, sesame cream.",
           price: 9,
@@ -336,7 +333,7 @@ const rawMenu: Menu = {
           id: "samboussek-viande",
           fr: "Samboussek viande",
           en: "Meat sambousek",
-          ar: "سمبوسك باللحمة",
+
           price: 9,
           pieces: 4,
           photos: ["samboussek"],
@@ -345,7 +342,7 @@ const rawMenu: Menu = {
           id: "fatayer-epinards",
           fr: "Fatayer épinards",
           en: "Spinach fatayer",
-          ar: "فطاير سبانخ",
+
           price: 8,
           pieces: 4,
           tags: ["V"],
@@ -354,7 +351,7 @@ const rawMenu: Menu = {
           id: "rakakat-fromage",
           fr: "Rakakat fromage",
           en: "Cheese rakakat",
-          ar: "رقاقات بالجبنة",
+
           dFr: "Feuilleté, feta fondue.",
           dEn: "Pastry, melted feta.",
           price: 9,
@@ -371,7 +368,7 @@ const rawMenu: Menu = {
           id: "assortiment-mezzes-chef",
           fr: "Assortiment de mezzés du chef",
           en: "The chef's mezze selection",
-          ar: "تشكيلة مازة الشيف",
+
           dFr: "Entrées et beignets choisis par le chef.",
           dEn: "Starters and fritters chosen by the chef.",
           price: 25,
@@ -382,7 +379,7 @@ const rawMenu: Menu = {
           id: "mezze-maison-l",
           fr: "Mezzé Maison L",
           en: "Mezze Maison L",
-          ar: "مازة ميزون إل",
+
           dFr: "La table de la maison.",
           dEn: "The house table.",
           price: 36,
@@ -393,7 +390,7 @@ const rawMenu: Menu = {
           id: "assiette-vegetarienne",
           fr: "Assiette végétarienne",
           en: "Vegetarian plate",
-          ar: "صحن نباتي",
+
           dFr: "Houmous, moutabal, fattouche, falafel, fatayer.",
           dEn: "Hummus, moutabal, fattoush, falafel, fatayer.",
           price: 20.9,
@@ -403,7 +400,7 @@ const rawMenu: Menu = {
           id: "assiette-gourmande",
           fr: "Assiette gourmande",
           en: "Gourmet plate",
-          ar: "صحن الذوّاقة",
+
           dFr: "Neuf hors-d'œuvre, froids et chauds.",
           dEn: "Nine starters, cold and hot.",
           price: 22.9,
@@ -412,7 +409,7 @@ const rawMenu: Menu = {
           id: "assiette-beyrouth",
           fr: "Assiette Beyrouth",
           en: "Beirut plate",
-          ar: "صحن بيروت",
+
           dFr: "Neuf hors-d'œuvre et deux brochettes.",
           dEn: "Nine starters and two skewers.",
           price: 29.9,
@@ -427,7 +424,7 @@ const rawMenu: Menu = {
           id: "kafta",
           fr: "Kafta",
           en: "Kafta",
-          ar: "كفتة",
+
           dFr: "Agneau haché, oignon, persil ; houmous.",
           dEn: "Minced lamb, onion, parsley; hummus.",
           price: 20.5,
@@ -437,7 +434,7 @@ const rawMenu: Menu = {
           id: "kafta-poivrons",
           fr: "Kafta aux poivrons rouges",
           en: "Kafta with red peppers",
-          ar: "كفتة بالفليفلة الحمراء",
+
           dFr: "Servie avec houmous.",
           dEn: "Served with hummus.",
           price: 20.5,
@@ -447,7 +444,7 @@ const rawMenu: Menu = {
           id: "kafta-maison-l",
           fr: "Kafta Maison L",
           en: "Kafta Maison L",
-          ar: "كفتة ميزون إل",
+
           dFr: "Grillée au feu de bois, sauce tomate, oignons grillés, houmous.",
           dEn: "Wood-fired, tomato sauce, grilled onions, hummus.",
           price: 21.9,
@@ -458,7 +455,7 @@ const rawMenu: Menu = {
           id: "chiche-taouk",
           fr: "Chiche taouk",
           en: "Shish taouk",
-          ar: "شيش طاووق",
+
           dFr: "Poulet mariné ail et citron, crème d'ail, frites, salade.",
           dEn: "Chicken marinated in garlic and lemon, garlic cream, fries, salad.",
           price: 20.5,
@@ -468,7 +465,7 @@ const rawMenu: Menu = {
           id: "brochettes-agneau",
           fr: "Brochettes d'agneau",
           en: "Lamb skewers",
-          ar: "شقف غنم",
+
           dFr: "Oignons, tomates et poivrons grillés, houmous.",
           dEn: "Grilled onions, tomatoes and peppers, hummus.",
           price: 24,
@@ -478,7 +475,7 @@ const rawMenu: Menu = {
           id: "grillade-mixte",
           fr: "Grillade mixte",
           en: "Mixed grill",
-          ar: "مشاوي مشكّلة",
+
           dFr: "Kafta, taouk, agneau ; houmous, crème d'ail, frites, salade.",
           dEn: "Kafta, taouk, lamb; hummus, garlic cream, fries, salad.",
           price: 22,
@@ -488,7 +485,7 @@ const rawMenu: Menu = {
           id: "chawarma-poulet",
           fr: "Chawarma poulet",
           en: "Chicken shawarma",
-          ar: "شاورما دجاج",
+
           dFr: "Crème d'ail, frites.",
           dEn: "Garlic cream, fries.",
           price: 19.9,
@@ -497,7 +494,7 @@ const rawMenu: Menu = {
           id: "chawarma-boeuf",
           fr: "Chawarma bœuf",
           en: "Beef shawarma",
-          ar: "شاورما لحمة",
+
           dFr: "Sauce tarator, tomate grillée.",
           dEn: "Tarator sauce, grilled tomato.",
           price: 21.9,
@@ -506,7 +503,7 @@ const rawMenu: Menu = {
           id: "frites",
           fr: "Frites",
           en: "Fries",
-          ar: "بطاطا مقليّة",
+
           dFr: "En accompagnement.",
           dEn: "On the side.",
           price: 5,
@@ -522,7 +519,7 @@ const rawMenu: Menu = {
           id: "aych-el-saray",
           fr: "Aych el saray",
           en: "Aish el saraya",
-          ar: "عيش السرايا",
+
           dFr: "Crème de lait, biscuit caramélisé, pistache.",
           dEn: "Milk cream, caramelised biscuit, pistachio.",
           price: 4.5,
@@ -532,7 +529,7 @@ const rawMenu: Menu = {
           id: "nammoura",
           fr: "Nammoura",
           en: "Namoura",
-          ar: "نمّورة",
+
           dFr: "Semoule, miel, fleur d'oranger, eau de rose, amande.",
           dEn: "Semolina, honey, orange blossom, rose water, almond.",
           price: 4.5,
@@ -542,7 +539,7 @@ const rawMenu: Menu = {
           id: "mouhalabiyeh",
           fr: "Mouhalabiyeh",
           en: "Mouhalabieh",
-          ar: "مهلّبيّة",
+
           dFr: "Flan à la fleur d'oranger, sirop, pistaches, amandes.",
           dEn: "Orange-blossom milk pudding, syrup, pistachios, almonds.",
           price: 4.5,
@@ -553,7 +550,7 @@ const rawMenu: Menu = {
           id: "baklawa",
           fr: "Baklawa noix de cajou",
           en: "Cashew baklava",
-          ar: "بقلاوة بالكاجو",
+
           price: 4.5,
           tags: ["V"],
         }),
@@ -561,7 +558,7 @@ const rawMenu: Menu = {
           id: "osmalliyeh",
           fr: "Osmalliyeh",
           en: "Osmalieh",
-          ar: "عثمليّة",
+
           dFr: "Pâte filée croustillante, crème.",
           dEn: "Crisp shredded pastry, cream.",
           price: null,
@@ -582,7 +579,7 @@ const rawMenu: Menu = {
           id: "boisson-maison-l",
           fr: "Maison L",
           en: "Maison L",
-          ar: "ميزون إل",
+
           dFr: "Ananas, orange, sirop de rose.",
           dEn: "Pineapple, orange, rose syrup.",
           price: 6,
@@ -591,7 +588,7 @@ const rawMenu: Menu = {
           id: "ward",
           fr: "Ward",
           en: "Ward",
-          ar: "ورد",
+
           dFr: "Sirop de rose.",
           dEn: "Rose syrup.",
           price: 5,
@@ -600,7 +597,7 @@ const rawMenu: Menu = {
           id: "limonade",
           fr: "Limonade libanaise",
           en: "Lebanese lemonade",
-          ar: "ليموناضة",
+
           dFr: "Citron pressé, fleur d'oranger. Option pétillante.",
           dEn: "Fresh lemon, orange blossom. Sparkling on request.",
           price: 7,
@@ -609,15 +606,15 @@ const rawMenu: Menu = {
           id: "jallab",
           fr: "Jallab",
           en: "Jallab",
-          ar: "جلّاب",
+
           dFr: "Sirop de dattes, pignons.",
           dEn: "Date syrup, pine nuts.",
           price: 6,
         }),
-        item({ id: "the-menthe", fr: "Thé à la menthe", en: "Mint tea", ar: "شاي بالنعناع", price: null }),
-        item({ id: "cafe", fr: "Café", en: "Coffee", ar: "قهوة", price: null }),
-        item({ id: "eaux", fr: "Eaux 50 cl", en: "Water 50 cl", ar: "مياه", price: 3.9 }),
-        item({ id: "softs", fr: "Softs", en: "Soft drinks", ar: "مشروبات غازيّة", price: 2.9 }),
+        item({ id: "the-menthe", fr: "Thé à la menthe", en: "Mint tea", price: null }),
+        item({ id: "cafe", fr: "Café", en: "Coffee", price: null }),
+        item({ id: "eaux", fr: "Eaux 50 cl", en: "Water 50 cl", price: 3.9 }),
+        item({ id: "softs", fr: "Softs", en: "Soft drinks", price: 2.9 }),
       ],
     },
     {
@@ -632,7 +629,7 @@ const rawMenu: Menu = {
           id: "sandwich-lahme",
           fr: "Sandwich lahmé",
           en: "Lahmeh sandwich",
-          ar: "سندويش لحمة",
+
           price: 11,
           dineIn: false,
         }),
@@ -640,7 +637,7 @@ const rawMenu: Menu = {
           id: "sandwich-taouk",
           fr: "Sandwich chiche taouk",
           en: "Shish taouk sandwich",
-          ar: "سندويش طاووق",
+
           price: 10,
           dineIn: false,
         }),
@@ -648,7 +645,7 @@ const rawMenu: Menu = {
           id: "sandwich-kafta",
           fr: "Sandwich kafta",
           en: "Kafta sandwich",
-          ar: "سندويش كفتة",
+
           price: 10,
           dineIn: false,
         }),
@@ -656,7 +653,7 @@ const rawMenu: Menu = {
           id: "sandwich-falafel",
           fr: "Sandwich falafel",
           en: "Falafel sandwich",
-          ar: "سندويش فلافل",
+
           price: 9,
           tags: ["VG"],
           photos: ["sandwich-falafel"],
@@ -666,7 +663,7 @@ const rawMenu: Menu = {
           id: "sandwich-chawarma-poulet",
           fr: "Sandwich chawarma poulet",
           en: "Chicken shawarma sandwich",
-          ar: "سندويش شاورما دجاج",
+
           price: 10,
           dineIn: false,
         }),
@@ -674,7 +671,7 @@ const rawMenu: Menu = {
           id: "sandwich-chawarma-boeuf",
           fr: "Sandwich chawarma bœuf",
           en: "Beef shawarma sandwich",
-          ar: "سندويش شاورما لحمة",
+
           price: 11,
           dineIn: false,
         }),

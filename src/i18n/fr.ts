@@ -26,10 +26,8 @@ export const fr = {
     reserve: "Réserver",
   },
   hero: {
-    tagline: "La générosité, *à voix basse.*",
     reserve: "Réserver une table",
     menu: "Découvrir la carte",
-    scroll: "Défiler",
   },
   status: {
     tonight: "Ce soir",
@@ -53,7 +51,6 @@ export const fr = {
   signatures: {
     label: "Signatures",
     title: "Les *signatures*",
-    intro: "Cinq assiettes qui disent la maison.",
     all: "Toute la carte",
   },
   info: {

@@ -45,14 +45,6 @@ export function SignatureCard({
           {item.price !== null ? formatPrice(item.price, lang) : priceTbd}
           {item.priceNote && <span className="text-muted"> · {item.priceNote[lang]}</span>}
         </p>
-        <p
-          lang="ar"
-          dir="rtl"
-          className="col-span-2 text-left text-lg text-muted"
-          style={{ textAlign: "left" }}
-        >
-          {item.name.ar}
-        </p>
         {item.description[lang] && <p className="col-span-2 mt-2 text-muted">{item.description[lang]}</p>}
       </div>
     </article>

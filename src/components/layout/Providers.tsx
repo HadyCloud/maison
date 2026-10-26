@@ -7,7 +7,7 @@ import { SmoothScroll } from "@/components/motion/SmoothScroll";
 
 const loadFeatures = () => import("@/components/motion/motion-features").then((mod) => mod.default);
 
-/** After `load`, swap in the below-the-fold faces (Geist body, Naskh Arabic) — off the critical path. */
+/** After `load`, swap in the below-the-fold faces (Geist body) — off the critical path. */
 function useDeferredFonts() {
   useEffect(() => {
     const enable = () => document.documentElement.classList.add("fonts-ready");
