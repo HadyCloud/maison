@@ -55,6 +55,13 @@ export const en = {
     all: "The full menu",
     discover: "Discover",
   },
+  reviews: {
+    label: "Guest reviews",
+    googleReviews: "Google reviews",
+    write: "Leave a Google review",
+    pause: "Pause",
+    play: "Play",
+  },
   info: {
     title: "Find *us*",
     byPhone: "Bookings by phone",

@@ -304,3 +304,22 @@ html.lenis body {
     animation: none;
   }
 }
+
+/* Reviews: two rows of cards drifting in opposite directions; the track holds two copies so -50 % loops. */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 70s linear infinite;
+}
+.marquee-track[data-reverse="true"] {
+  animation-direction: reverse;
+}
+.marquee[data-paused="true"] .marquee-track,
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}

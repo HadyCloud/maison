@@ -16,8 +16,8 @@ test("home: hero with poster, video and live service status", async ({ page }) =
   // The poster stays the LCP element; the video only fades in once it actually plays.
   await expect(video).toHaveAttribute("data-playing", "true", { timeout: 15_000 });
 
-  // Home is only: hero, signatures, infos.
-  await expect(page.locator("main > section")).toHaveCount(3);
+  // Home is only: hero, signatures, reviews, infos.
+  await expect(page.locator("main > section")).toHaveCount(4);
   await expect(page.getByTestId("signature-card").filter({ visible: true })).toHaveCount(5);
   await expectNoA11yViolations(page);
 });

@@ -54,6 +54,13 @@ export const fr = {
     all: "Toute la carte",
     discover: "Découvrir",
   },
+  reviews: {
+    label: "Avis des clients",
+    googleReviews: "avis Google",
+    write: "Laisser un avis Google",
+    pause: "Pause",
+    play: "Lecture",
+  },
   info: {
     title: "Infos *pratiques*",
     byPhone: "Réservations par téléphone",

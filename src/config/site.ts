@@ -61,7 +61,7 @@ export const site = {
     directionsUrl:
       "https://www.google.com/maps/dir/?api=1&destination=Maison+L+Lille&destination_place_id=ChIJ_Wa7_mTVwkcRiQO4re17a6M",
     rating: {
-      value: { score: 4.8, count: 826 },
+      value: { score: 4.8, count: 840 },
       confirmed: false,
       lastChecked: "2026-10-20",
       source: "Instantané agrégateur fourni dans le brief. Fiche Google non lisible automatiquement",
