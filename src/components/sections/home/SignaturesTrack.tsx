@@ -5,10 +5,10 @@ import { type ReactNode, useEffect, useRef, useState } from "react";
 
 /**
  * Desktop (≥1024px, motion allowed): the section pins and vertical scroll drives the track sideways.
- * Otherwise a plain vertical stack. Pattern informed by 21st.dev "Scroll Horizontal Gallery"
+ * Otherwise (phones, tablets, reduced motion): the intro on top, then the dishes as a swipeable row that snaps card by card. Pattern informed by 21st.dev "Scroll Horizontal Gallery"
  * (motiondotdev) — written from scratch on Motion's useScroll (see docs/COMPONENTS.md).
  */
-export function SignaturesTrack({ children }: { children: ReactNode }) {
+export function SignaturesTrack({ intro, children }: { intro: ReactNode; children: ReactNode }) {
   const reduce = useReducedMotion();
   const sectionRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -52,15 +52,17 @@ export function SignaturesTrack({ children }: { children: ReactNode }) {
             : ""
         }
       >
+        {!pinned && <div className="container-x">{intro}</div>}
         <m.div
           ref={trackRef}
           style={pinned ? { x } : {}}
           className={
             pinned
               ? "container-x flex w-max flex-row items-start gap-[6vw] pt-24 [&>article]:w-[min(30vw,46vh)] [&>article]:shrink-0"
-              : "container-x flex flex-col gap-24 pt-14 md:grid md:grid-cols-2 md:gap-x-[5vw] lg:grid-cols-3"
+              : "flex snap-x snap-mandatory flex-row items-start gap-5 overflow-x-auto scroll-px-[var(--gutter)] px-[var(--gutter)] pt-16 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] md:gap-8 [&::-webkit-scrollbar]:hidden [&>article]:w-[72vw] [&>article]:max-w-[21rem] [&>article]:shrink-0 [&>article]:snap-start"
           }
         >
+          {pinned && intro}
           {children}
         </m.div>
         {pinned && (
