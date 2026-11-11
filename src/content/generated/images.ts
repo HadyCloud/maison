@@ -239,18 +239,19 @@ export const images: Record<string, GeneratedImage> = {
       "y": 0.62
     }
   },
-  "labneh": {
-    "w": 1280,
-    "h": 1707,
+  "labneh-makdous": {
+    "w": 1638,
+    "h": 2048,
     "widths": [
       480,
       960,
-      1280
+      1600,
+      1638
     ],
-    "lqip": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAADQAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JQBUeglR3kTmWa9e97wAAziUHPbStlOZcLRFjJhDXhakX9eG6/kz39+/QWMzIH/RqlOgv4voJFEGxO1grIW8Toxutxwc4+mRPjA+xqsu9eMO4/YAAAA==",
+    "lqip": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAAAwBACdASoQABQAPu1iqU2ppaOiMAgBMB2JQBOgBH+ffTb+UQzUl+tPUrAA/umNyJqIJctjy67t4WijwcugJMzvRjVDGEF683JporpoS8qCTR0EC0HZ5fKd/ECCGzSdqz77LwAA",
     "focal": {
-      "x": 0.45,
-      "y": 0.55
+      "x": 0.5,
+      "y": 0.12
     }
   },
   "chankliche": {

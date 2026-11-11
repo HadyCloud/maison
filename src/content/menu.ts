@@ -165,7 +165,7 @@ const rawMenu = {
           dEn: "Lebanese white cheese cream served with aubergine confit in olive oil and walnuts.",
           price: 9,
           tags: ["V"],
-          photos: ["labneh"],
+          photos: ["labneh-makdous"],
         }),
         item({
           id: "chankliche",

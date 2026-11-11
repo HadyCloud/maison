@@ -347,17 +347,21 @@ export const photoMap: PhotoEntry[] = [
     process: true,
   },
   {
-    id: "labneh",
-    file: "photos-online/eatbu-labneh.jpg",
-    source: "online",
-    sourceUrl: "https://cdn.website.dish.co/media/ab/95/8233588/MAISON-L-DSC0567-jpg.jpg",
+    id: "labneh-makdous",
+    file: "jalal photos/labneh-makdous.jpg",
+    source: "folder",
     kind: "dish",
     itemIds: ["labneh-makdous"],
     confidence: "high",
-    focalPoint: { x: 0.45, y: 0.55 },
-    notes: "Galerie eatbu, légende « Labneh ».",
+    focalPoint: { x: 0.5, y: 0.12 },
+    notes:
+      "Shooting de Jalal (nov. 2026). Vue en plongée : aubergines confites farcies sur couronne de labneh, noix, grenade, estragon. Remplace l'ancienne photo (galerie eatbu), qui montrait en réalité le labneh bel toum.",
     usage: ["signature", "menu"],
-    alt: { fr: "Labneh", en: "Labneh" },
+    alt: {
+      fr: "Labneh bil makdous : aubergines confites farcies sur crème de labneh, noix et grenade",
+      en: "Labneh bil makdous: stuffed confit aubergines on labneh cream, walnuts and pomegranate",
+      ar: "لبنة بالمكدوس: باذنجان محشي مكدوس على كريمة اللبنة مع الجوز والرمان",
+    },
     process: true,
   },
   {
