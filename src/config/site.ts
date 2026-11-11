@@ -130,7 +130,7 @@ export const site = {
     airConditioning: true,
     wifi: true,
     ticketRestaurant: true,
-    services: ["dine-in", "takeaway", "delivery", "catering", "private-events"] as const,
+    services: ["dine-in", "takeaway", "catering", "private-events"] as const,
     confirmed: true,
     source: "Privateaser (lieu 54563), maison-l.eatbu.com",
   },
@@ -143,10 +143,6 @@ export const site = {
     facebook: "https://www.facebook.com/profile.php?id=100093612533232",
     /** Not verifiably theirs (searched 20/10/2026) — keep null until confirmed. */
     tiktok: null as string | null,
-  },
-
-  delivery: {
-    deliveroo: "https://deliveroo.fr/fr/menu/lille/lille-gambetta/maison-l",
   },
 
   press: {

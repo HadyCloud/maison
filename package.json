@@ -19,6 +19,7 @@
     "e2e": "playwright test",
     "assets": "node scripts/assets.ts",
     "assets:photos": "node scripts/photos.ts",
+    "assets:carte": "node scripts/carte-photos.ts",
     "assets:video": "node scripts/video.ts",
     "assets:map": "node scripts/map.ts && node scripts/map-dark.ts",
     "assets:og": "node scripts/og.ts",

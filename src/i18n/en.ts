@@ -81,7 +81,6 @@ export const en = {
   footer: {
     sister: "The sister house: Za'atar, Lebanese bakery, 139 rue des Postes, 59000 Lille.",
     allergens: "Allergens",
-    delivery: "Deliveroo delivery",
     legalNotes: {
       capital: "share capital",
       office: "Registered office:",
@@ -96,8 +95,8 @@ export const en = {
     title: "The *Menu*",
     priceTbd: "Price on site",
     pieces: "pieces",
-    takeawayIntro: "Sandwiches and set menus, to take away or delivered.",
-    deliveroo: "Order on Deliveroo",
+    enlargePhoto: "Enlarge photo",
+    closePhoto: "Close photo",
     allergens: "Allergen information available on request.",
     tags: {
       V: "Vegetarian",

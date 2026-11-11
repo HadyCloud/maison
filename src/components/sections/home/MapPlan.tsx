@@ -2,12 +2,10 @@ import { site } from "@/config/site";
 import type { Dictionary } from "@/i18n";
 
 /**
- * A live OpenStreetMap map (the standard embed, no account or key) shown through the pointed-arch window, the same arch as the section
- * transitions, with a thin oak outline. It loads lazily, so nothing is requested from OpenStreetMap until the visitor
+ * A live OpenStreetMap map (the standard embed, no account or key) in a plain rounded frame with a thin oak outline. It loads lazily, so nothing is requested from OpenStreetMap until the visitor
  * scrolls close to it. The map itself can be dragged and zoomed natively.
  */
 export function MapPlan({ dict }: { dict: Dictionary }) {
-  const arch = { clipPath: "url(#arch-window)" };
   const { lat, lng } = site.address.geo;
   const dLng = 0.0075;
   const dLat = 0.0038;
@@ -15,13 +13,8 @@ export function MapPlan({ dict }: { dict: Dictionary }) {
   const src = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${lat}%2C${lng}`;
   return (
     <figure className="relative mx-auto w-full max-w-xs lg:max-w-none">
-      <svg width="0" height="0" aria-hidden="true" focusable="false" className="absolute">
-        <clipPath id="arch-window" clipPathUnits="objectBoundingBox">
-          <path d="M0 1V0.34C0 0.18 0.36 0.14 0.5 0C0.64 0.14 1 0.18 1 0.34V1Z" />
-        </clipPath>
-      </svg>
-      <div className="bg-accent/70 p-[3px] max-md:bg-wood-light/70" style={arch}>
-        <div className="aspect-[3/2] bg-paper-deep lg:aspect-[6/5]" style={arch}>
+      <div className="overflow-hidden rounded-2xl bg-accent/70 p-[3px] max-md:bg-wood-light/70">
+        <div className="aspect-[3/2] overflow-hidden rounded-[0.8rem] bg-paper-deep lg:aspect-[6/5]">
           {/* biome-ignore lint/a11y/useIframeTitle: a title would show as a hover tooltip over the map; aria-label names it instead */}
           <iframe
             src={src}

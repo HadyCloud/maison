@@ -32,9 +32,8 @@ function TikTok() {
 const linkClass =
   "inline-flex size-10 items-center justify-center rounded-full border border-rule text-fg transition-colors duration-500 hover:border-accent hover:text-accent";
 
-/** Social and delivery icons: in the footer on phones, in the Infos card on desktop. */
+/** Social icons: in the footer on phones, in the Infos card on desktop. */
 export function SocialLinks({ dict, className }: { dict: Dictionary; className?: string }) {
-  const f = dict.footer;
   return (
     <ul className={className}>
       <li>
@@ -72,17 +71,6 @@ export function SocialLinks({ dict, className }: { dict: Dictionary; className?:
           </a>
         </li>
       )}
-      <li>
-        <a
-          href={site.delivery.deliveroo}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={f.delivery}
-          className={linkClass}
-        >
-          <img src="/brand/deliveroo.png" alt="" width={103} height={128} className="h-5 w-auto" />
-        </a>
-      </li>
     </ul>
   );
 }

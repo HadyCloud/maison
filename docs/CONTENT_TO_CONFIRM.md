@@ -22,7 +22,7 @@ Checked online on 20 Oct 2026.
 
 ## 2. Menu (`src/content/menu.ts`)
 
-- **No photo of the printed menu** was in `photos/`, so the seed menu stands. Every price has `priceConfirmed: false` and `/menu` shows "Prix indicatifs en cours de validation".
+- **Menu and prices** now come from the printed menu supplied by Jalal (Nov 2026); every price is `priceConfirmed: true`.
 - **Prices that differ between sources** (seed = Deliveroo):
   - Kafta: 20,50 € (Deliveroo) vs **21 €** (Privateaser, "3 brochettes, accompagnement, salade, frites").
   - Falafel: 9 € vs **8 €**.

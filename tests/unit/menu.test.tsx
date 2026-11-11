@@ -2,7 +2,7 @@ import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { MenuItemRow } from "@/components/sections/menu/MenuItemRow";
 import { MenuSection } from "@/components/sections/menu/MenuSection";
-import { dineInCategories, menu, menuItemById, signatureIds, takeawayCategories } from "@/content/menu";
+import { dineInCategories, menu, menuItemById, signatureIds } from "@/content/menu";
 import { menuSchema } from "@/content/menu-schema";
 import { en } from "@/i18n/en";
 import { fr } from "@/i18n/fr";
@@ -13,19 +13,14 @@ describe("menu data", () => {
     expect(() => menuSchema.parse(menu)).not.toThrow();
   });
 
-  it("keeps every price unconfirmed until Jalal validates it", () => {
-    expect(menu.categories.flatMap((c) => c.items).every((i) => i.priceConfirmed === false)).toBe(true);
+  it("marks every price as confirmed (taken from the printed menu)", () => {
+    expect(menu.categories.flatMap((c) => c.items).every((i) => i.priceConfirmed === true)).toBe(true);
   });
 
-  it("has exactly five signatures, each with a mapped photo", () => {
+  it("has exactly six signatures, each with a mapped photo", () => {
     const sigs = menu.categories.flatMap((c) => c.items).filter((i) => i.signature);
     expect(sigs.map((s) => s.id).sort()).toEqual([...signatureIds].sort());
     for (const s of sigs) expect(s.photoIds.length).toBeGreaterThan(0);
-  });
-
-  it("separates the takeaway block from the dine-in carte", () => {
-    expect(takeawayCategories.flatMap((c) => c.items).every((i) => !i.dineIn)).toBe(true);
-    expect(dineInCategories.flatMap((c) => c.items).every((i) => i.dineIn)).toBe(true);
   });
 
   it("formats prices with two decimals per locale", () => {
@@ -44,13 +39,13 @@ describe("menu list rendering", () => {
     const row = screen.getByTestId("menu-item");
     expect(within(row).getByRole("heading", { name: /^Mouhammara/ })).toBeInTheDocument();
     expect(row.querySelector('[lang="ar"]')).toBeNull();
-    expect(within(row).getByText("9,00 €")).toBeInTheDocument();
+    expect(within(row).getByText("8,00 €")).toBeInTheDocument();
   });
 
   it("shows 'Prix sur place' when a price is still unknown", () => {
-    const item = menuItemById("labneh");
-    if (!item) throw new Error("missing item");
-    render2(<MenuItemRow item={item} dict={fr} />);
+    const base = menuItemById("labneh-bel-toum");
+    if (!base) throw new Error("missing item");
+    render2(<MenuItemRow item={{ ...base, price: null }} dict={fr} />);
     expect(screen.getByText("Prix sur place")).toBeInTheDocument();
   });
 
@@ -70,7 +65,7 @@ describe("menu list rendering", () => {
 
   it("shows a small photo only for items that have one", () => {
     const withPhoto = menuItemById("kebbe-citrouille");
-    const without = menuItemById("taboule");
+    const without = menuItemById("trilogie-houmous");
     if (!withPhoto || !without) throw new Error("missing item");
     render2(
       <>
@@ -79,16 +74,23 @@ describe("menu list rendering", () => {
       </>,
     );
     const [first, second] = screen.getAllByTestId("menu-item");
-    expect(first?.querySelector("img")).toHaveAttribute("src", "/images/kebbe-citrouille-sq.webp");
+    expect(first?.querySelector("img")).toHaveAttribute("src", "/images/carte/kebbe-citrouille-480.webp");
+    expect(first?.querySelector("source")).toHaveAttribute(
+      "srcset",
+      "/images/carte/kebbe-citrouille-240.avif 240w, /images/carte/kebbe-citrouille-480.avif 480w",
+    );
     expect(second?.querySelector("img")).toBeNull();
-    expect(screen.queryByRole("button")).not.toBeInTheDocument();
+    // The photo is the only interactive element: a button that offers to enlarge it.
+    expect(screen.getAllByRole("button")).toHaveLength(1);
+    expect(first?.querySelector("button")).toHaveAccessibleName("Agrandir la photo, Kebbi citrouille");
+    expect(second?.querySelector("button")).toBeNull();
   });
 
   it("renders a whole category with its heading and count", () => {
     const cat = dineInCategories[0];
     if (!cat) throw new Error("no category");
     render(<MenuSection category={cat} dict={fr} />);
-    expect(screen.getByRole("heading", { level: 2, name: /Mezzés froids/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 2, name: /Entrées froides/ })).toBeInTheDocument();
     expect(screen.getAllByTestId("menu-item")).toHaveLength(cat.items.length);
   });
 });

@@ -80,7 +80,6 @@ export const fr = {
   footer: {
     sister: "La maison sœur\u00a0: Za'atar, boulangerie libanaise, 139 rue des Postes, 59000 Lille.",
     allergens: "Allergènes",
-    delivery: "Livraison Deliveroo",
     legalNotes: {
       capital: "capital social",
       office: "Siège\u00a0:",
@@ -95,8 +94,8 @@ export const fr = {
     title: "La *Carte*",
     priceTbd: "Prix sur place",
     pieces: "pièces",
-    takeawayIntro: "Sandwichs et menus, à emporter ou livrés.",
-    deliveroo: "Commander sur Deliveroo",
+    enlargePhoto: "Agrandir la photo",
+    closePhoto: "Fermer la photo",
     allergens: "Liste des allergènes disponible sur demande.",
     tags: {
       V: "Végétarien",

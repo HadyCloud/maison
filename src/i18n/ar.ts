@@ -75,7 +75,6 @@ export const ar = {
   footer: {
     sister: "البيت الشقيق: زعتر، مخبز لبناني، 139 شارع دي بوست، 59000 ليل.",
     allergens: "مسببات الحساسية",
-    delivery: "التوصيل عبر Deliveroo",
     legalNotes: {
       capital: "رأس المال",
       office: "المقر:",
@@ -90,8 +89,8 @@ export const ar = {
     title: "*القائمة*",
     priceTbd: "السعر في المطعم",
     pieces: "قطع",
-    takeawayIntro: "ساندويشات ووجبات، للأخذ أو التوصيل.",
-    deliveroo: "اطلب عبر Deliveroo",
+    enlargePhoto: "تكبير الصورة",
+    closePhoto: "إغلاق الصورة",
     allergens: "قائمة مسببات الحساسية متوفرة عند الطلب.",
     tags: {
       V: "نباتي",

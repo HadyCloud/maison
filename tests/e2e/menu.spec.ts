@@ -27,6 +27,6 @@ test("goes from the top bar to La Carte; the tabs follow the scroll", async ({ p
 test("a signature on the home page links to its dish on the menu", async ({ page }) => {
   await page.goto("/");
   await page.getByTestId("signature-card").filter({ visible: true }).first().getByRole("link").click();
-  await expect(page).toHaveURL(/\/menu#houmous-betterave$/);
-  await expect(page.locator("#houmous-betterave")).toBeInViewport();
+  await expect(page).toHaveURL(/\/menu#moutabbal-noix-grenade$/);
+  await expect(page.locator("#moutabbal-noix-grenade")).toBeInViewport();
 });
