@@ -181,9 +181,9 @@ export const site = {
       source: "Imprint de maison-l.eatbu.com (champs Prénom/Nom)",
     } satisfies Checked<string>,
     host: {
-      name: "Vercel Inc.",
-      address: "440 N Barranca Ave #4133, Covina, CA 91723, États-Unis",
-      url: "https://vercel.com",
+      name: "Cloudflare, Inc.",
+      address: "101 Townsend St, San Francisco, CA 94107, États-Unis",
+      url: "https://www.cloudflare.com",
     },
   },
 

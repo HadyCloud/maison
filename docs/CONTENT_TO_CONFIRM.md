@@ -9,13 +9,13 @@ Checked online on 20 Oct 2026.
 |---|---|---|---|
 | 1 | **Phone** | **09 55 31 67 01** (primary), `site.phone.primary` | Google + PagesJaunes list 09 55 31 67 01. Their current eatbu site and its imprint list **07 66 16 16 19**. Which one takes bookings? |
 | 2 | **Opening hours** | Google hours: Mon 19:00–22:30, Tue–Sat 12:00–15:00 / 19:00–23:00, Sun 12:00–15:00 / 19:00–22:00, with the note "Horaires indicatifs" | **PagesJaunes** (updated 07/08/2026) says *closed Monday*, evenings 18:00–22:00 (Sat 23:00) and Sunday 11:00–16:00 / 18:00–22:00. **Privateaser** booking hours run Fri–Sat until midnight. The live "CE SOIR · …" line in the hero depends on these. |
-| 3 | **Online booking URL** | `tel:` fallback everywhere | eatbu shows a "Réserver en ligne" button but no direct URL. If a booking link exists, set `RESERVATION_URL` (Vercel env). |
+| 3 | **Online booking URL** | `tel:` fallback everywhere | eatbu shows a "Réserver en ligne" button but no direct URL. If a booking link exists, set `RESERVATION_URL` (Cloudflare build variable). |
 | 4 | **Email** | Hidden (`email: null`) | The eatbu imprint lists a **personal Gmail address**, so it isn't published. Send a professional address to show. |
 | 5 | **Google rating** | **4,8/5 · 826 avis**, "relevé le 20.10.2026" | The brief's aggregator snapshot. The live Google figure couldn't be read automatically, and Restaurants-de-France shows 4.8 / 545 (older). Update `site.google.rating` and `lastChecked`. |
 | 6 | **Postcode** | 59000 | Set to `confirmed: true`, because eatbu imprint, Le Bonbon and PagesJaunes all say 59000. Privateaser's 59260 (Hellemmes) looks wrong. |
 | 7 | **Legal representative** | **Kamal Ghantous** ("Directeur de la publication" in the footer small print) | Taken from the eatbu imprint fields "Prénom: KAMAL / Nom: GHANTOUS". Please confirm, since Jalal is presented as chef & owner. |
 | 8 | **Company identity** | SAS Maison L, capital 2 000 €, RCS Lille Métropole 922 730 023, VAT FR07922730023 | Matches the eatbu imprint. PagesJaunes lists another trade name, **"ST.JOHN"**, at the same address and SIREN. Worth confirming which names should appear. |
-| 9 | **Host** | Vercel Inc. (footer small print) | Assumes deployment on Vercel. Change `site.legal.host` if hosted elsewhere. |
+| 9 | **Host** | Cloudflare, Inc. (footer small print) | Assumes deployment on Cloudflare Workers. Change `site.legal.host` if hosted elsewhere, and check the registered address on cloudflare.com. |
 | 10 | **TikTok** | Not linked (`social.tiktok: null`) | No account found for "Maison L Lille". |
 | 11 | **Za'atar** (sister bakery) | Footer line without a link (`sister.url: null`) | Nothing found online. Send the URL or address. |
 | 12 | **Site URL** | `https://maison-l.fr` (placeholder) | Set `NEXT_PUBLIC_SITE_URL` to the real domain (canonical, sitemap, OG). |
@@ -82,4 +82,4 @@ Checked online on 20 Oct 2026.
   - Home 90, menu 92. Accessibility, best practices and SEO are 100.
   - CLS 0, TBT ≈ 60–70 ms.
   - **Simulated LCP is 3.4–3.6 s (target < 2.5 s).** Observed LCP is ~130 ms. The simulation is dominated by about 210 KB of framework + Motion JS requested in `<head>`.
-  - Real-device numbers on Vercel (HTTP/2, Brotli) should be better, but check field data after launch.
+  - Real-device numbers on Cloudflare (HTTP/2, Brotli) should be better, but check field data after launch.

@@ -14,6 +14,9 @@ PROMPT.md
 # Dependencies & builds
 node_modules/
 .next/
+.open-next/
+.wrangler/
+.dev.vars*
 out/
 next-env.d.ts
 *.tsbuildinfo

@@ -2,7 +2,7 @@
 
 Site for **Maison L**, a Lebanese restaurant at 324 rue Léon Gambetta, Lille. Built with Next.js 16 (App Router, React 19), TypeScript strict, Tailwind v4, Motion, Lenis and Zod, using pnpm and Biome.
 
-Two pages: Home (hero, signatures, Infos with map and contact) at `/`, and La Carte at `/menu`. The site is in French; the **FR · EN** buttons in the top bar switch the text in place, without changing the URL. The choice is remembered in a small `lang` cookie that is only set when a visitor clicks EN (no trackers, no analytics, so no cookie banner). Pages are rendered per request because they read that cookie. The "Infos" link in the top bar scrolls to the last section of the home page. The legal mentions are small print in the footer. If analytics are added later, use a cookieless tool (e.g. Vercel Web Analytics or Plausible) and update the footer legal text.
+Two pages: Home (hero, signatures, Infos with map and contact) at `/`, and La Carte at `/menu`. The site is in French; the **FR · EN** buttons in the top bar switch the text in place, without changing the URL. The choice is remembered in a small `lang` cookie that is only set when a visitor clicks EN (no trackers, no analytics, so no cookie banner). Pages are rendered per request because they read that cookie. The "Infos" link in the top bar scrolls to the last section of the home page. The legal mentions are small print in the footer. If analytics are added later, use a cookieless tool (e.g. Cloudflare Web Analytics or Plausible) and update the footer legal text.
 
 ## Run it
 
@@ -75,15 +75,25 @@ Raw sources stay local and are gitignored (`photos/`, `photos-online/`, `video/`
 
 Missing shots and their ideal framing: [`docs/PHOTO_REQUEST.md`](docs/PHOTO_REQUEST.md). Until they exist, intentional placeholders render (tonal green block, "PHOTO · …" caption).
 
-## Deploy on Vercel
+## Deploy on Cloudflare Workers
 
-1. Push the repo to GitHub/GitLab and import it in Vercel. The framework preset (Next.js) is auto-detected; leave the build command as `pnpm build`.
-2. Set the environment variables (see `.env.example`):
-   - `NEXT_PUBLIC_SITE_URL`: the final domain, e.g. `https://maison-l.fr` (canonical URLs, sitemap, OG).
+The site runs on Cloudflare Workers through [`@opennextjs/cloudflare`](https://opennext.js.org/cloudflare) (config: `wrangler.jsonc`, `open-next.config.ts`, `public/_headers`).
+
+1. Push the repo to GitHub and create the Worker from it (Workers & Pages → Create → Import a repository). The Worker name must be `maison`, as in `wrangler.jsonc`.
+2. Build settings:
+   - Build command: `npx opennextjs-cloudflare build`
+   - Deploy command: `npx opennextjs-cloudflare deploy`
+   - Non-production branches (preview): `npx opennextjs-cloudflare upload`
+3. Set the variables (see `.env.example`) under Settings → Build → Variables and secrets. They are inlined at **build** time, so they must be build variables:
+   - `NEXT_PUBLIC_SITE_URL`: the final domain, e.g. `https://maison-l.fr` (canonical URLs, sitemap, OG). Defaults to that value when unset.
    - `RESERVATION_URL`: the online booking link, if any. When empty, every "Réserver" button calls the restaurant.
-3. Add the custom domain in Vercel and redeploy.
+4. Add the custom domain under Settings → Domains & Routes.
 
-Committed assets (`public/images`, `public/video`, `public/og.jpg`) are already processed, so Vercel never runs ffmpeg or sharp. Re-run `pnpm assets` locally and commit when photos or the video change.
+Local checks: `pnpm cf:preview` builds and serves the site in the Workers runtime (workerd) on <http://localhost:8787>; `pnpm cf:deploy` deploys from your machine (after `pnpm exec wrangler login`).
+
+Committed assets (`public/images`, `public/video`, `public/og.jpg`) are already processed, so the build never runs ffmpeg or sharp. Re-run `pnpm assets` locally and commit when photos or the video change.
+
+Static files bypass `next.config.ts` `headers()` on Cloudflare, so their caching and security headers live in `public/_headers`. Keep the two in sync.
 
 ## Docs
 
