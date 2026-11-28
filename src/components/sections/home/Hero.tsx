@@ -1,5 +1,3 @@
-import { existsSync } from "node:fs";
-import { join } from "node:path";
 import { preload } from "react-dom";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Logo } from "@/components/ui/Logo";
@@ -7,8 +5,6 @@ import { Picture } from "@/components/ui/Picture";
 import { bookingHref } from "@/config/site";
 import { type Dictionary, routes } from "@/i18n";
 import { HeroVideo } from "./HeroVideo";
-
-const hasVideo = () => existsSync(join(process.cwd(), "public/video/hero-1080.mp4"));
 
 function Poster() {
   return (
@@ -34,7 +30,7 @@ function Poster() {
 export function Hero({ dict }: { dict: Dictionary }) {
   // The lockup is a CSS mask (fetched in CORS mode): preload it to match.
   preload("/brand/logo.svg", { as: "image", crossOrigin: "anonymous", fetchPriority: "high" });
-  const video = hasVideo();
+  const video = true; // clips are committed in public/video (a runtime fs check fails on Workers)
   return (
     <section
       aria-labelledby="hero-title"

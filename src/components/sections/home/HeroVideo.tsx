@@ -41,10 +41,19 @@ export function HeroVideo({ basePath = "/video/hero" }: { basePath?: string }) {
     const video = ref.current;
     if (!video || !tier) return;
     let inView = true;
+    // React doesn't always reflect `muted` to the DOM; iOS refuses autoplay without the real property.
+    video.muted = true;
+    video.defaultMuted = true;
     const sync = () => {
       if (inView && !document.hidden) video.play().catch(() => setPlaying(false));
       else video.pause();
     };
+    // Autoplay can be blocked (iOS Low Power Mode): retry on the first touch/scroll.
+    const retry = () => {
+      if (video.paused && inView && !document.hidden) sync();
+    };
+    const events = ["touchstart", "pointerdown", "scroll"] as const;
+    for (const e of events) window.addEventListener(e, retry, { passive: true });
     const io = new IntersectionObserver(
       ([entry]) => {
         inView = entry?.isIntersecting ?? false;
@@ -57,6 +66,7 @@ export function HeroVideo({ basePath = "/video/hero" }: { basePath?: string }) {
     return () => {
       io.disconnect();
       document.removeEventListener("visibilitychange", sync);
+      for (const e of events) window.removeEventListener(e, retry);
     };
   }, [tier]);
 
